@@ -649,4 +649,24 @@ transform:rotate(20deg) scale(1.08);
 
 box-shadow:0 0 20px rgba(96,165,250,.5);
 
+body.light-mode{
+
+background:#f5f7fb;
+
+color:#111827;
+
+}
+
+body.light-mode .glass{
+
+background:rgba(255,255,255,.75);
+
+color:#111827;
+
+}
+
+body.light-mode .navbar{
+
+background:rgba(255,255,255,.85);
+
 }
