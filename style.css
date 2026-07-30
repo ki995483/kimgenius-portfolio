@@ -482,4 +482,46 @@ transform:
 translateY(-5px)
 scale(1.04);
 
+/* ===== HERO STATS ===== */
+
+.hero-stats{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+margin-top:45px;
+
+flex-wrap:wrap;
+
 }
+
+.hero-stats div{
+
+min-width:140px;
+
+padding:20px;
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:18px;
+
+backdrop-filter:blur(16px);
+
+text-align:center;
+
+transition:all .35s ease;
+
+box-shadow:0 10px 30px rgba(0,0,0,.20);
+
+}
+
+.hero-stats div:hover{
+
+transform:translateY(-8px);
+
+box
