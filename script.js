@@ -1,13 +1,10 @@
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener("click", function (e) {
-    e.preventDefault();
+const toggle = document.getElementById("themeToggle");
 
-    const target = document.querySelector(this.getAttribute("href"));
+toggle.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
 
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth"
-      });
-    }
-  });
+    toggle.textContent =
+        document.body.classList.contains("light-mode")
+            ? "☀️"
+            : "🌙";
 });
