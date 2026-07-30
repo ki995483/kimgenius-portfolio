@@ -199,7 +199,46 @@ background:#2563eb;
 font-size:.9rem;
 }
 
-.btn{ 
+.btn{
+
+display:inline-block;
+
+margin-top:30px;
+
+padding:16px 34px;
+
+border-radius:999px;
+
+background:linear-gradient(
+135deg,
+#2563eb,
+#38bdf8
+);
+
+color:#fff;
+
+font-weight:700;
+
+text-decoration:none;
+
+transition:all .35s ease;
+
+box-shadow:0 15px 35px rgba(37,99,235,.35);
+
+}
+
+.btn:hover{
+
+transform:
+translateY(-6px)
+scale(1.05);
+
+box-shadow:
+0 22px 45px rgba(37,99,235,.55);
+
+filter:brightness(1.08);
+
+} 
 letter-spacing:1px;
 display:inline-block;
 padding:15px 32px;
