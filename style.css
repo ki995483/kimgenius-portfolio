@@ -206,4 +206,75 @@ padding:70px 20px;
 padding:30px;
 }
 
+/* ===== SPRINT 2 ===== */
+
+body{
+    animation: gradientShift 12s ease infinite;
+    background-size:400% 400%;
+}
+
+@keyframes gradientShift{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
+.hero h1{
+
+background:linear-gradient(
+90deg,
+#ffffff,
+#60a5fa,
+#38bdf8,
+#ffffff
+);
+
+background-size:300%;
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+animation:titleFlow 6s linear infinite;
+
+}
+
+@keyframes titleFlow{
+
+0%{
+background-position:0%;
+}
+
+100%{
+background-position:300%;
+}
+
+}
+
+.btn{
+
+box-shadow:
+0 0 25px rgba(59,130,246,.45);
+
+}
+
+.btn:hover{
+
+box-shadow:
+0 0 40px rgba(59,130,246,.85);
+
+transform:
+translateY(-5px)
+scale(1.04);
+
 }
