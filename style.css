@@ -199,7 +199,8 @@ background:#2563eb;
 font-size:.9rem;
 }
 
-.btn{
+.btn{ 
+letter-spacing:1px;
 display:inline-block;
 padding:15px 32px;
 border-radius:999px;
