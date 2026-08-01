@@ -1900,3 +1900,18 @@ a{
     -moz-osx-font-smoothing:grayscale;
 
 }
+
+.card{
+
+    cursor:pointer;
+
+    display:block;
+
+}
+
+
+.card:hover h3{
+
+    color:#60a5fa;
+
+}
