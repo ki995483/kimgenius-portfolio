@@ -1915,3 +1915,65 @@ a{
     color:#60a5fa;
 
 }
+
+/* ==========================
+   HERO SKILL BUTTONS
+========================== */
+
+.hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    margin:35px 0;
+
+}
+
+
+
+.skill-btn{
+
+    padding:12px 24px;
+
+    border-radius:50px;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #2563eb,
+    #38bdf8
+    );
+
+    color:white;
+
+    font-weight:800;
+
+    border:
+
+    1px solid rgba(255,255,255,.25);
+
+    box-shadow:
+
+    0 10px 25px rgba(37,99,235,.35);
+
+    transition:.35s;
+
+}
+
+
+
+.skill-btn:hover{
+
+    transform:translateY(-5px) scale(1.05);
+
+    box-shadow:
+
+    0 18px 35px rgba(37,99,235,.55);
+
+}
