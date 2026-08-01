@@ -554,9 +554,17 @@ section{
 
 .card{
 
-    padding:35px;
+    padding:45px;
 
-    border-radius:28px;
+    min-height:320px;
+
+    border-radius:32px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
 
     background:
 
@@ -566,13 +574,9 @@ section{
 
     1px solid rgba(255,255,255,.12);
 
-    backdrop-filter:
+    backdrop-filter:blur(20px);
 
-    blur(20px);
-
-    -webkit-backdrop-filter:
-
-    blur(20px);
+    -webkit-backdrop-filter:blur(20px);
 
     box-shadow:
 
