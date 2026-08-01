@@ -854,4 +854,29 @@ letter-spacing:10px;
 
 }
 
+/* your existing CSS */
+
+.hero{
+...
+}
+
+.project-card{
+...
+}
+
+/* KEEP EVERYTHING ABOVE */
+
+/* ---------- MOBILE FIX ---------- */
+
+@media (max-width:768px){
+
+.project-grid{
+    grid-template-columns:1fr;
+}
+
+.project-card{
+    width:100%;
+    box-sizing:border-box;
+}
+
 }
