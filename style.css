@@ -2124,3 +2124,15 @@ grid-template-columns:1fr;
 }
 
 }
+
+#skills .card{
+
+    min-height:auto;
+
+    padding:20px;
+
+    text-align:center;
+
+    justify-content:center;
+
+}
