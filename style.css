@@ -1994,3 +1994,133 @@ a{
     overflow:visible;
 
 }
+
+/* =====================================================
+   ABOUT SECTION v2
+===================================================== */
+
+.about-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:30px;
+
+    align-items:stretch;
+
+}
+
+
+
+.about-card{
+
+    padding:55px;
+
+    border-radius:30px;
+
+}
+
+
+
+.about-card h2{
+
+    font-size:2.8rem;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.about-card p{
+
+    font-size:1.08rem;
+
+    color:#dbe4f1;
+
+    margin-bottom:18px;
+
+    line-height:1.9;
+
+}
+
+
+
+.stats-card{
+
+    padding:35px;
+
+    border-radius:30px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    text-align:center;
+
+}
+
+
+
+.stat-item{
+
+    padding:30px 0;
+
+}
+
+
+
+.stat-item h2{
+
+    font-size:4rem;
+
+    font-weight:900;
+
+    color:#60a5fa;
+
+}
+
+
+
+.stat-item p{
+
+    font-size:1.2rem;
+
+    color:#dbe4f1;
+
+    letter-spacing:2px;
+
+}
+
+
+
+.stat-divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:rgba(255,255,255,.15);
+
+    margin:10px 0;
+
+}
+
+
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:900px){
+
+.about-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
