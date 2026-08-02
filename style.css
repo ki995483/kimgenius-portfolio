@@ -2239,3 +2239,131 @@ body.loaded{
     opacity:1;
 
 }
+
+/* ======================================================
+   ABOUT SECTION 2.0
+====================================================== */
+
+.about-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:35px;
+
+    align-items:stretch;
+
+}
+
+.about-card{
+
+    padding:60px;
+
+    border-radius:32px;
+
+}
+
+.about-card h2{
+
+    font-size:3rem;
+
+    margin-bottom:25px;
+
+}
+
+.about-card h3{
+
+    margin-top:35px;
+
+    margin-bottom:15px;
+
+    color:#60a5fa;
+
+    font-size:1.4rem;
+
+}
+
+.about-card p{
+
+    color:#dbe4f1;
+
+    line-height:1.9;
+
+    margin-bottom:18px;
+
+    font-size:1.05rem;
+
+}
+
+.stats-card{
+
+    padding:45px;
+
+    border-radius:32px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    text-align:center;
+
+}
+
+.stat-item{
+
+    padding:28px 0;
+
+}
+
+.stat-item h2{
+
+    font-size:3.5rem;
+
+    font-weight:900;
+
+    color:#60a5fa;
+
+}
+
+.stat-item p{
+
+    color:#dbe4f1;
+
+    letter-spacing:1px;
+
+}
+
+.stat-divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:rgba(255,255,255,.12);
+
+}
+
+@media(max-width:900px){
+
+.about-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.about-card{
+
+    padding:40px;
+
+}
+
+.stats-card{
+
+    padding:35px;
+
+}
+
+}
