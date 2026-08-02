@@ -2136,3 +2136,64 @@ grid-template-columns:1fr;
     justify-content:center;
 
 }
+/* ==========================================================
+   PREMIUM SECTION HEADERS
+========================================================== */
+
+.section-heading{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+}
+
+.section-heading span{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    background:rgba(37,99,235,.15);
+
+    border:1px solid rgba(96,165,250,.25);
+
+    color:#60a5fa;
+
+    font-size:.85rem;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:18px;
+
+}
+
+.section-heading h2{
+
+    font-size:3rem;
+
+    font-weight:900;
+
+    margin-bottom:18px;
+
+}
+
+.section-heading p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:#cbd5e1;
+
+    font-size:1.05rem;
+
+    line-height:1.8;
+
+}
