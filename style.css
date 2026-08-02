@@ -2367,3 +2367,65 @@ body.loaded{
 }
 
 }
+
+/* ======================================================
+   SKILLS 2.0
+====================================================== */
+
+.skills-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.skills-container .card{
+
+    min-height:260px;
+
+    text-align:center;
+
+    align-items:center;
+
+    transition:.4s ease;
+
+}
+
+.skills-container .icon-box{
+
+    width:70px;
+
+    height:70px;
+
+    font-size:2rem;
+
+    margin-bottom:20px;
+
+}
+
+.skills-container h3{
+
+    margin-bottom:15px;
+
+    font-size:1.5rem;
+
+}
+
+.skills-container p{
+
+    color:#dbe4f1;
+
+    line-height:1.8;
+
+}
+
+.skills-container .card:hover{
+
+    transform:
+    translateY(-12px)
+    scale(1.03);
+
+}
