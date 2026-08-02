@@ -1981,3 +1981,16 @@ a{
     0 18px 35px rgba(37,99,235,.55);
 
 }
+
+.card .stats{
+
+    margin-top:30px;
+
+}
+
+
+.card{
+
+    overflow:visible;
+
+}
