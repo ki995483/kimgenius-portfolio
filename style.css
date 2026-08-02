@@ -2429,3 +2429,109 @@ body.loaded{
     scale(1.03);
 
 }
+
+/* ======================================================
+   PROJECTS 2.0
+====================================================== */
+
+.portfolio-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:35px;
+
+}
+
+.project-card{
+
+    overflow:hidden;
+
+    border-radius:32px;
+
+}
+
+.project-image{
+
+    height:220px;
+
+    overflow:hidden;
+
+}
+
+.project-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+
+}
+
+.project-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.project-content{
+
+    padding:30px;
+
+}
+
+.project-content h3{
+
+    margin-bottom:15px;
+
+    font-size:1.6rem;
+
+}
+
+.project-content p{
+
+    margin-bottom:20px;
+
+    color:#dbe4f1;
+
+    line-height:1.8;
+
+}
+
+.project-links{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:25px;
+
+    flex-wrap:wrap;
+
+}
+
+.project-links .btn{
+
+    margin-top:0;
+
+}
+
+@media(max-width:768px){
+
+.project-links{
+
+    flex-direction:column;
+
+}
+
+.project-links .btn{
+
+    width:100%;
+
+}
+
+}
