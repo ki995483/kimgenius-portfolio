@@ -1,0 +1,439 @@
+/* =========================================================
+   XYZ MAJOR
+   KIMGENIUS PORTFOLIO SYSTEM
+   Layout / Alignment / Spacing Engine
+   ========================================================= */
+
+.page {
+  --page-width: 1180px;
+  --page-gutter: clamp(20px, 4vw, 64px);
+  --section-space: clamp(88px, 11vw, 150px);
+
+  min-height: 100vh;
+  background: #08090b;
+  color: #f4f8fb;
+}
+
+.shell {
+  width: min(
+    var(--page-width),
+    calc(100% - (var(--page-gutter) * 2))
+  );
+
+  margin-inline: auto;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(8, 9, 11, 0.82);
+  backdrop-filter: blur(18px);
+}
+
+.headerInner {
+  min-height: 74px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.brand {
+  color: #ffffff;
+  text-decoration: none;
+
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 3vw, 34px);
+}
+
+.nav a {
+  color: #aeb7bf;
+  text-decoration: none;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.nav a:hover {
+  color: #20a9ff;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  padding:
+    clamp(100px, 14vw, 180px)
+    0
+    clamp(90px, 12vw, 150px);
+}
+
+.kicker {
+  margin: 0 0 24px;
+
+  color: #20a9ff;
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  max-width: 1050px;
+
+  margin: 0;
+
+  font-size: clamp(3.2rem, 8vw, 7.8rem);
+  line-height: 0.9;
+  letter-spacing: -0.065em;
+}
+
+.heroTitle span {
+  display: block;
+  color: #9ea7af;
+}
+
+.heroText {
+  max-width: 760px;
+
+  margin: 36px 0 0;
+
+  color: #aeb7bf;
+
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  line-height: 1.8;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin-top: 38px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+  padding: 0 24px;
+
+  border-radius: 999px;
+
+  background: #20a9ff;
+  color: #050608;
+
+  text-decoration: none;
+
+  font-weight: 800;
+}
+
+.buttonSecondary {
+  background: transparent;
+  color: #f4f8fb;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* =========================================================
+   SECTION SYSTEM
+   ========================================================= */
+
+.section {
+  padding: var(--section-space) 0;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sectionLabel {
+  margin: 0 0 48px;
+
+  color: #20a9ff;
+
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   DOMAIN GRID
+   ========================================================= */
+
+.domainGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.domainCard {
+  min-height: 330px;
+
+  padding: clamp(24px, 3vw, 34px);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.11);
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.018)
+    );
+}
+
+.domainNumber {
+  color: #20a9ff;
+
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.domainCard h2 {
+  margin: 84px 0 18px;
+
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  line-height: 1.1;
+}
+
+.domainCard p {
+  margin: 0;
+
+  color: #aeb7bf;
+
+  line-height: 1.75;
+}
+
+/* =========================================================
+   PROJECT SYSTEM
+   ========================================================= */
+
+.project {
+  display: grid;
+
+  grid-template-columns:
+    minmax(240px, 0.75fr)
+    minmax(0, 1.25fr);
+
+  gap: clamp(40px, 7vw, 90px);
+
+  padding: 42px 0;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+}
+
+.projectNumber {
+  color: #20a9ff;
+
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.project h2 {
+  margin: 14px 0 0;
+
+  font-size: clamp(1.7rem, 3.2vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.project p {
+  margin: 0;
+
+  color: #aeb7bf;
+
+  line-height: 1.8;
+}
+
+/* =========================================================
+   EDUCATION
+   ========================================================= */
+
+.educationTitle {
+  margin: 0;
+
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.educationDegree {
+  margin: 18px 0 0;
+
+  font-size: 1.15rem;
+}
+
+.educationDetail {
+  margin-top: 10px;
+
+  color: #aeb7bf;
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contactTitle {
+  max-width: 900px;
+
+  margin: 0;
+
+  font-size: clamp(2.8rem, 7vw, 6.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.contactText {
+  max-width: 650px;
+
+  margin: 28px 0 0;
+
+  color: #aeb7bf;
+
+  line-height: 1.8;
+}
+
+.contactLinks {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 34px;
+}
+
+.contactLinks a {
+  padding: 12px 17px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.14);
+
+  border-radius: 999px;
+
+  color: #f4f8fb;
+  text-decoration: none;
+
+  font-size: 0.85rem;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+  padding: 28px 0;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+}
+
+.footerInner {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  color: #8e979f;
+
+  font-size: 0.76rem;
+}
+
+.footer a {
+  color: #f4f8fb;
+  text-decoration: none;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+  .nav {
+    display: none;
+  }
+
+  .domainGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .project {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+}
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+@media (max-width: 520px) {
+  .page {
+    --page-gutter: 14px;
+  }
+
+  .headerInner {
+    min-height: 66px;
+  }
+
+  .hero {
+    padding-top: 82px;
+  }
+
+  .heroTitle {
+    font-size: clamp(3rem, 15vw, 5.4rem);
+  }
+
+  .domainCard {
+    min-height: 280px;
+
+    padding: 24px;
+  }
+
+  .domainCard h2 {
+    margin-top: 68px;
+  }
+
+  .footerInner {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+}
