@@ -5,13 +5,6 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,8 +12,499 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   XYZ — HERO FOUNDATION
+   ========================================================= */
+
+.xyz-page {
+  min-height: 100vh;
+  width: 100%;
+  background:
+    radial-gradient(
+      circle at 72% 40%,
+      rgba(0, 119, 255, 0.18),
+      transparent 30%
+    ),
+    #02040d;
+  color: #ffffff;
+}
+
+.xyz-hero {
+  min-height: 100vh;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.xyz-hero-content {
+  max-width: 560px;
+}
+
+.xyz-eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  color: #32d7ff;
+}
+
+.xyz-hero h1 {
+  margin: 0;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+.xyz-description {
+  max-width: 420px;
+  margin: 2rem 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.xyz-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border: 1px solid rgba(50, 215, 255, 0.45);
+  border-radius: 999px;
+  padding: 0.9rem 1.4rem;
+  background: rgba(9, 22, 45, 0.75);
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.xyz-hero-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(420px, 100%);
+  max-width: 100%;
+  flex: 0 1 420px;
+}
+
+.xyz-core {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 420px;
+}
+
+.xyz-core-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* =========================================================
+   KIMGENIUS PORTFOLIO — XYZ INTERNAL SYSTEM
+   ========================================================= */
+
+.portfolio-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #090909;
+  color: #eaf7ff;
+  overflow-x: hidden;
+}
+
+.portfolio-shell {
+  width: min(1180px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.portfolio-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(9, 9, 9, 0.82);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(168, 173, 179, 0.12);
+}
+
+.portfolio-header .portfolio-shell {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.portfolio-brand {
+  color: #eaf7ff;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.portfolio-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.portfolio-nav a {
+  color: #a8adb3;
+  text-decoration: none;
+  font-size: 0.82rem;
+  transition: color 180ms ease;
+}
+
+.portfolio-nav a:hover {
+  color: #1ea7ff;
+}
+
+/* HERO */
+
+.portfolio-hero {
+  padding: clamp(100px, 15vw, 190px) 0 clamp(90px, 12vw, 150px);
+}
+
+.portfolio-kicker,
+.section-label,
+.project-number {
+  color: #1ea7ff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.portfolio-hero h1 {
+  max-width: 980px;
+  margin: 24px 0 30px;
+  font-size: clamp(3.2rem, 8vw, 7.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+}
+
+.portfolio-hero h1 span {
+  display: block;
+  color: #a8adb3;
+}
+
+.portfolio-intro {
+  max-width: 760px;
+  color: #a8adb3;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.8;
+}
+
+.portfolio-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.portfolio-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: #1ea7ff;
+  color: #090909;
+  text-decoration: none;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.portfolio-button.secondary {
+  background: transparent;
+  color: #eaf7ff;
+  border: 1px solid rgba(168, 173, 179, 0.28);
+}
+
+/* SECTIONS */
+
+.portfolio-section {
+  padding: clamp(90px, 11vw, 150px) 0;
+  border-top: 1px solid rgba(168, 173, 179, 0.1);
+}
+
+.section-label {
+  margin-bottom: 48px;
+}
+
+/* DOMAIN CARDS */
+
+.domain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.domain-card {
+  min-height: 330px;
+  padding: 30px;
+  border: 1px solid rgba(168, 173, 179, 0.15);
+  border-radius: 24px;
+  background: #1c1c1e;
+}
+
+.domain-card span {
+  color: #1ea7ff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.domain-card h2 {
+  margin: 90px 0 18px;
+  font-size: 1.55rem;
+}
+
+.domain-card p,
+.project-feature p,
+.education-note,
+.contact-section > p {
+  color: #a8adb3;
+  line-height: 1.75;
+}
+
+/* PROJECTS */
+
+.project-feature {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+  gap: 60px;
+  padding: 42px 0;
+  border-bottom: 1px solid rgba(168, 173, 179, 0.12);
+}
+
+.project-feature h2 {
+  margin-top: 14px;
+  font-size: clamp(1.7rem, 3vw, 3rem);
+  letter-spacing: -0.03em;
+}
+
+/* EDUCATION */
+
+.education-section h2 {
+  margin-bottom: 12px;
+  font-size: clamp(2rem, 4vw, 4rem);
+}
+
+.education-degree {
+  color: #eaf7ff;
+  font-size: 1.2rem;
+}
+
+.education-note {
+  margin-top: 12px;
+}
+
+/* CONTACT */
+
+.contact-section {
+  padding-bottom: 20px;
+}
+
+.contact-section h2 {
+  max-width: 800px;
+  margin-bottom: 24px;
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+.contact-links a {
+  color: #eaf7ff;
+  text-decoration: none;
+  padding: 13px 18px;
+  border: 1px solid rgba(168, 173, 179, 0.18);
+  border-radius: 999px;
+  overflow-wrap: anywhere;
+}
+
+/* FOOTER */
+
+.portfolio-footer {
+  padding: 28px 0;
+  border-top: 1px solid rgba(168, 173, 179, 0.1);
+}
+
+.portfolio-footer .portfolio-shell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  color: #a8adb3;
+  font-size: 0.78rem;
+}
+
+.portfolio-footer a {
+  color: #eaf7ff;
+  text-decoration: none;
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .xyz-hero {
+    gap: 2.5rem;
+  }
+
+  .portfolio-shell {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .domain-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-feature {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .xyz-hero {
+    min-height: auto;
+    padding: 4rem 1.5rem;
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .xyz-hero-mark {
+    width: min(420px, 100%);
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .xyz-core {
+    width: min(420px, 100%);
+    max-width: 100%;
+  }
+
+  .portfolio-nav {
+    display: none;
+  }
+
+  .portfolio-hero h1 {
+    font-size: clamp(3rem, 15vw, 5.5rem);
+  }
+
+  .portfolio-actions {
+    align-items: stretch;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 520px) {
+  .portfolio-shell {
+    width: calc(100% - 28px);
+  }
+
+  .portfolio-header .portfolio-shell {
+    min-height: 68px;
+  }
+
+  .portfolio-hero {
+    padding-top: 80px;
+  }
+
+  .portfolio-intro {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .domain-card {
+    min-height: 280px;
+    padding: 24px;
+  }
+
+  .domain-card h2 {
+    margin-top: 70px;
+  }
+
+  .portfolio-button {
+    width: 100%;
+  }
+
+  .contact-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-links a {
+    text-align: center;
+  }
+
+  .portfolio-footer .portfolio-shell {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+  .xyz-hero {
+    padding-inline: 1rem;
+  }
+
+  .portfolio-shell {
+    width: calc(100% - 24px);
+  }
+
+  .portfolio-hero h1 {
+    font-size: clamp(2.7rem, 15vw, 4.5rem);
+  }
+
+  .portfolio-button {
+    padding-inline: 18px;
+  }
 }
