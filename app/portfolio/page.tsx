@@ -6,7 +6,7 @@ export default function PortfolioPage() {
       <header className="portfolio-header">
         <div className="portfolio-shell">
           <Link href="/" className="portfolio-brand">
-            XYZ
+            KIMGENIUS
           </Link>
 
           <nav className="portfolio-nav" aria-label="Portfolio navigation">
@@ -97,14 +97,9 @@ export default function PortfolioPage() {
               <p className="project-number">PROJECT 01</p>
               <h2>XYZ TECH & KimGenius Digital Portfolio</h2>
 
-              <a
-                href="https://www.kimgenius.xyz"
-                target="_blank"
-                rel="noreferrer"
-                className="portfolio-button"
-              >
+              <Link href="/" className="portfolio-button">
                 LIVE DEMO
-              </a>
+              </Link>
             </div>
 
             <p>
@@ -205,9 +200,9 @@ export default function PortfolioPage() {
         <div className="portfolio-shell">
           <span>©️ 2026 KIMGENIUS • XYZ TECH</span>
 
-          <Link href="/">
-            Return to XYZ
-          </Link>
+          <a href="#about" className="back-to-top">
+            Back to the Top ↑
+          </a>
         </div>
       </footer>
     </main>

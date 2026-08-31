@@ -20,6 +20,7 @@ html {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -127,29 +128,43 @@ body {
 }
 
 /* =========================================================
-   KIMGENIUS PORTFOLIO — XYZ INTERNAL SYSTEM
+   KIMGENIUS PORTFOLIO — PREMIUM GLASS SYSTEM
    ========================================================= */
 
 .portfolio-page {
   min-height: 100vh;
   width: 100%;
-  background: #090909;
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(30, 167, 255, 0.10),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 35%,
+      rgba(0, 119, 255, 0.08),
+      transparent 30%
+    ),
+    linear-gradient(145deg, #050609 0%, #0a0b0f 52%, #050609 100%);
   color: #eaf7ff;
   overflow-x: hidden;
 }
 
-.portfolio-shell {
-  width: min(1180px, calc(100% - 40px));
-  margin-inline: auto;
-}
+/* =========================================================
+   GLASSMORPHIC HEADER
+   ========================================================= */
 
 .portfolio-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(9, 9, 9, 0.82);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(168, 173, 179, 0.12);
+  background: rgba(10, 12, 17, 0.58);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .portfolio-header .portfolio-shell {
@@ -160,32 +175,82 @@ body {
   gap: 30px;
 }
 
-.portfolio-brand {
-  color: #eaf7ff;
-  text-decoration: none;
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
+.portfolio-shell {
+  width: min(1180px, calc(100% - 40px));
+  margin-inline: auto;
 }
+
+/* =========================================================
+   KIMGENIUS BRAND
+   ========================================================= */
+
+.portfolio-brand {
+  position: relative;
+  color: #f4fbff;
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 850;
+  letter-spacing: 0.18em;
+  padding: 11px 17px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.035)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 8px 30px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.portfolio-brand:hover {
+  transform: translateY(-1px);
+  border-color: rgba(30, 167, 255, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 10px 34px rgba(30, 167, 255, 0.12);
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
 
 .portfolio-nav {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 10px;
 }
 
 .portfolio-nav a {
   color: #a8adb3;
   text-decoration: none;
   font-size: 0.82rem;
-  transition: color 180ms ease;
+  padding: 9px 13px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
 }
 
 .portfolio-nav a:hover {
-  color: #1ea7ff;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.10);
 }
 
-/* HERO */
+/* =========================================================
+   PORTFOLIO HERO
+   ========================================================= */
 
 .portfolio-hero {
   padding: clamp(100px, 15vw, 190px) 0 clamp(90px, 12vw, 150px);
@@ -221,6 +286,10 @@ body {
   line-height: 1.8;
 }
 
+/* =========================================================
+   BUTTON SYSTEM
+   ========================================================= */
+
 .portfolio-actions {
   display: flex;
   flex-wrap: wrap;
@@ -234,32 +303,59 @@ body {
   justify-content: center;
   min-height: 48px;
   padding: 0 24px;
+  border: 1px solid rgba(30, 167, 255, 0.55);
   border-radius: 999px;
-  background: #1ea7ff;
-  color: #090909;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(30, 167, 255, 0.96),
+      rgba(0, 119, 255, 0.82)
+    );
+  color: #02060b;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 750;
   white-space: nowrap;
+  box-shadow:
+    0 8px 28px rgba(30, 167, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.portfolio-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow:
+    0 12px 34px rgba(30, 167, 255, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .portfolio-button.secondary {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.035);
   color: #eaf7ff;
-  border: 1px solid rgba(168, 173, 179, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
-/* SECTIONS */
+/* =========================================================
+   SECTIONS
+   ========================================================= */
 
 .portfolio-section {
   padding: clamp(90px, 11vw, 150px) 0;
-  border-top: 1px solid rgba(168, 173, 179, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .section-label {
   margin-bottom: 48px;
 }
 
-/* DOMAIN CARDS */
+/* =========================================================
+   GLASS DOMAIN CARDS
+   ========================================================= */
 
 .domain-grid {
   display: grid;
@@ -270,9 +366,34 @@ body {
 .domain-card {
   min-height: 330px;
   padding: 30px;
-  border: 1px solid rgba(168, 173, 179, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 24px;
-  background: #1c1c1e;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.085),
+      rgba(255, 255, 255, 0.025)
+    );
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease,
+    background 200ms ease;
+}
+
+.domain-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(30, 167, 255, 0.28);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(30, 167, 255, 0.09),
+      rgba(255, 255, 255, 0.025)
+    );
 }
 
 .domain-card span {
@@ -294,14 +415,16 @@ body {
   line-height: 1.75;
 }
 
-/* PROJECTS */
+/* =========================================================
+   PROJECTS
+   ========================================================= */
 
 .project-feature {
   display: grid;
   grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
   gap: 60px;
   padding: 42px 0;
-  border-bottom: 1px solid rgba(168, 173, 179, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 }
 
 .project-feature h2 {
@@ -310,7 +433,13 @@ body {
   letter-spacing: -0.03em;
 }
 
-/* EDUCATION */
+.project-feature .portfolio-button {
+  margin-top: 24px;
+}
+
+/* =========================================================
+   EDUCATION
+   ========================================================= */
 
 .education-section h2 {
   margin-bottom: 12px;
@@ -326,7 +455,9 @@ body {
   margin-top: 12px;
 }
 
-/* CONTACT */
+/* =========================================================
+   CONTACT
+   ========================================================= */
 
 .contact-section {
   padding-bottom: 20px;
@@ -351,16 +482,32 @@ body {
   color: #eaf7ff;
   text-decoration: none;
   padding: 13px 18px;
-  border: 1px solid rgba(168, 173, 179, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   overflow-wrap: anywhere;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
 }
 
-/* FOOTER */
+.contact-links a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(30, 167, 255, 0.35);
+  background: rgba(30, 167, 255, 0.07);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 .portfolio-footer {
   padding: 28px 0;
-  border-top: 1px solid rgba(168, 173, 179, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.015);
 }
 
 .portfolio-footer .portfolio-shell {
@@ -375,6 +522,25 @@ body {
 .portfolio-footer a {
   color: #eaf7ff;
   text-decoration: none;
+}
+
+.back-to-top {
+  padding: 9px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.back-to-top:hover {
+  transform: translateY(-2px);
+  border-color: rgba(30, 167, 255, 0.35);
+  background: rgba(30, 167, 255, 0.07);
 }
 
 /* =========================================================
@@ -447,6 +613,11 @@ body {
 
   .portfolio-header .portfolio-shell {
     min-height: 68px;
+  }
+
+  .portfolio-brand {
+    font-size: 1rem;
+    padding: 9px 13px;
   }
 
   .portfolio-hero {
