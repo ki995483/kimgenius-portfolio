@@ -186,37 +186,115 @@ body {
 
 .portfolio-brand {
   position: relative;
+  display: inline-block;
+  overflow: hidden;
+
   color: #f4fbff;
   text-decoration: none;
   font-size: 1.15rem;
   font-weight: 850;
   letter-spacing: 0.18em;
+
   padding: 11px 17px;
   border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 16px;
+
   background:
     linear-gradient(
       145deg,
       rgba(255, 255, 255, 0.12),
       rgba(255, 255, 255, 0.035)
     );
+
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
     0 8px 30px rgba(0, 0, 0, 0.22);
+
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+
+  isolation: isolate;
+
   transition:
     transform 180ms ease,
     border-color 180ms ease,
     box-shadow 180ms ease;
 }
 
+/* BLUE BEAM — continuous left → right → left sweep */
+
+.portfolio-brand::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -45%;
+  width: 35%;
+  height: 140%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(50, 215, 255, 0.15),
+      rgba(50, 215, 255, 0.95),
+      rgba(255, 255, 255, 0.95),
+      rgba(50, 215, 255, 0.95),
+      rgba(50, 215, 255, 0.15),
+      transparent
+    );
+
+  filter: blur(3px);
+  transform: skewX(-18deg);
+  opacity: 0;
+
+  pointer-events: none;
+  z-index: 2;
+
+  animation: kimgenius-blue-beam 3.8s ease-in-out infinite;
+}
+
 .portfolio-brand:hover {
   transform: translateY(-1px);
   border-color: rgba(30, 167, 255, 0.45);
+
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.14),
     0 10px 34px rgba(30, 167, 255, 0.12);
+}
+
+/* =========================================================
+   KIMGENIUS BLUE BEAM ANIMATION
+   ========================================================= */
+
+@keyframes kimgenius-blue-beam {
+  0% {
+    left: -45%;
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  50% {
+    left: 110%;
+    opacity: 1;
+  }
+
+  62% {
+    left: 110%;
+    opacity: 0;
+  }
+
+  63% {
+    left: -45%;
+    opacity: 0;
+  }
+
+  100% {
+    left: -45%;
+    opacity: 0;
+  }
 }
 
 /* =========================================================
