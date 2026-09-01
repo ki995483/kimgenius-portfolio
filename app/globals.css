@@ -1152,3 +1152,63 @@ a {
     transition: none;
   }
 }
+
+/* =========================================================
+   MOBILE XYZ MARK — PRESERVE FUSED BRAND ICON
+   ========================================================= */
+
+.portfolio-brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  flex: 0 0 34px;
+}
+
+.portfolio-brand-mark .xyz-core {
+  width: 34px;
+  height: 34px;
+
+  flex: 0 0 34px;
+}
+
+@media (max-width: 800px) {
+
+  .portfolio-brand {
+    gap: 7px;
+  }
+
+  .portfolio-brand-mark {
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 32px;
+  }
+
+  .portfolio-brand-mark .xyz-core {
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 32px;
+  }
+}
+
+@media (max-width: 360px) {
+
+  .portfolio-brand-mark {
+    width: 29px;
+    height: 29px;
+
+    flex-basis: 29px;
+  }
+
+  .portfolio-brand-mark .xyz-core {
+    width: 29px;
+    height: 29px;
+
+    flex-basis: 29px;
+  }
+}
