@@ -7,7 +7,11 @@ export default function PortfolioPage() {
   const [darkMode, setDarkMode] = useState(true);
 
   return (
-    <main className={`portfolio-page ${darkMode ? "theme-dark" : "theme-light"}`}>
+    <main
+      className={`portfolio-page ${
+        darkMode ? "theme-dark" : "theme-light"
+      }`}
+    >
       {/* =====================================================
           HEADER
           ===================================================== */}
@@ -15,10 +19,19 @@ export default function PortfolioPage() {
       <header className="portfolio-header">
         <div className="portfolio-shell">
 
-          <Link href="/" className="portfolio-brand" aria-label="XYZ Tech home">
-            <span className="xyz-letter">X</span>
-            <span>Y</span>
-            <span className="xyz-letter">Z</span>
+          <Link
+            href="/"
+            className="portfolio-brand"
+            aria-label="XYZ Tech home"
+          >
+            <span className="portfolio-brand-mark">
+              <img
+                src="/icon.png"
+                alt="XYZ"
+                className="portfolio-brand-icon"
+              />
+            </span>
+
             <strong>Tech</strong>
           </Link>
 
@@ -35,7 +48,9 @@ export default function PortfolioPage() {
           <button
             type="button"
             className="theme-toggle"
-            onClick={() => setDarkMode((current) => !current)}
+            onClick={() =>
+              setDarkMode((current) => !current)
+            }
             aria-label={
               darkMode
                 ? "Switch to light mode"
@@ -55,29 +70,40 @@ export default function PortfolioPage() {
           HERO
           ===================================================== */}
 
-      <section className="portfolio-hero" id="about">
+      <section
+        className="portfolio-hero"
+        id="about"
+      >
         <div className="portfolio-shell portfolio-hero-shell">
 
-          <p className="portfolio-kicker">
-            XYZ TECH — KIMGENIUS
-          </p>
-
           <h1 className="portfolio-title">
+
+            <span className="portfolio-greeting">
+              Hi, I'm
+            </span>
+
             <span className="kimgenius-glow">
               KIMGENIUS
             </span>
 
             <span className="portfolio-word">
-              PORTFOLIO
+              I BUILD. I SOLVE. I INNOVATE.
             </span>
+
           </h1>
 
           <p className="portfolio-intro">
-            Forward-thinking Bachelor of Education (Arts) student
-            specialising in Geography and Kiswahili, with an
-            interdisciplinary focus on Artificial Intelligence,
-            Spatial Intelligence, geospatial technologies, web systems,
-            digital infrastructure and research.
+
+            <strong>
+              A forward-thinking Technologist:
+            </strong>{" "}
+
+            <em>
+              A Technologist polymath; a Spatial Intelligence
+              connoisseur; an AI Automation savant; and a Web
+              Systems pundit.
+            </em>
+
           </p>
 
           <div className="portfolio-actions">
@@ -250,7 +276,9 @@ export default function PortfolioPage() {
           EDUCATION
           ===================================================== */}
 
-      <section className="portfolio-section education-section">
+      <section
+        className="portfolio-section education-section"
+      >
         <div className="portfolio-shell">
 
           <p className="section-label">
@@ -338,7 +366,7 @@ export default function PortfolioPage() {
         <div className="portfolio-shell">
 
           <span>
-            © 2026 KIMGENIUS • XYZ TECH
+            ©️ 2026 KIMGENIUS • XYZ TECH
           </span>
 
           <a
