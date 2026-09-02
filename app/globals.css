@@ -76,6 +76,7 @@ a {
 
 .xyz-hero-content {
   max-width: 560px;
+  min-width: 0;
 }
 
 .xyz-eyebrow {
@@ -125,15 +126,26 @@ a {
   text-decoration: none;
 }
 
+/* =========================================================
+   HOMEPAGE — EXISTING FUSED XYZ ICON
+   RESPONSIVE VISIBILITY
+   ========================================================= */
+
 .xyz-hero-mark {
+  position: relative;
+
+  width: min(420px, 82vw);
+  height: min(420px, 82vw);
+
+  flex: 0 0 auto;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: min(420px, 100%);
-  max-width: 100%;
+  margin: 0 auto;
 
-  flex: 0 1 420px;
+  overflow: visible;
 }
 
 .xyz-core {
@@ -143,6 +155,8 @@ a {
 
   width: 100%;
   max-width: 420px;
+
+  flex: 0 0 auto;
 }
 
 .xyz-core-image {
@@ -153,6 +167,123 @@ a {
   height: auto;
 
   object-fit: contain;
+}
+
+/* =========================================================
+   HERO — TABLET / PORTRAIT
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .xyz-hero {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    gap: 2.5rem;
+  }
+
+  .xyz-hero-content {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .xyz-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .xyz-hero-mark {
+    width: min(360px, 78vw);
+    height: min(360px, 78vw);
+
+    margin: 0 auto;
+  }
+}
+
+/* =========================================================
+   HERO — MOBILE PORTRAIT
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .xyz-hero {
+    min-height: 100svh;
+
+    padding:
+      4rem
+      1.25rem;
+
+    gap: 1.75rem;
+  }
+
+  .xyz-hero h1 {
+    font-size:
+      clamp(3rem, 14vw, 5rem);
+  }
+
+  .xyz-description {
+    font-size: 1rem;
+  }
+
+  .xyz-hero-mark {
+    width: min(300px, 76vw);
+    height: min(300px, 76vw);
+
+    margin-top: 0.25rem;
+  }
+}
+
+/* =========================================================
+   HERO — SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .xyz-hero {
+    padding:
+      3rem
+      1rem;
+  }
+
+  .xyz-hero-mark {
+    width: 240px;
+    height: 240px;
+  }
+}
+
+/* =========================================================
+   HERO — LANDSCAPE PHONES
+   Keep the fused icon visible without cropping
+   ========================================================= */
+
+@media (max-height: 600px) and (orientation: landscape) {
+
+  .xyz-hero {
+    min-height: 100svh;
+
+    padding:
+      2.5rem
+      1.5rem;
+
+    gap: 2rem;
+  }
+
+  .xyz-hero-mark {
+    width: min(300px, 42vh);
+    height: min(300px, 42vh);
+  }
+
+  .xyz-hero h1 {
+    font-size:
+      clamp(2.5rem, 8vw, 5rem);
+  }
+
+  .xyz-description {
+    margin: 1rem 0;
+  }
 }
 
 /* =========================================================
@@ -1159,66 +1290,8 @@ a {
 }
 
 /* =========================================================
-   MOBILE XYZ MARK — PRESERVE FUSED BRAND ICON
-   ========================================================= */
-
-.portfolio-brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 34px;
-  height: 34px;
-
-  flex: 0 0 34px;
-}
-
-.portfolio-brand-mark .xyz-core {
-  width: 34px;
-  height: 34px;
-
-  flex: 0 0 34px;
-}
-
-@media (max-width: 800px) {
-
-  .portfolio-brand {
-    gap: 7px;
-  }
-
-  .portfolio-brand-mark {
-    width: 32px;
-    height: 32px;
-
-    flex: 0 0 32px;
-  }
-
-  .portfolio-brand-mark .xyz-core {
-    width: 32px;
-    height: 32px;
-
-    flex: 0 0 32px;
-  }
-}
-
-@media (max-width: 360px) {
-
-  .portfolio-brand-mark {
-    width: 29px;
-    height: 29px;
-
-    flex-basis: 29px;
-  }
-
-  .portfolio-brand-mark .xyz-core {
-    width: 29px;
-    height: 29px;
-
-    flex-basis: 29px;
-  }
-}
-/* =========================================================
    PORTFOLIO — FUSED XYZ BRAND MARK
+   Existing icon retained
    ========================================================= */
 
 .portfolio-brand-mark {
@@ -1246,8 +1319,16 @@ a {
   object-fit: contain;
 }
 
-/* MOBILE */
+/* =========================================================
+   PORTFOLIO BRAND MARK — MOBILE
+   ========================================================= */
+
 @media (max-width: 800px) {
+
+  .portfolio-brand {
+    gap: 7px;
+  }
+
   .portfolio-brand-mark {
     width: 32px;
     height: 32px;
@@ -1258,5 +1339,20 @@ a {
   .portfolio-brand-icon {
     width: 32px;
     height: 32px;
+  }
+}
+
+@media (max-width: 360px) {
+
+  .portfolio-brand-mark {
+    width: 29px;
+    height: 29px;
+
+    flex-basis: 29px;
+  }
+
+  .portfolio-brand-icon {
+    width: 29px;
+    height: 29px;
   }
 }
