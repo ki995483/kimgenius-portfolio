@@ -1278,7 +1278,7 @@ a {
 
   .kimgenius-glow,
   .kimgenius-glow::after {
-    animation: none;
+    animation-direction: reverse;
   }
 
   .portfolio-button,
