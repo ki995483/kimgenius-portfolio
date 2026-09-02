@@ -677,6 +677,8 @@ a {
 
 /* =========================================================
    THE BLUE BEAM
+   EAST → WEST
+   RIGHT → LEFT
    ========================================================= */
 
 .kimgenius-glow::after {
@@ -685,7 +687,7 @@ a {
   position: absolute;
 
   top: -18%;
-  left: -30%;
+  left: 112%;
 
   width: 15%;
   height: 136%;
@@ -715,36 +717,52 @@ a {
     infinite;
 }
 
+/* =========================================================
+   FLASH MOVEMENT
+   EAST → WEST / RIGHT → LEFT
+   ========================================================= */
+
 @keyframes kimgenius-beam-sweep {
 
+  /* START — EAST / RIGHT */
   0% {
-    left: -30%;
+    left: 112%;
     opacity: 0;
   }
 
+  /* ENTER FROM RIGHT */
   10% {
+    left: 112%;
     opacity: 1;
   }
 
+  /* TRAVEL ACROSS THE WORD TO THE LEFT */
   48% {
-    left: 112%;
+    left: -30%;
     opacity: 1;
   }
 
+  /* EXIT — WEST / LEFT */
   58% {
-    left: 112%;
+    left: -30%;
     opacity: 0;
   }
 
+  /* RESET — INVISIBLE ON RIGHT */
   59% {
-    left: -30%;
+    left: 112%;
+    opacity: 0;
   }
 
   100% {
-    left: -30%;
+    left: 112%;
     opacity: 0;
   }
 }
+
+/* =========================================================
+   KIMGENIUS TITLE GLOW
+   ========================================================= */
 
 @keyframes kimgenius-title-glow {
 
@@ -1278,7 +1296,7 @@ a {
 
   .kimgenius-glow,
   .kimgenius-glow::after {
-    animation-direction: reverse;
+    animation: none;
   }
 
   .portfolio-button,
