@@ -506,7 +506,12 @@ a {
 .kimgenius-glow {
   position: relative;
 
-  display: inline-block;
+  display: block;
+
+  width: fit-content;
+
+  margin-left: calc(50% - 2.2em);
+  margin-right: auto;
 
   color: #ffffff;
 
