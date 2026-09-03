@@ -127,8 +127,8 @@ a {
 }
 
 /* =========================================================
-   HOMEPAGE — EXISTING FUSED XYZ ICON
-   RESPONSIVE VISIBILITY
+   EXISTING FUSED XYZ ICON
+   Desktop / Default
    ========================================================= */
 
 .xyz-hero-mark {
@@ -170,7 +170,7 @@ a {
 }
 
 /* =========================================================
-   HERO — TABLET / PORTRAIT
+   TABLET
    ========================================================= */
 
 @media (max-width: 900px) {
@@ -204,7 +204,7 @@ a {
 }
 
 /* =========================================================
-   HERO — MOBILE PORTRAIT
+   MOBILE — FUSED XYZ ICON BECOMES HEADER MARK
    ========================================================= */
 
 @media (max-width: 600px) {
@@ -212,51 +212,245 @@ a {
   .xyz-hero {
     min-height: 100svh;
 
-    padding:
-      4rem
-      1.25rem;
+    width: 100%;
 
-    gap: 1.75rem;
+    padding:
+      1.5rem
+      1.25rem
+      2rem;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 0;
+  }
+
+  /*
+   * IMPORTANT:
+   * The existing fused XYZ icon remains untouched.
+   * We simply move it visually ABOVE the hero content.
+   */
+
+  .xyz-hero-mark {
+    order: 1;
+
+    width: 78px;
+    height: 78px;
+
+    flex: 0 0 78px;
+
+    margin:
+      0 auto
+      1.4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: visible;
+  }
+
+  .xyz-core {
+    width: 78px;
+    height: 78px;
+
+    max-width: 78px;
+
+    flex: 0 0 78px;
+  }
+
+  .xyz-core-image {
+    width: 78px;
+    height: 78px;
+
+    max-width: 78px;
+    max-height: 78px;
+
+    object-fit: contain;
+  }
+
+  /*
+   * Text comes AFTER the small fused header icon.
+   */
+
+  .xyz-hero-content {
+    order: 2;
+
+    width: 100%;
+    max-width: 600px;
+
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .xyz-eyebrow {
+    margin:
+      0 0 1rem;
+
+    font-size: 0.8rem;
+    letter-spacing: 0.34em;
   }
 
   .xyz-hero h1 {
+    width: 100%;
+
+    margin: 0;
+
     font-size:
-      clamp(3rem, 14vw, 5rem);
+      clamp(2.8rem, 13vw, 4.8rem);
+
+    line-height: 0.92;
+
+    letter-spacing: -0.055em;
   }
 
   .xyz-description {
+    width: 100%;
+    max-width: 420px;
+
+    margin:
+      1.6rem auto
+      1.8rem;
+
     font-size: 1rem;
+    line-height: 1.6;
   }
 
-  .xyz-hero-mark {
-    width: min(300px, 76vw);
-    height: min(300px, 76vw);
+  .xyz-button {
+    min-height: 50px;
 
-    margin-top: 0.25rem;
+    padding:
+      0.9rem
+      1.5rem;
+
+    font-size: 0.95rem;
+
+    position: relative;
+    z-index: 5;
   }
 }
 
 /* =========================================================
-   HERO — SMALL PHONES
+   SMALL PHONES
    ========================================================= */
 
 @media (max-width: 400px) {
 
   .xyz-hero {
     padding:
-      3rem
-      1rem;
+      1.25rem
+      1rem
+      1.75rem;
   }
 
   .xyz-hero-mark {
-    width: 240px;
-    height: 240px;
+    width: 68px;
+    height: 68px;
+
+    flex-basis: 68px;
+
+    margin-bottom: 1.2rem;
+  }
+
+  .xyz-core {
+    width: 68px;
+    height: 68px;
+
+    max-width: 68px;
+
+    flex-basis: 68px;
+  }
+
+  .xyz-core-image {
+    width: 68px;
+    height: 68px;
+
+    max-width: 68px;
+    max-height: 68px;
+  }
+
+  .xyz-eyebrow {
+    font-size: 0.76rem;
+  }
+
+  .xyz-hero h1 {
+    font-size:
+      clamp(2.55rem, 14vw, 4.3rem);
+  }
+
+  .xyz-description {
+    margin:
+      1.4rem auto
+      1.6rem;
+
+    font-size: 0.95rem;
+  }
+
+  .xyz-button {
+    width: auto;
+
+    min-height: 48px;
   }
 }
 
 /* =========================================================
-   HERO — LANDSCAPE PHONES
-   Keep the fused icon visible without cropping
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .xyz-hero {
+    padding:
+      1rem
+      0.9rem
+      1.5rem;
+  }
+
+  .xyz-hero-mark {
+    width: 60px;
+    height: 60px;
+
+    flex-basis: 60px;
+
+    margin-bottom: 1rem;
+  }
+
+  .xyz-core {
+    width: 60px;
+    height: 60px;
+
+    max-width: 60px;
+
+    flex-basis: 60px;
+  }
+
+  .xyz-core-image {
+    width: 60px;
+    height: 60px;
+
+    max-width: 60px;
+    max-height: 60px;
+  }
+
+  .xyz-hero h1 {
+    font-size:
+      clamp(2.4rem, 14.5vw, 4rem);
+  }
+
+  .xyz-description {
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================================================
+   LANDSCAPE PHONES
+   FUSED ICON REMAINS SMALL + TOP
    ========================================================= */
 
 @media (max-height: 600px) and (orientation: landscape) {
@@ -265,24 +459,64 @@ a {
     min-height: 100svh;
 
     padding:
-      2.5rem
+      1rem
+      1.5rem
       1.5rem;
 
-    gap: 2rem;
+    gap: 0;
   }
 
   .xyz-hero-mark {
-    width: min(300px, 42vh);
-    height: min(300px, 42vh);
+    order: 1;
+
+    width: 54px;
+    height: 54px;
+
+    flex-basis: 54px;
+
+    margin:
+      0 auto
+      0.7rem;
+  }
+
+  .xyz-core {
+    width: 54px;
+    height: 54px;
+
+    max-width: 54px;
+
+    flex-basis: 54px;
+  }
+
+  .xyz-core-image {
+    width: 54px;
+    height: 54px;
+
+    max-width: 54px;
+    max-height: 54px;
+  }
+
+  .xyz-hero-content {
+    order: 2;
   }
 
   .xyz-hero h1 {
     font-size:
-      clamp(2.5rem, 8vw, 5rem);
+      clamp(2.3rem, 8vw, 4.5rem);
   }
 
   .xyz-description {
-    margin: 1rem 0;
+    margin:
+      0.8rem auto
+      1rem;
+  }
+
+  .xyz-button {
+    min-height: 44px;
+
+    padding:
+      0.7rem
+      1.3rem;
   }
 }
 
@@ -550,7 +784,7 @@ a {
 }
 
 /* =========================================================
-   HERO
+   PORTFOLIO HERO
    ========================================================= */
 
 .portfolio-hero {
@@ -676,9 +910,7 @@ a {
 }
 
 /* =========================================================
-   THE BLUE BEAM
-   EAST → WEST
-   RIGHT → LEFT
+   BLUE BEAM — EAST → WEST / RIGHT → LEFT
    ========================================================= */
 
 .kimgenius-glow::after {
@@ -717,41 +949,29 @@ a {
     infinite;
 }
 
-/* =========================================================
-   FLASH MOVEMENT
-   EAST → WEST / RIGHT → LEFT
-   ========================================================= */
-
 @keyframes kimgenius-beam-sweep {
 
-  /* START — EAST / RIGHT */
   0% {
     left: 112%;
     opacity: 0;
   }
 
-  /* ENTER FROM RIGHT */
   10% {
-    left: 112%;
     opacity: 1;
   }
 
-  /* TRAVEL ACROSS THE WORD TO THE LEFT */
   48% {
     left: -30%;
     opacity: 1;
   }
 
-  /* EXIT — WEST / LEFT */
   58% {
     left: -30%;
     opacity: 0;
   }
 
-  /* RESET — INVISIBLE ON RIGHT */
   59% {
     left: 112%;
-    opacity: 0;
   }
 
   100% {
@@ -759,10 +979,6 @@ a {
     opacity: 0;
   }
 }
-
-/* =========================================================
-   KIMGENIUS TITLE GLOW
-   ========================================================= */
 
 @keyframes kimgenius-title-glow {
 
@@ -1133,7 +1349,7 @@ a {
 }
 
 /* =========================================================
-   TABLET
+   TABLET — PORTFOLIO
    ========================================================= */
 
 @media (max-width: 900px) {
@@ -1159,7 +1375,7 @@ a {
 }
 
 /* =========================================================
-   MOBILE
+   MOBILE — PORTFOLIO
    ========================================================= */
 
 @media (max-width: 800px) {
@@ -1206,7 +1422,7 @@ a {
 }
 
 /* =========================================================
-   SMALL PHONES
+   SMALL PHONES — PORTFOLIO
    ========================================================= */
 
 @media (max-width: 520px) {
@@ -1260,7 +1476,7 @@ a {
 }
 
 /* =========================================================
-   VERY SMALL PHONES
+   VERY SMALL PHONES — PORTFOLIO
    ========================================================= */
 
 @media (max-width: 360px) {
