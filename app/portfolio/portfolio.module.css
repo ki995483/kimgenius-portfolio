@@ -437,3 +437,457 @@
     flex-direction: column;
   }
 }
+/* =========================================================
+   KIMGENIUS PROJECT ENGINE
+   01 / 08 — WEATHER DASHBOARD
+   ========================================================= */
+
+.projectsSection {
+  position: relative;
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 110px 0 140px;
+}
+
+.sectionHeader {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 32px;
+  margin-bottom: 70px;
+}
+
+.sectionIndex {
+  padding-top: 8px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  opacity: 0.5;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  font-family: monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  opacity: 0.5;
+}
+
+.sectionHeader h1 {
+  margin: 0;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.sectionIntro {
+  max-width: 680px;
+  margin: 26px 0 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  opacity: 0.62;
+}
+
+/* =========================================================
+   PROJECT GRID
+   ========================================================= */
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.projectCard {
+  position: relative;
+  overflow: hidden;
+
+  padding: clamp(24px, 4vw, 46px);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 30px 80px rgba(0, 0, 0, 0.22);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  transition:
+    transform 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.projectCard::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(30, 167, 255, 0.12),
+      transparent 30%
+    );
+
+  pointer-events: none;
+}
+
+.projectCard:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(100, 210, 255, 0.35);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 40px 100px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.projectTop {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 65px;
+
+  font-family: monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+}
+
+.projectNumber {
+  opacity: 0.5;
+}
+
+.projectSignal {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  opacity: 0.75;
+}
+
+.signalDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+
+  background: currentColor;
+
+  box-shadow:
+    0 0 0 5px rgba(255, 255, 255, 0.04),
+    0 0 18px currentColor;
+
+  animation: signalPulse 2s ease-in-out infinite;
+}
+
+@keyframes signalPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================================================
+   PROJECT IDENTITY
+   ========================================================= */
+
+.projectIdentity {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 40px;
+}
+
+.projectIdentity h2 {
+  margin: 0;
+
+  font-size: clamp(2.4rem, 6vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+.projectDescription {
+  max-width: 610px;
+
+  margin: 26px 0 0;
+
+  font-size: 1rem;
+  line-height: 1.8;
+
+  opacity: 0.62;
+}
+
+.projectMark {
+  flex-shrink: 0;
+
+  font-family: serif;
+  font-size: clamp(5rem, 10vw, 9rem);
+  line-height: 0.7;
+
+  opacity: 0.08;
+
+  transform: rotate(90deg);
+
+  animation: infinityFloat 5s ease-in-out infinite;
+}
+
+@keyframes infinityFloat {
+  0%,
+  100% {
+    transform: rotate(90deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(90deg) translateY(-10px);
+  }
+}
+
+/* =========================================================
+   PROGRESS ENGINE
+   ========================================================= */
+
+.progressBlock {
+  position: relative;
+  z-index: 1;
+
+  margin-top: 70px;
+}
+
+.progressMeta,
+.progressStatus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  font-family: monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+}
+
+.progressMeta {
+  margin-bottom: 12px;
+  opacity: 0.48;
+}
+
+.progressTrack {
+  position: relative;
+
+  width: 100%;
+  height: 25px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px,
+      transparent 42px
+    );
+}
+
+.progressFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+
+  width: 0%;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 255, 255, 0.5)
+    );
+
+  animation: buildProgress 3s cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+@keyframes buildProgress {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 72%;
+  }
+}
+
+.progressGrid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    radial-gradient(
+      rgba(255, 255, 255, 0.7) 0.7px,
+      transparent 0.7px
+    );
+
+  background-size: 4px 4px;
+
+  opacity: 0.35;
+
+  pointer-events: none;
+}
+
+.progressStatus {
+  margin-top: 13px;
+
+  opacity: 0.55;
+}
+
+/* =========================================================
+   TECHNOLOGY CORE
+   ========================================================= */
+
+.techCore {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 38px;
+}
+
+.techCore span {
+  padding: 8px 11px;
+
+  border: 1px solid rgba(255, 255, 255, 0.11);
+
+  font-family: monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+
+  opacity: 0.55;
+}
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.projectActions {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 28px;
+
+  margin-top: 45px;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 5px 0;
+
+  font-family: monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+
+  text-decoration: none;
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.primaryAction {
+  opacity: 0.95;
+}
+
+.secondaryAction {
+  opacity: 0.45;
+}
+
+.primaryAction:hover,
+.secondaryAction:hover {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .projectsSection {
+    width: min(100% - 28px, 1180px);
+    padding: 80px 0 100px;
+  }
+
+  .sectionHeader {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 45px;
+  }
+
+  .sectionIndex {
+    padding-top: 0;
+  }
+
+  .projectTop {
+    margin-bottom: 45px;
+  }
+
+  .projectIdentity {
+    align-items: flex-start;
+  }
+
+  .projectIdentity h2 {
+    font-size: clamp(2.3rem, 12vw, 4rem);
+  }
+
+  .projectMark {
+    display: none;
+  }
+
+  .progressStatus {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .projectActions {
+    gap: 22px;
+  }
+}
