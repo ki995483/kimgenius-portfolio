@@ -1,159 +1,444 @@
-{/* =====================================================
-    PROJECTS — KIMGENIUS PROJECT ENGINE
-    ===================================================== */}
+"use client";
 
-<section
-  className="portfolio-section"
-  id="projects"
->
-  <div className="portfolio-shell">
+import { useState } from "react";
+import Link from "next/link";
 
-    <div className="project-engine-header">
+export default function PortfolioPage() {
+  const [darkMode, setDarkMode] = useState(true);
 
-      <div className="project-engine-index">
-        01 / 08
-      </div>
+  return (
+    <main
+      className={`portfolio-page ${
+        darkMode ? "theme-dark" : "theme-light"
+      }`}
+    >
+      {/* =====================================================
+          HEADER
+          ===================================================== */}
 
-      <div>
-        <p className="section-label">
-          KIMGENIUS PROJECT SYSTEM
-        </p>
+      <header className="portfolio-header">
+        <div className="portfolio-shell">
+          <Link
+            href="/"
+            className="portfolio-brand"
+            aria-label="XYZ Tech home"
+          >
+            <span className="portfolio-brand-mark">
+              <img
+                src="/icon.png"
+                alt="XYZ"
+                className="portfolio-brand-icon"
+              />
+            </span>
 
-        <h2>
-          Projects
-        </h2>
+            <strong>Tech</strong>
+          </Link>
 
-        <p className="project-engine-intro">
-          Intelligent digital systems built through progressive
-          experimentation, engineering and continuous refinement.
-        </p>
-      </div>
+          <nav
+            className="portfolio-nav"
+            aria-label="Portfolio navigation"
+          >
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </nav>
 
-    </div>
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={() =>
+              setDarkMode((current) => !current)
+            }
+            aria-label={
+              darkMode
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+            }
+            aria-pressed={darkMode}
+          >
+            <span className="theme-icon">
+              {darkMode ? "☾" : "☀"}
+            </span>
+          </button>
+        </div>
+      </header>
 
-    {/* =====================================================
-        PROJECT 01 — WEATHER DASHBOARD
-        ===================================================== */}
+      {/* =====================================================
+          HERO
+          ===================================================== */}
 
-    <article className="project-engine-card">
+      <section
+        className="portfolio-hero"
+        id="about"
+      >
+        <div className="portfolio-shell portfolio-hero-shell">
+          <h1 className="portfolio-title">
+            <span className="portfolio-greeting">
+              Hi, I'm
+            </span>
 
-      <div className="project-engine-top">
+            <span className="kimgenius-glow">
+              KIMGENIUS
+            </span>
 
-        <span className="project-number">
-          PROJECT 01
-        </span>
+            <span className="portfolio-word">
+              I BUILD. I SOLVE. I INNOVATE.
+            </span>
+          </h1>
 
-        <span className="project-live-status">
-          <span className="project-status-dot" />
-          LIVE SYSTEM
-        </span>
-
-      </div>
-
-      <div className="project-engine-identity">
-
-        <div>
-
-          <h3>
-            Weather Dashboard
-          </h3>
-
-          <p className="project-engine-description">
-            Real-time weather intelligence interface connecting
-            weather data, API systems and responsive user experience.
+          <p className="portfolio-intro">
+            <strong>
+              A forward-thinking Technologist:
+            </strong>{" "}
+            <em>
+              A Technologist polymath; a Spatial Intelligence
+              connoisseur; an AI Automation savant; and a Web
+              Systems pundit.
+            </em>
           </p>
 
-        </div>
+          <div className="portfolio-actions">
+            <a
+              href="#projects"
+              className="portfolio-button"
+            >
+              Explore Work
+            </a>
 
-        <div
-          className="project-infinity-mark"
-          aria-hidden="true"
-        >
-          ∞
+            <a
+              href="#contact"
+              className="portfolio-button secondary"
+            >
+              Contact
+            </a>
+          </div>
         </div>
-
-      </div>
+      </section>
 
       {/* =====================================================
-          BUILD PROGRESS
+          TECHNOLOGY DOMAINS
           ===================================================== */}
 
-      <div className="project-progress">
+      <section
+        className="portfolio-section"
+        id="skills"
+      >
+        <div className="portfolio-shell">
+          <p className="section-label">
+            01 — TECHNOLOGY DOMAINS
+          </p>
 
-        <div className="project-progress-meta">
-          <span>
-            BUILD PROGRESS
-          </span>
+          <div className="domain-grid">
+            <article className="domain-card">
+              <span>01</span>
 
-          <span>
-            01 / 08
-          </span>
+              <h2>
+                Artificial Intelligence
+              </h2>
+
+              <p>
+                AI-assisted workflows, Prompt Engineering,
+                AI research, automation concepts and
+                intelligent digital systems.
+              </p>
+            </article>
+
+            <article className="domain-card">
+              <span>02</span>
+
+              <h2>
+                Spatial Intelligence
+              </h2>
+
+              <p>
+                GIS, ArcGIS, QGIS, digital mapping,
+                spatial analysis, cartography, environmental
+                research and remote sensing fundamentals.
+              </p>
+            </article>
+
+            <article className="domain-card">
+              <span>03</span>
+
+              <h2>
+                Web Systems
+              </h2>
+
+              <p>
+                HTML, CSS, JavaScript, Git, GitHub,
+                responsive web development, Vercel deployment
+                and Cloudflare DNS.
+              </p>
+            </article>
+          </div>
         </div>
-
-        <div
-          className="project-progress-track"
-          aria-label="Project build progress"
-        >
-          <span className="project-progress-fill" />
-          <span className="project-progress-grid" />
-        </div>
-
-        <div className="project-progress-status">
-
-          <span>
-            BUILDING
-          </span>
-
-          <span>
-            WEATHER API • JAVASCRIPT • UI
-          </span>
-
-        </div>
-
-      </div>
+      </section>
 
       {/* =====================================================
-          TECHNOLOGY CORE
+          PROJECTS — KIMGENIUS PROJECT ENGINE
           ===================================================== */}
 
-      <div className="project-tech-core">
+      <section
+        className="portfolio-section"
+        id="projects"
+      >
+        <div className="portfolio-shell">
 
-        <span>WEATHER API</span>
-        <span>JAVASCRIPT</span>
-        <span>RESPONSIVE UI</span>
-        <span>REAL-TIME DATA</span>
+          <div className="project-engine-header">
 
-      </div>
+            <div className="project-engine-index">
+              01 / 08
+            </div>
+
+            <div>
+              <p className="section-label">
+                KIMGENIUS PROJECT SYSTEM
+              </p>
+
+              <h2>
+                Projects
+              </h2>
+
+              <p className="project-engine-intro">
+                Intelligent digital systems built through progressive
+                experimentation, engineering and continuous refinement.
+              </p>
+            </div>
+
+          </div>
+
+          {/* =====================================================
+              PROJECT 01 — WEATHER DASHBOARD
+              ===================================================== */}
+
+          <article className="project-engine-card">
+
+            <div className="project-engine-top">
+
+              <span className="project-number">
+                PROJECT 01
+              </span>
+
+              <span className="project-live-status">
+                <span className="project-status-dot" />
+                LIVE SYSTEM
+              </span>
+
+            </div>
+
+            <div className="project-engine-identity">
+
+              <div>
+
+                <h3>
+                  Weather Dashboard
+                </h3>
+
+                <p className="project-engine-description">
+                  Real-time weather intelligence interface connecting
+                  weather data, API systems and responsive user experience.
+                </p>
+
+              </div>
+
+              <div
+                className="project-infinity-mark"
+                aria-hidden="true"
+              >
+                ∞
+              </div>
+
+            </div>
+
+            {/* =====================================================
+                BUILD PROGRESS
+                ===================================================== */}
+
+            <div className="project-progress">
+
+              <div className="project-progress-meta">
+                <span>
+                  BUILD PROGRESS
+                </span>
+
+                <span>
+                  01 / 08
+                </span>
+              </div>
+
+              <div
+                className="project-progress-track"
+                aria-label="Project build progress"
+              >
+                <span className="project-progress-fill" />
+                <span className="project-progress-grid" />
+              </div>
+
+              <div className="project-progress-status">
+
+                <span>
+                  BUILDING
+                </span>
+
+                <span>
+                  WEATHER API • JAVASCRIPT • UI
+                </span>
+
+              </div>
+
+            </div>
+
+            {/* =====================================================
+                TECHNOLOGY CORE
+                ===================================================== */}
+
+            <div className="project-tech-core">
+
+              <span>WEATHER API</span>
+              <span>JAVASCRIPT</span>
+              <span>RESPONSIVE UI</span>
+              <span>REAL-TIME DATA</span>
+
+            </div>
+
+            {/* =====================================================
+                PROJECT ACTIONS
+                ===================================================== */}
+
+            <div className="project-engine-actions">
+
+              <a
+                href="#"
+                className="project-primary-action"
+                aria-label="Open Weather Dashboard live demo"
+              >
+                <span>[</span>
+                LIVE DEMO
+                <span>]</span>
+              </a>
+
+              <a
+                href="#"
+                className="project-secondary-action"
+                aria-label="Open Weather Dashboard source code"
+              >
+                <span>[</span>
+                SOURCE
+                <span>]</span>
+              </a>
+
+            </div>
+
+          </article>
+
+        </div>
+      </section>
 
       {/* =====================================================
-          PROJECT ACTIONS
+          EDUCATION
           ===================================================== */}
 
-      <div className="project-engine-actions">
+      <section
+        className="portfolio-section education-section"
+      >
+        <div className="portfolio-shell">
+          <p className="section-label">
+            03 — EDUCATION
+          </p>
 
-        <a
-          href="#"
-          className="project-primary-action"
-          aria-label="Open Weather Dashboard live demo"
-        >
-          <span>[</span>
-          LIVE DEMO
-          <span>]</span>
-        </a>
+          <h2>
+            Kibabii University
+          </h2>
 
-        <a
-          href="#"
-          className="project-secondary-action"
-          aria-label="Open Weather Dashboard source code"
-        >
-          <span>[</span>
-          SOURCE
-          <span>]</span>
-        </a>
+          <p className="education-degree">
+            Bachelor of Education (Arts)
+          </p>
 
-      </div>
+          <p>
+            Geography &amp; Kiswahili
+          </p>
 
-    </article>
+          <p className="education-note">
+            Graduation: 2027
+          </p>
+        </div>
+      </section>
 
-  </div>
-</section>
+      {/* =====================================================
+          CONTACT
+          ===================================================== */}
+
+      <section
+        className="portfolio-section"
+        id="contact"
+      >
+        <div className="portfolio-shell contact-section">
+
+          <p className="section-label">
+            04 — CONNECT
+          </p>
+
+          <h2>
+            Build something intelligent.
+          </h2>
+
+          <p>
+            For professional, research, technology and
+            collaboration enquiries.
+          </p>
+
+          <div className="contact-links">
+
+            <a href="mailto:hello@kimgenius.xyz">
+              hello@kimgenius.xyz
+            </a>
+
+            <a href="tel:+254791896869">
+              +254 791 896869
+            </a>
+
+            <a
+              href="https://github.com/ki995483"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://www.kimgenius.xyz"
+              target="_blank"
+              rel="noreferrer"
+            >
+              kimgenius.xyz
+            </a>
+
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
+          FOOTER
+          ===================================================== */}
+
+      <footer className="portfolio-footer">
+        <div className="portfolio-shell">
+
+          <span>
+            ©️ 2026 KIMGENIUS • XYZ TECH
+          </span>
+
+          <a
+            href="#about"
+            className="back-to-top"
+          >
+            Back to the Top 🔝
+          </a>
+
+        </div>
+      </footer>
+
+    </main>
+  );
+}
