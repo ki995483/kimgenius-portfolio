@@ -63,13 +63,13 @@ img {
 
 /* =========================================================
    XYZ HERO PAGE
-   GLOBAL FOUNDATION
    ========================================================= */
 
 .xyz-page {
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
+
   background:
     radial-gradient(
       circle at 50% 10%,
@@ -77,31 +77,42 @@ img {
       transparent 32%
     ),
     #08090b;
+
   color: #f5f7fb;
 }
 
 
 /* =========================================================
    XYZ HERO
+   DESKTOP — CONTENT + CORE
    ========================================================= */
 
 .xyz-hero {
   position: relative;
+
   min-height: 100vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  gap: clamp(56px, 8vw, 120px);
+
   padding:
     clamp(88px, 10vw, 140px)
     clamp(20px, 5vw, 72px);
+
   isolation: isolate;
 }
 
 .xyz-hero::before {
   content: "";
+
   position: absolute;
   inset: 0;
+
   z-index: -2;
+
   background:
     linear-gradient(
       180deg,
@@ -110,28 +121,47 @@ img {
       transparent 70%,
       rgba(0, 174, 255, 0.02)
     );
+
   pointer-events: none;
 }
 
 .xyz-hero::after {
   content: "";
+
   position: absolute;
+
   width: min(70vw, 720px);
   height: min(70vw, 720px);
+
   top: 50%;
   left: 50%;
+
   transform: translate(-50%, -50%);
+
   z-index: -1;
+
   border-radius: 50%;
+
   background: rgba(0, 174, 255, 0.06);
+
   filter: blur(100px);
+
   pointer-events: none;
 }
 
+
+/* =========================================================
+   XYZ HERO CONTENT
+   ========================================================= */
+
 .xyz-hero-content {
-  width: min(100%, 1100px);
-  margin: 0 auto;
-  text-align: center;
+  order: 1;
+
+  width: min(100%, 680px);
+
+  margin: 0;
+
+  text-align: left;
 }
 
 
@@ -141,68 +171,118 @@ img {
 
 .xyz-eyebrow {
   margin: 0 0 28px;
+
   font-size: clamp(0.68rem, 1vw, 0.8rem);
+
   font-weight: 700;
+
   letter-spacing: 0.28em;
+
   text-transform: uppercase;
+
   color: rgba(255, 255, 255, 0.58);
 }
 
 
 /* =========================================================
    XYZ FUSED MARK
-   CANONICAL ICON — DO NOT DUPLICATE
+   CANONICAL XYZ ICON
    ========================================================= */
 
 .xyz-hero-mark {
+  order: 2;
+
   position: relative;
-  width: min(42vw, 280px);
+
+  width: min(420px, 34vw);
   aspect-ratio: 1;
-  margin: 0 auto 42px;
+
+  flex: 0 0 auto;
+
   display: grid;
   place-items: center;
+
+  margin: 0;
+
+  overflow: visible;
 }
 
 .xyz-core {
   position: relative;
-  width: 100%;
-  height: 100%;
+
+  width: min(
+    var(--xyz-core-size),
+    100%
+  );
+
+  height: min(
+    var(--xyz-core-size),
+    100%
+  );
+
   display: grid;
   place-items: center;
+
+  flex: 0 0 auto;
+
   border-radius: 28%;
+
   background:
     linear-gradient(
       145deg,
       rgba(255, 255, 255, 0.08),
       rgba(255, 255, 255, 0.015)
     );
+
   border: 1px solid rgba(255, 255, 255, 0.1);
+
   box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.5),
     0 0 70px rgba(0, 174, 255, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  overflow: hidden;
 }
 
 .xyz-core::before {
   content: "";
+
   position: absolute;
+
   inset: 8%;
+
   border-radius: 24%;
+
   border: 1px solid rgba(0, 174, 255, 0.28);
+
   box-shadow:
     0 0 35px rgba(0, 174, 255, 0.12);
+
   pointer-events: none;
 }
 
 .xyz-core-image {
   position: relative;
+
   z-index: 2;
+
   width: 72%;
   height: 72%;
+
+  max-width: 100%;
+  max-height: 100%;
+
   object-fit: contain;
+
   filter:
-    drop-shadow(0 0 18px rgba(0, 174, 255, 0.28))
-    drop-shadow(0 12px 30px rgba(0, 0, 0, 0.5));
+    drop-shadow(
+      0 0 18px
+      rgba(0, 174, 255, 0.28)
+    )
+    drop-shadow(
+      0 12px 30px
+      rgba(0, 0, 0, 0.5)
+    );
 }
 
 
@@ -212,26 +292,39 @@ img {
 
 .xyz-button {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
+
   min-height: 50px;
+
   padding: 0 24px;
+
   border: 1px solid rgba(0, 174, 255, 0.38);
+
   border-radius: 999px;
+
   background:
     linear-gradient(
       135deg,
       rgba(0, 174, 255, 0.14),
       rgba(0, 174, 255, 0.04)
     );
+
   color: #ffffff;
+
   font-size: 0.82rem;
+
   font-weight: 700;
+
   letter-spacing: 0.12em;
+
   text-transform: uppercase;
+
   box-shadow:
     0 0 30px rgba(0, 174, 255, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
   transition:
     transform 180ms ease,
     border-color 180ms ease,
@@ -241,13 +334,17 @@ img {
 
 .xyz-button:hover {
   transform: translateY(-2px);
-  border-color: rgba(0, 174, 255, 0.7);
+
+  border-color:
+    rgba(0, 174, 255, 0.7);
+
   background:
     linear-gradient(
       135deg,
       rgba(0, 174, 255, 0.2),
       rgba(0, 174, 255, 0.06)
     );
+
   box-shadow:
     0 10px 35px rgba(0, 0, 0, 0.3),
     0 0 35px rgba(0, 174, 255, 0.14);
@@ -264,41 +361,83 @@ img {
    ========================================================= */
 
 @media (max-width: 900px) {
+
   .xyz-hero {
+    flex-direction: column;
+
+    gap: 1.75rem;
+
     padding:
-      88px
-      clamp(20px, 6vw, 48px);
+      72px
+      clamp(20px, 6vw, 48px)
+      56px;
+
+    text-align: center;
+  }
+
+  .xyz-hero-content {
+    order: 2;
+
+    width: min(100%, 620px);
+
+    text-align: center;
   }
 
   .xyz-hero-mark {
-    width: min(44vw, 230px);
-    margin-bottom: 34px;
+    order: 1;
+
+    width: 110px;
+    height: 110px;
+
+    margin: 0 auto;
+  }
+
+  .xyz-core {
+    width: 110px;
+    height: 110px;
+  }
+
+  .xyz-description {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 
 /* =========================================================
    XYZ HERO — MOBILE
-   COMPACT HEADER MARK
+   COMPACT FUSED HEADER MARK
    ========================================================= */
 
 @media (max-width: 640px) {
+
   .xyz-hero {
     min-height: 100svh;
+
     padding:
-      92px
+      24px
       20px
-      56px;
+      48px;
+
+    gap: 1.25rem;
+
     align-items: center;
+    justify-content: flex-start;
   }
 
   .xyz-hero-mark {
-    width: 78px;
-    height: 78px;
-    margin: 0 auto 28px;
+    order: 1;
+
+    width: 76px;
+    height: 76px;
+
+    margin: 0 auto;
   }
 
   .xyz-core {
+    width: 76px;
+    height: 76px;
+
     border-radius: 20px;
   }
 
@@ -307,16 +446,49 @@ img {
     height: 70%;
   }
 
+  .xyz-hero-content {
+    order: 2;
+
+    width: 100%;
+
+    text-align: center;
+  }
+
   .xyz-eyebrow {
     margin-bottom: 20px;
+
     font-size: 0.62rem;
+
     letter-spacing: 0.2em;
+  }
+
+  .xyz-hero h1 {
+    margin: 0;
+
+    font-size:
+      clamp(2.7rem, 12vw, 4.5rem);
+
+    line-height: 0.95;
+  }
+
+  .xyz-description {
+    max-width: 420px;
+
+    margin:
+      1.5rem auto
+      1.75rem;
+
+    font-size: 1rem;
+
+    line-height: 1.6;
   }
 
   .xyz-button {
     width: 100%;
-    max-width: 320px;
-    min-height: 48px;
+
+    max-width: 360px;
+
+    min-height: 50px;
   }
 }
 
@@ -326,21 +498,34 @@ img {
    ========================================================= */
 
 @media (max-width: 390px) {
+
   .xyz-hero {
     padding:
-      82px
       18px
-      44px;
+      18px
+      40px;
+
+    gap: 1rem;
   }
 
   .xyz-hero-mark {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 22px;
+    width: 64px;
+    height: 64px;
+  }
+
+  .xyz-core {
+    width: 64px;
+    height: 64px;
+
+    border-radius: 17px;
   }
 
   .xyz-eyebrow {
     font-size: 0.58rem;
+  }
+
+  .xyz-description {
+    font-size: 0.95rem;
   }
 }
 
@@ -350,7 +535,10 @@ img {
    ========================================================= */
 
 :focus-visible {
-  outline: 2px solid rgba(0, 174, 255, 0.75);
+  outline:
+    2px solid
+    rgba(0, 174, 255, 0.75);
+
   outline-offset: 3px;
 }
 
@@ -360,6 +548,7 @@ img {
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
   html {
     scroll-behavior: auto;
   }
@@ -370,66 +559,5 @@ img {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-}
-/* =========================================================
-   XYZ HOME — MOBILE HERO MARK
-   Canonical fused XYZ stays ABOVE the wording
-   ========================================================= */
-
-@media (max-width: 640px) {
-  .xyz-hero {
-    position: relative;
-  }
-
-  .xyz-hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-  }
-
-  /* Fused XYZ: compact mobile identity mark */
-  .xyz-hero-mark {
-    position: relative;
-    inset: auto;
-    order: -10;
-
-    width: 72px;
-    height: 72px;
-
-    margin: 0 auto 22px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    flex-shrink: 0;
-  }
-
-  .xyz-core {
-    width: 72px;
-    height: 72px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .xyz-core-image {
-    width: 100%;
-    height: 100%;
-    max-width: 72px;
-    max-height: 72px;
-
-    object-fit: contain;
-    display: block;
-  }
-
-  /* Keep all wording below the mark */
-  .xyz-eyebrow {
-    order: 0;
-    margin-top: 0;
   }
 }

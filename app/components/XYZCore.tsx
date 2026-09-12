@@ -12,10 +12,11 @@ export default function XYZCore({
   return (
     <div
       className="xyz-core"
-      style={{
-        width: `${size}px`,
-        height: `${size}px`,
-      }}
+      style={
+        {
+          "--xyz-core-size": `${size}px`,
+        } as React.CSSProperties
+      }
     >
       <Image
         src="/XYZ_Official_Icon.png"
