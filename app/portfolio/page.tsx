@@ -35,10 +35,7 @@ export default function PortfolioPage() {
               <strong>TECH</strong>
             </Link>
 
-            <nav
-              className={styles.nav}
-              aria-label="Portfolio navigation"
-            >
+            <nav className={styles.nav} aria-label="Portfolio navigation">
               <a href="#about">About</a>
               <a href="#skills">Skills</a>
               <a href="#projects">Projects</a>
@@ -74,42 +71,53 @@ export default function PortfolioPage() {
         id="about"
         aria-labelledby="hero-title"
       >
+        <div className={styles.heroBeam} aria-hidden="true">
+          <span className={styles.beamCore} />
+          <span className={styles.beamGlow} />
+          <span className={styles.beamFlash} />
+        </div>
+
+        <div className={styles.heroOrb} aria-hidden="true" />
+
         <div className={styles.shell}>
-          <p className={styles.kicker}>
-            KIMGENIUS / XYZ TECH
-          </p>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle} id="hero-title">
+              <span className={styles.heroGreeting}>Hi, I&apos;m</span>
 
-          <h1
-            className={styles.heroTitle}
-            id="hero-title"
-          >
-            <span>Hi, I&apos;m</span>
-            <strong>KIMGENIUS</strong>
-            <em>I BUILD. I SOLVE. I INNOVATE.</em>
-          </h1>
+              <strong className={styles.heroName}>
+                KIMGENIUS
+              </strong>
 
-          <p className={styles.heroText}>
-            <strong>A forward-thinking Technologist.</strong>{" "}
-            A Technologist polymath; a Spatial Intelligence
-            connoisseur; an AI Automation savant; and a Web
-            Systems builder focused on intelligent digital
-            experiences.
-          </p>
+              <em className={styles.heroStatement}>
+                I BUILD. I SOLVE. I INNOVATE.
+              </em>
+            </h1>
 
-          <div className={styles.actions}>
-            <a
-              href="#projects"
-              className={styles.button}
-            >
-              Explore Work
-            </a>
+            <div className={styles.heroText}>
+              <strong className={styles.heroLead}>
+                A forward-thinking technologist:
+              </strong>
 
-            <a
-              href="#contact"
-              className={`${styles.button} ${styles.buttonSecondary}`}
-            >
-              Connect
-            </a>
+              <p className={styles.heroDescription}>
+                A Technologist polymath; a Spatial Intelligence
+                connoisseur; an AI Automation savant; and a Web
+                Systems builder focused on intelligent digital
+                experiences.
+              </p>
+            </div>
+
+            <div className={styles.actions}>
+              <a href="#projects" className={styles.button}>
+                Explore Work
+              </a>
+
+              <a
+                href="#contact"
+                className={`${styles.button} ${styles.buttonSecondary}`}
+              >
+                Connect
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -188,9 +196,7 @@ export default function PortfolioPage() {
             </div>
 
             <div>
-              <h2 id="projects-title">
-                Projects
-              </h2>
+              <h2 id="projects-title">Projects</h2>
 
               <p className={styles.sectionIntro}>
                 Intelligent digital systems built through
@@ -201,7 +207,6 @@ export default function PortfolioPage() {
           </div>
 
           <div className={styles.projectGrid}>
-
             {/* =================================================
                 PROJECT 01 — WEATHER
                 ================================================= */}

@@ -1,6 +1,7 @@
 /* =========================================================
    KIMGENIUS PORTFOLIO
-   PORTFOLIO VISUAL ENGINE
+   OG VISUAL ENGINE
+   HERO / BEAM / SYSTEM / RESPONSIVE POLISH
    ========================================================= */
 
 .page {
@@ -23,13 +24,11 @@
 
   --blue: #159dff;
   --blue-bright: #46b5ff;
-
   --blue-soft: rgba(21, 157, 255, 0.1);
   --blue-medium: rgba(21, 157, 255, 0.16);
   --blue-glow: rgba(21, 157, 255, 0.24);
 
-  --shadow-card:
-    0 24px 70px rgba(0, 0, 0, 0.42);
+  --shadow-card: 0 24px 70px rgba(0, 0, 0, 0.42);
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -40,12 +39,12 @@
 
   background:
     radial-gradient(
-      circle at 75% 10%,
+      circle at 76% 9%,
       rgba(21, 157, 255, 0.09),
       transparent 28%
     ),
     radial-gradient(
-      circle at 10% 40%,
+      circle at 9% 40%,
       rgba(21, 157, 255, 0.045),
       transparent 25%
     ),
@@ -79,11 +78,12 @@
   --soft: #424c58;
   --muted: #66717d;
   --faint: #87919c;
+
   --line: rgba(10, 20, 30, 0.1);
   --line-soft: rgba(10, 20, 30, 0.06);
   --line-strong: rgba(10, 20, 30, 0.16);
-  --shadow-card:
-    0 24px 60px rgba(10, 20, 30, 0.1);
+
+  --shadow-card: 0 24px 60px rgba(10, 20, 30, 0.1);
 }
 
 /* =========================================================
@@ -300,56 +300,133 @@
 .hero {
   position: relative;
 
-  min-height: 620px;
+  min-height: 650px;
 
   display: flex;
   align-items: center;
 
-  padding-block: clamp(90px, 13vw, 165px);
+  padding-block: clamp(100px, 14vw, 175px);
 
   isolation: isolate;
 }
 
-.hero::before {
-  content: "";
+.heroContent {
+  position: relative;
+  z-index: 5;
+}
 
+.heroOrb {
   position: absolute;
 
-  width: 560px;
-  height: 560px;
+  width: 620px;
+  height: 620px;
 
-  top: 2%;
-  right: -12%;
+  top: -4%;
+  right: -14%;
 
   border-radius: 50%;
 
   background:
     radial-gradient(
       circle,
-      rgba(21, 157, 255, 0.14),
-      rgba(21, 157, 255, 0.035) 35%,
+      rgba(21, 157, 255, 0.15),
+      rgba(21, 157, 255, 0.045) 34%,
       transparent 70%
     );
 
-  filter: blur(20px);
+  filter: blur(22px);
+
+  pointer-events: none;
+
+  z-index: -3;
+}
+
+.heroBeam {
+  position: absolute;
+
+  left: -12%;
+  right: -12%;
+
+  top: 52%;
+
+  height: 1px;
 
   pointer-events: none;
 
   z-index: -1;
+
+  transform: rotate(-5deg);
 }
 
-.kicker {
-  margin-bottom: 28px;
+.beamCore {
+  position: absolute;
+  inset: 0;
 
-  color: var(--blue-bright);
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(21, 157, 255, 0.08) 18%,
+      rgba(70, 181, 255, 0.9) 50%,
+      rgba(21, 157, 255, 0.08) 82%,
+      transparent 100%
+    );
 
-  font-size: 0.68rem;
-  font-weight: 900;
-  letter-spacing: 0.2em;
+  box-shadow:
+    0 0 8px rgba(70, 181, 255, 0.5),
+    0 0 28px rgba(21, 157, 255, 0.2);
+
+  animation: beamTraverse 5.5s ease-in-out infinite;
+}
+
+.beamGlow {
+  position: absolute;
+
+  top: -14px;
+  left: 0;
+  right: 0;
+
+  height: 29px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(21, 157, 255, 0.14),
+      transparent
+    );
+
+  filter: blur(8px);
+
+  animation: beamGlowTraverse 5.5s ease-in-out infinite;
+}
+
+.beamFlash {
+  position: absolute;
+
+  top: -18px;
+
+  width: 130px;
+  height: 37px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(70, 181, 255, 0.55) 25%,
+      rgba(21, 157, 255, 0.08) 65%,
+      transparent 75%
+    );
+
+  filter: blur(3px);
+
+  animation: beamFlashTraverse 5.5s ease-in-out infinite;
 }
 
 .heroTitle {
-  max-width: 980px;
+  max-width: 1050px;
 
   display: flex;
   flex-direction: column;
@@ -357,7 +434,7 @@
   gap: 2px;
 }
 
-.heroTitle span {
+.heroGreeting {
   color: var(--muted);
 
   font-size: clamp(1rem, 2vw, 1.4rem);
@@ -365,7 +442,7 @@
   letter-spacing: 0.02em;
 }
 
-.heroTitle strong {
+.heroName {
   display: block;
 
   font-size: clamp(3.3rem, 10vw, 8.4rem);
@@ -377,24 +454,29 @@
   background:
     linear-gradient(
       110deg,
-      var(--text) 15%,
-      var(--blue-bright) 45%,
-      var(--text) 70%
+      var(--text) 12%,
+      var(--blue-bright) 42%,
+      #ffffff 50%,
+      var(--blue-bright) 58%,
+      var(--text) 88%
     );
 
-  background-size: 220% auto;
+  background-size: 260% auto;
 
   -webkit-background-clip: text;
   background-clip: text;
 
   color: transparent;
 
+  filter:
+    drop-shadow(0 0 18px rgba(21, 157, 255, 0.08));
+
   animation:
     titleFlash 5s ease-in-out infinite;
 }
 
-.heroTitle em {
-  margin-top: 25px;
+.heroStatement {
+  margin-top: 26px;
 
   color: var(--soft);
 
@@ -405,18 +487,37 @@
 }
 
 .heroText {
-  max-width: 760px;
+  max-width: 780px;
 
-  margin-top: 35px !important;
+  margin-top: 38px;
 
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.heroLead {
+  display: inline-block;
+
+  color: var(--text);
+
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 950;
+  letter-spacing: -0.015em;
+
+  text-shadow:
+    0 0 22px rgba(21, 157, 255, 0.08);
+}
+
+.heroDescription {
   color: var(--muted);
 
   font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+  font-style: italic;
+  font-weight: 500;
   line-height: 1.85;
-}
-
-.heroText strong {
-  color: var(--text);
+  letter-spacing: 0.008em;
 }
 
 .actions {
@@ -425,7 +526,7 @@
 
   gap: 12px;
 
-  margin-top: 34px;
+  margin-top: 35px;
 }
 
 .button {
@@ -784,8 +885,7 @@
 
   background: var(--blue);
 
-  box-shadow:
-    0 0 10px var(--blue);
+  box-shadow: 0 0 10px var(--blue);
 
   animation: pulse 1.8s ease-in-out infinite;
 }
@@ -1185,17 +1285,91 @@
 
 @keyframes titleFlash {
   0%,
-  72%,
+  68%,
   100% {
     background-position: 0% center;
   }
 
-  82% {
+  80% {
     background-position: 100% center;
   }
 
   90% {
     background-position: 0% center;
+  }
+}
+
+@keyframes beamTraverse {
+  0%,
+  16% {
+    opacity: 0;
+    transform: translateX(-24%);
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  52% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  68% {
+    opacity: 0.8;
+  }
+
+  84%,
+  100% {
+    opacity: 0;
+    transform: translateX(24%);
+  }
+}
+
+@keyframes beamGlowTraverse {
+  0%,
+  16% {
+    opacity: 0;
+    transform: translateX(-20%);
+  }
+
+  35%,
+  65% {
+    opacity: 1;
+  }
+
+  84%,
+  100% {
+    opacity: 0;
+    transform: translateX(20%);
+  }
+}
+
+@keyframes beamFlashTraverse {
+  0%,
+  18% {
+    left: 4%;
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  50% {
+    left: 48%;
+    opacity: 1;
+  }
+
+  70% {
+    left: 88%;
+    opacity: 0.75;
+  }
+
+  84%,
+  100% {
+    left: 98%;
+    opacity: 0;
   }
 }
 
@@ -1288,8 +1462,51 @@
     height: 28px;
   }
 
+  .header .shell {
+    position: relative;
+  }
+
   .nav {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 68px;
+
+    display: flex;
+    justify-content: flex-start;
+
+    gap: 22px;
+
+    width: 100%;
+    padding: 13px 0 12px;
+
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+
+    background: color-mix(
+      in srgb,
+      var(--bg) 92%,
+      transparent
+    );
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+  }
+
+  .nav::-webkit-scrollbar {
     display: none;
+  }
+
+  .nav a {
+    flex: 0 0 auto;
+
+    padding-block: 5px;
+
+    font-size: 0.56rem;
   }
 
   .themeToggle {
@@ -1300,14 +1517,28 @@
   .hero {
     min-height: auto;
 
-    padding-block: 82px 100px;
+    padding-block: 115px 105px;
   }
 
-  .heroTitle strong {
-    font-size: clamp(3.2rem, 17vw, 5rem);
+  .heroOrb {
+    width: 390px;
+    height: 390px;
+
+    top: 5%;
+    right: -35%;
   }
 
-  .heroTitle em {
+  .heroBeam {
+    top: 47%;
+    left: -60%;
+    right: -60%;
+  }
+
+  .heroName {
+    font-size: clamp(3.15rem, 16.8vw, 5rem);
+  }
+
+  .heroStatement {
     max-width: 350px;
 
     font-size: 0.72rem;
@@ -1315,8 +1546,18 @@
   }
 
   .heroText {
+    margin-top: 34px;
+
+    gap: 9px;
+  }
+
+  .heroLead {
+    font-size: 0.98rem;
+  }
+
+  .heroDescription {
     font-size: 0.9rem;
-    line-height: 1.75;
+    line-height: 1.78;
   }
 
   .actions {
@@ -1397,8 +1638,12 @@
    ========================================================= */
 
 @media (max-width: 400px) {
-  .heroTitle strong {
+  .heroName {
     font-size: 3rem;
+  }
+
+  .heroStatement {
+    font-size: 0.67rem;
   }
 
   .projectCard {
@@ -1420,7 +1665,7 @@
 
 @media (max-height: 500px) and (orientation: landscape) {
   .hero {
-    padding-block: 60px 80px;
+    padding-block: 75px 90px;
   }
 }
 
@@ -1445,7 +1690,10 @@
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .heroTitle strong,
+  .heroName,
+  .beamCore,
+  .beamGlow,
+  .beamFlash,
   .projectCard::after,
   .signalDot,
   .progressFill {
