@@ -82,7 +82,9 @@ export default function PortfolioPage() {
         <div className={styles.shell}>
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle} id="hero-title">
-              <span className={styles.heroGreeting}>Hi, I&apos;m</span>
+              <span className={styles.heroGreeting}>
+                Hi, I&apos;m
+              </span>
 
               <strong className={styles.heroName}>
                 KIMGENIUS
@@ -299,7 +301,7 @@ export default function PortfolioPage() {
                 </Link>
 
                 <a
-                  href="https://github.com/ki995483"
+                  href="https://github.com/ki995483/kimgenius-portfolio"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.secondaryAction}
@@ -465,6 +467,107 @@ export default function PortfolioPage() {
                 <span>REMOTE SENSING</span>
               </div>
             </article>
+
+            {/* =================================================
+                PROJECT 04 — DATA INTELLIGENCE
+                ================================================= */}
+
+            <article className={styles.projectCard}>
+              <div className={styles.projectTop}>
+                <span className={styles.projectNumber}>
+                  PROJECT 04
+                </span>
+
+                <span className={styles.projectSignal}>
+                  <span
+                    className={styles.signalDot}
+                    aria-hidden="true"
+                  />
+                  SYSTEM ONLINE
+                </span>
+              </div>
+
+              <div className={styles.projectIdentity}>
+                <div className={styles.projectCopy}>
+                  <h3>Data Intelligence Laboratory</h3>
+
+                  <p className={styles.projectDescription}>
+                    A data analytics laboratory exploring
+                    structured datasets, statistical analysis,
+                    visualization, machine learning and
+                    predictive intelligence.
+                  </p>
+                </div>
+
+                <div
+                  className={styles.projectMark}
+                  aria-hidden="true"
+                >
+                  DI
+                </div>
+              </div>
+
+              <div className={styles.progressBlock}>
+                <div className={styles.progressMeta}>
+                  <span>BUILD PROGRESS</span>
+                  <span>18%</span>
+                </div>
+
+                <div className={styles.progressTrack}>
+                  <span
+                    className={styles.progressFill}
+                    style={
+                      {
+                        "--progress": "18%",
+                      } as CSSProperties
+                    }
+                  />
+
+                  <span
+                    className={styles.progressGrid}
+                    aria-hidden="true"
+                  />
+                </div>
+
+                <div className={styles.progressStatus}>
+                  <span>FOUNDATION</span>
+
+                  <span>
+                    DATA • ANALYTICS • STATISTICS • ML
+                  </span>
+                </div>
+              </div>
+
+              <div className={styles.techCore}>
+                <span>DATA ANALYTICS</span>
+                <span>STATISTICS</span>
+                <span>VISUALIZATION</span>
+                <span>MACHINE LEARNING</span>
+                <span>PREDICTION</span>
+              </div>
+
+              <div className={styles.projectActions}>
+                <Link
+                  href="/data-intelligence"
+                  className={styles.primaryAction}
+                >
+                  <span aria-hidden="true">[</span>
+                  OPEN SYSTEM
+                  <span aria-hidden="true">]</span>
+                </Link>
+
+                <a
+                  href="https://github.com/ki995483/kimgenius-portfolio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.secondaryAction}
+                >
+                  <span aria-hidden="true">[</span>
+                  SOURCE
+                  <span aria-hidden="true">]</span>
+                </a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -537,6 +640,14 @@ export default function PortfolioPage() {
 
             <a href="tel:+254791896869">
               +254 791 896869
+            </a>
+
+            <a
+              href="https://wa.me/254791896869"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
             </a>
 
             <a
