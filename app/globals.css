@@ -3,16 +3,12 @@
 /* =========================================================
    XYZ MAJOR
    KIMGENIUS GLOBAL FOUNDATION
-   HOMEPAGE / HERO SYSTEM
+   GLOBAL RESET / TYPOGRAPHY / XYZ HERO ENGINE
    ========================================================= */
 
 :root {
-  --background: #02030a;
-  --foreground: #f7f9ff;
-  --muted: #c9d4ec;
-  --blue: #0077ff;
-  --cyan: #00d9ff;
-  --deep-blue: #071dff;
+  --background: #08090b;
+  --foreground: #f5f7fb;
 }
 
 *,
@@ -30,22 +26,9 @@ html {
 body {
   min-height: 100vh;
   margin: 0;
-
-  background:
-    radial-gradient(
-      circle at 50% 42%,
-      rgba(0, 55, 255, 0.09),
-      transparent 32%
-    ),
-    #02030a;
-
+  background: var(--background);
   color: var(--foreground);
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -73,971 +56,476 @@ img {
 }
 
 ::selection {
-  background: rgba(0, 180, 255, 0.3);
+  background: rgba(0, 174, 255, 0.28);
   color: #ffffff;
 }
 
 
 /* =========================================================
-   PAGE
+   XYZ HERO PAGE
    ========================================================= */
 
 .xyz-page {
   position: relative;
-
-  min-height: 100svh;
-
+  min-height: 100vh;
   overflow-x: hidden;
 
   background:
     radial-gradient(
-      ellipse at 50% 44%,
-      rgba(0, 55, 255, 0.11),
-      transparent 38%
+      circle at 50% 10%,
+      rgba(0, 174, 255, 0.08),
+      transparent 32%
     ),
-    radial-gradient(
-      ellipse at 50% 100%,
-      rgba(0, 22, 120, 0.13),
-      transparent 45%
-    ),
-    #02030a;
+    #08090b;
 
-  color: #f7f9ff;
+  color: #f5f7fb;
 }
 
 
 /* =========================================================
-   HEADER
-   ========================================================= */
-
-.xyz-header {
-  position: absolute;
-
-  top: 0;
-  left: 0;
-  right: 0;
-
-  z-index: 20;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding:
-    clamp(24px, 4vw, 48px)
-    clamp(28px, 5vw, 72px);
-}
-
-
-/* =========================================================
-   BRAND
-   ========================================================= */
-
-.xyz-brand {
-  display: flex;
-  align-items: center;
-
-  gap: 16px;
-
-  min-width: 0;
-}
-
-.xyz-brand-icon {
-  width: 68px;
-  height: 68px;
-
-  display: grid;
-  place-items: center;
-
-  border: 1px solid rgba(0, 174, 255, 0.24);
-
-  border-radius: 18px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(0, 30, 70, 0.5),
-      rgba(0, 10, 30, 0.2)
-    );
-
-  box-shadow:
-    0 0 24px rgba(0, 90, 255, 0.08),
-    inset 0 0 20px rgba(0, 150, 255, 0.035);
-
-  overflow: hidden;
-}
-
-
-/*
-   The header uses the official XYZ mark,
-   but keeps the mark visually compact.
-*/
-
-.xyz-brand-icon .xyz-core {
-  width: 58px !important;
-  height: 58px !important;
-
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-
-  border-radius: 0;
-}
-
-.xyz-brand-icon .xyz-core::before {
-  display: none;
-}
-
-.xyz-brand-icon .xyz-core-image {
-  width: 78%;
-  height: 78%;
-
-  filter:
-    drop-shadow(0 0 12px rgba(0, 130, 255, 0.5));
-}
-
-
-.xyz-brand-name {
-  color: #f7f9ff;
-
-  font-size: clamp(1rem, 1.5vw, 1.15rem);
-
-  font-weight: 800;
-
-  letter-spacing: 0.22em;
-
-  text-transform: uppercase;
-}
-
-
-/* =========================================================
-   THEME TOGGLE
-   ========================================================= */
-
-.xyz-theme-toggle {
-  width: 72px;
-  height: 72px;
-
-  display: grid;
-  place-items: center;
-
-  padding: 0;
-
-  border: 1px solid rgba(0, 83, 255, 0.2);
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(4, 10, 35, 0.62),
-      rgba(0, 0, 12, 0.22)
-    );
-
-  color: #ffffff;
-
-  font-size: 2rem;
-  font-weight: 300;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 0 30px rgba(0, 55, 255, 0.05),
-    inset 0 0 20px rgba(0, 110, 255, 0.025);
-
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
-}
-
-.xyz-theme-toggle:hover {
-  transform: translateY(-2px);
-
-  border-color: rgba(0, 110, 255, 0.65);
-
-  box-shadow:
-    0 0 30px rgba(0, 70, 255, 0.14);
-}
-
-
-/* =========================================================
-   HERO
+   XYZ HERO
+   DESKTOP — CONTENT + CORE
    ========================================================= */
 
 .xyz-hero {
   position: relative;
 
-  min-height: 100svh;
+  min-height: 100vh;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  gap: clamp(56px, 8vw, 120px);
+
   padding:
-    150px
-    clamp(24px, 6vw, 90px)
-    110px;
+    clamp(88px, 10vw, 140px)
+    clamp(20px, 5vw, 72px);
 
   isolation: isolate;
 }
-
-
-/* =========================================================
-   CINEMATIC BACKGROUND GLOW
-   ========================================================= */
 
 .xyz-hero::before {
   content: "";
 
   position: absolute;
-
-  width: min(850px, 100vw);
-  height: min(650px, 80vw);
-
-  top: 47%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
+  inset: 0;
 
   z-index: -2;
 
-  border-radius: 50%;
-
   background:
-    radial-gradient(
-      ellipse,
-      rgba(0, 50, 255, 0.16),
-      rgba(0, 180, 255, 0.055) 30%,
-      transparent 68%
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.025),
+      transparent 30%,
+      transparent 70%,
+      rgba(0, 174, 255, 0.02)
     );
-
-  filter: blur(35px);
 
   pointer-events: none;
 }
-
 
 .xyz-hero::after {
   content: "";
 
   position: absolute;
 
-  inset: 0;
+  width: min(70vw, 720px);
+  height: min(70vw, 720px);
 
-  z-index: -3;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.05),
-      transparent 35%,
-      rgba(0, 20, 100, 0.035) 80%,
-      rgba(0, 0, 0, 0.16)
-    );
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   HERO CONTENT
-   ========================================================= */
-
-.xyz-hero-content {
-  width: min(100%, 900px);
-
-  margin: 0 auto;
-
-  text-align: center;
-}
-
-
-/* =========================================================
-   INTRO
-   ========================================================= */
-
-.xyz-intro {
-  margin: 0 0 2px;
-
-  color: #f5f7ff;
-
-  font-size:
-    clamp(3.8rem, 8vw, 6.8rem);
-
-  font-weight: 300;
-
-  line-height: 0.95;
-
-  letter-spacing: -0.055em;
-}
-
-
-/* =========================================================
-   TITLE WRAPPER
-   ========================================================= */
-
-.xyz-title-wrap {
-  position: relative;
-
-  width: fit-content;
-
-  margin: 0 auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-/* =========================================================
-   KIMGENIUS TITLE
-   ========================================================= */
-
-.xyz-title {
-  position: relative;
-
-  z-index: 2;
-
-  margin: 0;
-
-  font-size:
-    clamp(3.8rem, 10vw, 8.8rem);
-
-  font-weight: 500;
-
-  line-height: 0.92;
-
-  letter-spacing: -0.065em;
-
-  white-space: nowrap;
-
-  background:
-    linear-gradient(
-      100deg,
-      #d9f8ff 0%,
-      #00bfff 25%,
-      #006dff 52%,
-      #f1f8ff 77%,
-      #ffffff 100%
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  color: transparent;
-
-  filter:
-    drop-shadow(0 0 12px rgba(0, 155, 255, 0.16))
-    drop-shadow(0 15px 35px rgba(0, 0, 0, 0.45));
-}
-
-
-/* =========================================================
-   XYZ ENERGY MARK
-   ========================================================= */
-
-.xyz-title-wrap > .xyz-core {
-  position: absolute;
-
-  z-index: 3;
-
-  left: 50%;
   top: 50%;
+  left: 50%;
 
   transform: translate(-50%, -50%);
 
-  width: 112px !important;
-  height: 112px !important;
-
-  background: transparent;
-
-  border: 0;
-
-  box-shadow: none;
+  z-index: -1;
 
   border-radius: 50%;
 
-  opacity: 0.8;
+  background: rgba(0, 174, 255, 0.06);
 
-  mix-blend-mode: screen;
+  filter: blur(100px);
 
   pointer-events: none;
 }
 
-.xyz-title-wrap > .xyz-core::before {
-  display: none;
-}
 
-.xyz-title-wrap > .xyz-core .xyz-core-image {
-  width: 100%;
-  height: 100%;
+/* =========================================================
+   XYZ HERO CONTENT
+   ========================================================= */
 
-  filter:
-    drop-shadow(0 0 22px rgba(0, 190, 255, 0.85))
-    drop-shadow(0 0 45px rgba(0, 80, 255, 0.55));
+.xyz-hero-content {
+  order: 1;
 
-  opacity: 0.7;
+  width: min(100%, 680px);
+
+  margin: 0;
+
+  text-align: left;
 }
 
 
 /* =========================================================
-   TAGLINE
+   XYZ HERO EYEBROW
    ========================================================= */
 
-.xyz-tagline {
-  margin:
-    clamp(30px, 4vw, 48px)
-    0
-    0;
+.xyz-eyebrow {
+  margin: 0 0 28px;
 
-  color: #f6f8ff;
+  font-size: clamp(0.68rem, 1vw, 0.8rem);
 
-  font-size:
-    clamp(1rem, 2vw, 1.35rem);
-
-  font-weight: 800;
-
-  line-height: 1.35;
+  font-weight: 700;
 
   letter-spacing: 0.28em;
 
   text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.58);
 }
 
 
 /* =========================================================
-   DESCRIPTION
+   XYZ FUSED MARK
+   CANONICAL XYZ ICON
    ========================================================= */
 
-.xyz-description {
-  width: min(100%, 820px);
+.xyz-hero-mark {
+  order: 2;
 
-  margin:
-    clamp(52px, 6vw, 72px)
-    auto
-    0;
+  position: relative;
 
-  color: var(--muted);
+  width: min(420px, 34vw);
+  aspect-ratio: 1;
 
-  font-size:
-    clamp(1.05rem, 2vw, 1.45rem);
-
-  font-weight: 400;
-
-  line-height: 1.8;
-
-  letter-spacing: -0.01em;
-}
-
-.xyz-description strong {
-  color: #ffffff;
-
-  font-weight: 800;
-}
-
-
-/* =========================================================
-   ACTIONS
-   ========================================================= */
-
-.xyz-actions {
-  width: min(100%, 700px);
-
-  margin:
-    clamp(54px, 6vw, 76px)
-    auto
-    0;
+  flex: 0 0 auto;
 
   display: grid;
+  place-items: center;
 
-  grid-template-columns: repeat(2, 1fr);
+  margin: 0;
 
-  gap: 22px;
+  overflow: visible;
+}
+
+.xyz-core {
+  position: relative;
+
+  width: min(
+    var(--xyz-core-size),
+    100%
+  );
+
+  height: min(
+    var(--xyz-core-size),
+    100%
+  );
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 auto;
+
+  border-radius: 28%;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.015)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 70px rgba(0, 174, 255, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  overflow: hidden;
+}
+
+.xyz-core::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 8%;
+
+  border-radius: 24%;
+
+  border: 1px solid rgba(0, 174, 255, 0.28);
+
+  box-shadow:
+    0 0 35px rgba(0, 174, 255, 0.12);
+
+  pointer-events: none;
+}
+
+.xyz-core-image {
+  position: relative;
+
+  z-index: 2;
+
+  width: 72%;
+  height: 72%;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 0 18px
+      rgba(0, 174, 255, 0.28)
+    )
+    drop-shadow(
+      0 12px 30px
+      rgba(0, 0, 0, 0.5)
+    );
 }
 
 
 /* =========================================================
-   BUTTON BASE
+   XYZ HERO BUTTON
    ========================================================= */
 
 .xyz-button {
-  min-height: 76px;
-
   display: inline-flex;
 
   align-items: center;
   justify-content: center;
 
-  padding: 0 32px;
+  min-height: 50px;
 
-  border-radius: 18px;
+  padding: 0 24px;
 
-  font-size:
-    clamp(0.95rem, 1.5vw, 1.1rem);
+  border: 1px solid rgba(0, 174, 255, 0.38);
 
-  font-weight: 800;
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 174, 255, 0.14),
+      rgba(0, 174, 255, 0.04)
+    );
+
+  color: #ffffff;
+
+  font-size: 0.82rem;
+
+  font-weight: 700;
 
   letter-spacing: 0.12em;
 
   text-transform: uppercase;
 
+  box-shadow:
+    0 0 30px rgba(0, 174, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
   transition:
     transform 180ms ease,
-    box-shadow 180ms ease,
     border-color 180ms ease,
+    box-shadow 180ms ease,
     background 180ms ease;
 }
 
+.xyz-button:hover {
+  transform: translateY(-2px);
 
-/* =========================================================
-   PRIMARY
-   ========================================================= */
-
-.xyz-button-primary {
-  border: 1px solid rgba(0, 170, 255, 0.8);
+  border-color:
+    rgba(0, 174, 255, 0.7);
 
   background:
     linear-gradient(
-      105deg,
-      #00aeea 0%,
-      #006eff 45%,
-      #1827e8 100%
+      135deg,
+      rgba(0, 174, 255, 0.2),
+      rgba(0, 174, 255, 0.06)
     );
 
-  color: #ffffff;
-
   box-shadow:
-    0 12px 45px rgba(0, 66, 255, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    0 10px 35px rgba(0, 0, 0, 0.3),
+    0 0 35px rgba(0, 174, 255, 0.14);
 }
 
-.xyz-button-primary:hover {
-  transform: translateY(-3px);
-
-  box-shadow:
-    0 18px 55px rgba(0, 80, 255, 0.3),
-    0 0 30px rgba(0, 170, 255, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+.xyz-button:focus-visible {
+  outline: 2px solid rgba(0, 174, 255, 0.8);
+  outline-offset: 4px;
 }
 
 
 /* =========================================================
-   SECONDARY
-   ========================================================= */
-
-.xyz-button-secondary {
-  border: 1px solid rgba(0, 80, 255, 0.4);
-
-  background:
-    rgba(0, 0, 15, 0.16);
-
-  color: #f5f7ff;
-
-  box-shadow:
-    inset 0 0 25px rgba(0, 70, 255, 0.025);
-}
-
-.xyz-button-secondary:hover {
-  transform: translateY(-3px);
-
-  border-color: rgba(0, 110, 255, 0.7);
-
-  background:
-    rgba(0, 35, 100, 0.12);
-
-  box-shadow:
-    0 12px 40px rgba(0, 50, 255, 0.12);
-}
-
-
-/* =========================================================
-   CONTACT ANCHOR
-   ========================================================= */
-
-.xyz-contact-anchor {
-  position: absolute;
-
-  bottom: 0;
-
-  width: 1px;
-  height: 1px;
-}
-
-
-/* =========================================================
-   DOMAIN BAR
-   ========================================================= */
-
-.xyz-domain-bar {
-  display: none;
-}
-
-
-/* =========================================================
-   LIGHT MODE
-   ========================================================= */
-
-.xyz-page.theme-light {
-  background:
-    radial-gradient(
-      ellipse at 50% 45%,
-      rgba(0, 120, 255, 0.08),
-      transparent 38%
-    ),
-    #f5f8ff;
-
-  color: #07101f;
-}
-
-.xyz-page.theme-light .xyz-intro,
-.xyz-page.theme-light .xyz-tagline,
-.xyz-page.theme-light .xyz-description strong,
-.xyz-page.theme-light .xyz-brand-name,
-.xyz-page.theme-light .xyz-button-secondary {
-  color: #07101f;
-}
-
-.xyz-page.theme-light .xyz-description {
-  color: #394964;
-}
-
-.xyz-page.theme-light .xyz-button-secondary {
-  background: rgba(255, 255, 255, 0.45);
-}
-
-.xyz-page.theme-light .xyz-theme-toggle {
-  color: #07101f;
-
-  background: rgba(255, 255, 255, 0.7);
-}
-
-
-/* =========================================================
-   TABLET
+   XYZ HERO — TABLET
    ========================================================= */
 
 @media (max-width: 900px) {
 
-  .xyz-header {
-    padding:
-      24px
-      clamp(22px, 5vw, 48px);
-  }
-
   .xyz-hero {
-    padding:
-      140px
-      28px
-      90px;
-  }
+    flex-direction: column;
 
-  .xyz-description {
-    width: min(100%, 700px);
-  }
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 640px) {
-
-  .xyz-page {
-    min-height: 100svh;
-
-    padding-bottom: 46px;
-  }
-
-
-  /* -----------------------------------------
-     HEADER
-     ----------------------------------------- */
-
-  .xyz-header {
-    position: absolute;
+    gap: 1.75rem;
 
     padding:
-      18px
-      28px;
-  }
-
-  .xyz-brand {
-    gap: 12px;
-  }
-
-  .xyz-brand-icon {
-    width: 48px;
-    height: 48px;
-
-    border-radius: 14px;
-  }
-
-  .xyz-brand-icon .xyz-core {
-    width: 44px !important;
-    height: 44px !important;
-  }
-
-  .xyz-brand-name {
-    font-size: 0.9rem;
-
-    letter-spacing: 0.08em;
-
-    text-transform: none;
-
-    font-weight: 400;
-  }
-
-  .xyz-theme-toggle {
-    width: 70px;
-    height: 70px;
-
-    font-size: 2rem;
-  }
-
-
-  /* -----------------------------------------
-     HERO
-     ----------------------------------------- */
-
-  .xyz-hero {
-    min-height: calc(100svh - 46px);
-
-    padding:
-      145px
-      28px
-      74px;
-
-    align-items: center;
-  }
-
-  .xyz-hero-content {
-    width: 100%;
-  }
-
-
-  /* -----------------------------------------
-     INTRO
-     ----------------------------------------- */
-
-  .xyz-intro {
-    margin-bottom: 4px;
-
-    font-size:
-      clamp(3.5rem, 15vw, 5.2rem);
-
-    line-height: 0.9;
-
-    letter-spacing: -0.065em;
-  }
-
-
-  /* -----------------------------------------
-     TITLE
-     ----------------------------------------- */
-
-  .xyz-title {
-    font-size:
-      clamp(3.2rem, 15vw, 5.5rem);
-
-    line-height: 0.92;
-
-    letter-spacing: -0.07em;
-  }
-
-  .xyz-title-wrap > .xyz-core {
-    width: 82px !important;
-    height: 82px !important;
-
-    opacity: 0.72;
-  }
-
-
-  /* -----------------------------------------
-     TAGLINE
-     ----------------------------------------- */
-
-  .xyz-tagline {
-    max-width: 350px;
-
-    margin:
-      38px
-      auto
-      0;
-
-    font-size:
-      clamp(0.86rem, 3.8vw, 1.05rem);
-
-    line-height: 1.55;
-
-    letter-spacing: 0.28em;
-  }
-
-
-  /* -----------------------------------------
-     DESCRIPTION
-     ----------------------------------------- */
-
-  .xyz-description {
-    width: 100%;
-
-    margin:
-      56px
-      auto
-      0;
-
-    font-size:
-      clamp(1.02rem, 4.5vw, 1.2rem);
-
-    line-height: 1.8;
+      72px
+      clamp(20px, 6vw, 48px)
+      56px;
 
     text-align: center;
   }
 
+  .xyz-hero-content {
+    order: 2;
 
-  /* -----------------------------------------
-     BUTTONS
-     ----------------------------------------- */
+    width: min(100%, 620px);
 
-  .xyz-actions {
-    width: 100%;
-
-    margin-top: 58px;
-
-    grid-template-columns: 1fr;
-
-    gap: 16px;
+    text-align: center;
   }
 
-  .xyz-button {
-    width: 100%;
+  .xyz-hero-mark {
+    order: 1;
 
-    min-height: 64px;
+    width: 110px;
+    height: 110px;
 
-    border-radius: 999px;
-
-    font-size: 1rem;
-
-    letter-spacing: 0.02em;
+    margin: 0 auto;
   }
 
-
-  /* -----------------------------------------
-     DOMAIN BAR
-     ----------------------------------------- */
-
-  .xyz-domain-bar {
-    position: fixed;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    z-index: 50;
-
-    height: 46px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 10px;
-
-    background:
-      rgba(0, 0, 0, 0.9);
-
-    border-top:
-      1px solid
-      rgba(0, 90, 255, 0.08);
-
-    color: #f4f6fb;
-
-    font-size: 0.95rem;
-
-    backdrop-filter: blur(16px);
+  .xyz-core {
+    width: 110px;
+    height: 110px;
   }
 
-  .xyz-domain-bar span:first-child {
-    font-size: 0.9rem;
+  .xyz-description {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 
 /* =========================================================
-   SMALL PHONES
+   XYZ HERO — MOBILE
+   COMPACT FUSED HEADER MARK
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+  .xyz-hero {
+    min-height: 100svh;
+
+    padding:
+      24px
+      20px
+      48px;
+
+    gap: 1.25rem;
+
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .xyz-hero-mark {
+    order: 1;
+
+    width: 76px;
+    height: 76px;
+
+    margin: 0 auto;
+  }
+
+  .xyz-core {
+    width: 76px;
+    height: 76px;
+
+    border-radius: 20px;
+  }
+
+  .xyz-core-image {
+    width: 70%;
+    height: 70%;
+  }
+
+  .xyz-hero-content {
+    order: 2;
+
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .xyz-eyebrow {
+    margin-bottom: 20px;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.2em;
+  }
+
+  .xyz-hero h1 {
+    margin: 0;
+
+    font-size:
+      clamp(2.7rem, 12vw, 4.5rem);
+
+    line-height: 0.95;
+  }
+
+  .xyz-description {
+    max-width: 420px;
+
+    margin:
+      1.5rem auto
+      1.75rem;
+
+    font-size: 1rem;
+
+    line-height: 1.6;
+  }
+
+  .xyz-button {
+    width: 100%;
+
+    max-width: 360px;
+
+    min-height: 50px;
+  }
+}
+
+
+/* =========================================================
+   XYZ HERO — SMALL PHONES
    ========================================================= */
 
 @media (max-width: 390px) {
 
-  .xyz-header {
-    padding:
-      16px
-      20px;
-  }
-
-  .xyz-brand-icon {
-    width: 44px;
-    height: 44px;
-  }
-
-  .xyz-brand-icon .xyz-core {
-    width: 40px !important;
-    height: 40px !important;
-  }
-
-  .xyz-theme-toggle {
-    width: 62px;
-    height: 62px;
-
-    font-size: 1.8rem;
-  }
-
   .xyz-hero {
     padding:
-      125px
-      20px
-      68px;
+      18px
+      18px
+      40px;
+
+    gap: 1rem;
   }
 
-  .xyz-intro {
-    font-size:
-      clamp(3rem, 15vw, 4rem);
+  .xyz-hero-mark {
+    width: 64px;
+    height: 64px;
   }
 
-  .xyz-title {
-    font-size:
-      clamp(2.8rem, 15vw, 4.4rem);
+  .xyz-core {
+    width: 64px;
+    height: 64px;
+
+    border-radius: 17px;
   }
 
-  .xyz-title-wrap > .xyz-core {
-    width: 70px !important;
-    height: 70px !important;
-  }
-
-  .xyz-tagline {
-    margin-top: 32px;
-
-    font-size: 0.78rem;
-
-    letter-spacing: 0.22em;
+  .xyz-eyebrow {
+    font-size: 0.58rem;
   }
 
   .xyz-description {
-    margin-top: 46px;
-
-    font-size: 0.98rem;
-
-    line-height: 1.75;
-  }
-
-  .xyz-actions {
-    margin-top: 48px;
-  }
-
-  .xyz-button {
-    min-height: 60px;
+    font-size: 0.95rem;
   }
 }
 
@@ -1049,9 +537,9 @@ img {
 :focus-visible {
   outline:
     2px solid
-    rgba(0, 174, 255, 0.85);
+    rgba(0, 174, 255, 0.75);
 
-  outline-offset: 4px;
+  outline-offset: 3px;
 }
 
 
