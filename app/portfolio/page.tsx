@@ -388,6 +388,18 @@ export default function PortfolioPage() {
                 <span>AUTOMATION</span>
                 <span>RESEARCH</span>
               </div>
+
+              <div className={styles.projectActions}>
+                <Link
+                  href="/ai"
+                  className={styles.primaryAction}
+                  aria-label="Enter AI Learning Laboratory"
+                >
+                  <span aria-hidden="true">[</span>
+                  OPEN LAB
+                  <span aria-hidden="true">]</span>
+                </Link>
+              </div>
             </article>
 
             {/* =================================================
