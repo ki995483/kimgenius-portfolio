@@ -7,71 +7,48 @@ import styles from "./weather.module.css";
 type Unit = "C" | "F";
 
 type ForecastItem = {
-  day: string;
   date: string;
-  condition: string;
-  high: number;
-  low: number;
-  rain: number;
-  code: number;
+  weatherCode: number;
+  temperatureMax: number;
+  temperatureMin: number;
+  precipitationProbability: number;
 };
 
-type LocationResult = {
+type WeatherLocation = {
   name: string;
   country?: string;
   admin1?: string;
-  latitude: number;
-  longitude: number;
 };
 
-type WeatherData = {
-  location: string;
-  country: string;
-  currentDate: string;
+type WeatherCurrent = {
   temperature: number;
-  feelsLike: number;
+  apparentTemperature: number;
   humidity: number;
+  precipitation: number;
+  rain: number;
   windSpeed: number;
-  windDirection: number;
-  visibility: number;
   weatherCode: number;
-  forecast: ForecastItem[];
+  isDay: boolean;
 };
 
-type GeocodingResponse = {
-  results?: LocationResult[];
-};
-
-type OpenMeteoResponse = {
-  current: {
-    time: string;
-    temperature_2m: number;
-    relative_humidity_2m: number;
-    apparent_temperature: number;
-    precipitation: number;
-    weather_code: number;
-    wind_speed_10m: number;
-    wind_direction_10m: number;
-    visibility: number;
+type WeatherResponse = {
+  system: string;
+  version: string;
+  architecture: string;
+  data: {
+    location: WeatherLocation;
+    current: WeatherCurrent;
+    forecast: ForecastItem[];
+    source: string;
+    generatedAt: string;
   };
-
-  daily: {
-    time: string[];
-    weather_code: number[];
-    temperature_2m_max: number[];
-    temperature_2m_min: number[];
-    precipitation_probability_max: number[];
-  };
-
-  timezone: string;
 };
 
 function getWeatherCondition(code: number): string {
   if (code === 0) return "Clear Sky";
-
-  if ([1].includes(code)) return "Mainly Clear";
-  if ([2].includes(code)) return "Partly Cloudy";
-  if ([3].includes(code)) return "Overcast";
+  if (code === 1) return "Mainly Clear";
+  if (code === 2) return "Partly Cloudy";
+  if (code === 3) return "Overcast";
 
   if ([45, 48].includes(code)) return "Foggy";
 
@@ -107,7 +84,19 @@ function getWeatherIcon(code: number): string {
 
   if (
     [
-      51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82,
+      51,
+      53,
+      55,
+      56,
+      57,
+      61,
+      63,
+      65,
+      66,
+      67,
+      80,
+      81,
+      82,
     ].includes(code)
   ) {
     return "☂";
@@ -119,366 +108,153 @@ function getWeatherIcon(code: number): string {
     return "❄";
   }
 
-  return "◒";
+  if ([45, 48].includes(code)) return "≋";
+
+  return "◌";
 }
 
-function getDayLabel(date: string, index: number): string {
-  if (index === 0) return "TODAY";
+function convertTemperature(
+  temperature: number,
+  unit: Unit,
+): number {
+  if (unit === "C") {
+    return Math.round(temperature);
+  }
 
-  const parsed = new Date(`${date}T12:00:00`);
+  return Math.round((temperature * 9) / 5 + 32);
+}
 
-  return new Intl.DateTimeFormat("en-US", {
+function formatDate(date: string): string {
+  return new Intl.DateTimeFormat("en", {
     weekday: "short",
-  })
-    .format(parsed)
-    .toUpperCase();
+  }).format(new Date(`${date}T12:00:00`));
 }
 
-function getDateLabel(date: string): string {
-  const parsed = new Date(`${date}T12:00:00`);
-
-  return new Intl.DateTimeFormat("en-US", {
+function formatFullDate(date: string): string {
+  return new Intl.DateTimeFormat("en", {
     day: "2-digit",
     month: "short",
-  })
-    .format(parsed)
-    .toUpperCase();
-}
-
-function getDateLabelLong(date: string): string {
-  const parsed = new Date(`${date}T12:00:00`);
-
-  return new Intl.DateTimeFormat("en-US", {
-    weekday: "long",
-    day: "2-digit",
-    month: "long",
     year: "numeric",
-  }).format(parsed);
-}
-
-function getWindDirection(degrees: number): string {
-  const directions = [
-    "N",
-    "NNE",
-    "NE",
-    "ENE",
-    "E",
-    "ESE",
-    "SE",
-    "SSE",
-    "S",
-    "SSW",
-    "SW",
-    "WSW",
-    "W",
-    "WNW",
-    "NW",
-    "NNW",
-  ];
-
-  const index = Math.round(degrees / 22.5) % 16;
-
-  return directions[index];
-}
-
-function getTemperatureTrend(forecast: ForecastItem[]): string {
-  if (forecast.length < 3) {
-    return "Stable atmospheric pattern.";
-  }
-
-  const first = forecast[0].high;
-  const last = forecast[forecast.length - 1].high;
-  const difference = last - first;
-
-  if (difference >= 2) {
-    return "Temperatures trend warmer.";
-  }
-
-  if (difference <= -2) {
-    return "Temperatures trend cooler.";
-  }
-
-  return "Temperatures remain relatively stable.";
-}
-
-function getTemperatureTrendDetail(forecast: ForecastItem[]): string {
-  if (forecast.length < 3) {
-    return "The available forecast window shows limited temperature movement.";
-  }
-
-  const first = forecast[0].high;
-  const last = forecast[forecast.length - 1].high;
-
-  if (last > first + 1) {
-    return "The forecast develops a gradual warming pattern across the observation window.";
-  }
-
-  if (last < first - 1) {
-    return "The forecast develops a gradual cooling pattern across the observation window.";
-  }
-
-  return "Temperatures remain relatively consistent across the current forecast window.";
-}
-
-function getConditionNote(code: number): string {
-  if ([0, 1].includes(code)) {
-    return "Clear atmospheric conditions with strong visibility potential.";
-  }
-
-  if ([2, 3].includes(code)) {
-    return "Cloud cover is present while overall atmospheric conditions remain manageable.";
-  }
-
-  if ([45, 48].includes(code)) {
-    return "Reduced visibility is possible due to fog or low atmospheric moisture.";
-  }
-
-  if (
-    [
-      51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82,
-    ].includes(code)
-  ) {
-    return "Moisture is active in the atmosphere with precipitation currently possible.";
-  }
-
-  if ([95, 96, 99].includes(code)) {
-    return "Convective activity is present. Atmospheric conditions are currently unstable.";
-  }
-
-  return "Atmospheric conditions are currently variable.";
-}
-
-async function geocodeLocation(query: string): Promise<LocationResult> {
-  const url =
-    "https://geocoding-api.open-meteo.com/v1/search" +
-    `?name=${encodeURIComponent(query)}` +
-    "&count=1" +
-    "&language=en" +
-    "&format=json";
-
-  const response = await fetch(url);
-
-  if (!response.ok) {
-    throw new Error("Location service unavailable.");
-  }
-
-  const data: GeocodingResponse = await response.json();
-
-  const result = data.results?.[0];
-
-  if (!result) {
-    throw new Error(`No location found for "${query}".`);
-  }
-
-  return result;
-}
-
-async function fetchWeather(
-  latitude: number,
-  longitude: number,
-): Promise<OpenMeteoResponse> {
-  const url =
-    "https://api.open-meteo.com/v1/forecast" +
-    `?latitude=${latitude}` +
-    `&longitude=${longitude}` +
-    "&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m,visibility" +
-    "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max" +
-    "&forecast_days=5" +
-    "&timezone=auto";
-
-  const response = await fetch(url);
-
-  if (!response.ok) {
-    throw new Error("Weather service unavailable.");
-  }
-
-  return response.json();
-}
-
-async function loadWeatherForLocation(
-  location: LocationResult,
-): Promise<WeatherData> {
-  const weather = await fetchWeather(
-    location.latitude,
-    location.longitude,
-  );
-
-  const forecast: ForecastItem[] = weather.daily.time.map(
-    (date, index) => ({
-      day: getDayLabel(date, index),
-      date: getDateLabel(date),
-      condition: getWeatherCondition(
-        weather.daily.weather_code[index],
-      ),
-      high: Math.round(
-        weather.daily.temperature_2m_max[index],
-      ),
-      low: Math.round(
-        weather.daily.temperature_2m_min[index],
-      ),
-      rain: Math.round(
-        weather.daily.precipitation_probability_max[index] ?? 0,
-      ),
-      code: weather.daily.weather_code[index],
-    }),
-  );
-
-  return {
-    location: location.name,
-    country: location.country ?? "",
-    currentDate: getDateLabelLong(
-      weather.current.time.split("T")[0],
-    ),
-    temperature: Math.round(
-      weather.current.temperature_2m,
-    ),
-    feelsLike: Math.round(
-      weather.current.apparent_temperature,
-    ),
-    humidity: Math.round(
-      weather.current.relative_humidity_2m,
-    ),
-    windSpeed: Math.round(
-      weather.current.wind_speed_10m,
-    ),
-    windDirection: Math.round(
-      weather.current.wind_direction_10m,
-    ),
-    visibility: Math.round(
-      weather.current.visibility / 1000,
-    ),
-    weatherCode: weather.current.weather_code,
-    forecast,
-  };
+  }).format(new Date(`${date}T12:00:00`));
 }
 
 export default function WeatherPage() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("Nairobi");
+  const [location, setLocation] =
+    useState<WeatherLocation | null>(null);
+  const [current, setCurrent] =
+    useState<WeatherCurrent | null>(null);
+  const [forecast, setForecast] =
+    useState<ForecastItem[]>([]);
+  const [source, setSource] = useState("");
+  const [generatedAt, setGeneratedAt] = useState("");
   const [unit, setUnit] = useState<Unit>("C");
-
-  const [weather, setWeather] = useState<WeatherData | null>(
-    null,
-  );
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  async function loadCity(city: string) {
+  async function loadWeather(locationQuery: string) {
+    const cleanQuery = locationQuery.trim();
+
+    if (!cleanQuery) {
+      setError("Enter a location to search.");
+      return;
+    }
+
     setLoading(true);
     setError("");
 
     try {
-      const location = await geocodeLocation(city);
-      const weatherData = await loadWeatherForLocation(location);
+      const response = await fetch(
+        `/api/weather?location=${encodeURIComponent(cleanQuery)}`,
+        {
+          method: "GET",
+          cache: "no-store",
+        },
+      );
 
-      setWeather(weatherData);
-      setQuery("");
-    } catch (err) {
-      const message =
-        err instanceof Error
-          ? err.message
-          : "Unable to load weather data.";
+      const result =
+        (await response.json()) as
+          | WeatherResponse
+          | {
+              error?: string;
+              message?: string;
+            };
 
-      setError(message);
+      if (!response.ok) {
+        throw new Error(
+          "message" in result && result.message
+            ? result.message
+            : "Weather intelligence request failed.",
+        );
+      }
+
+      const weather = result as WeatherResponse;
+
+      setLocation(weather.data.location);
+      setCurrent(weather.data.current);
+      setForecast(weather.data.forecast);
+      setSource(weather.data.source);
+      setGeneratedAt(weather.data.generatedAt);
+    } catch (requestError) {
+      setLocation(null);
+      setCurrent(null);
+      setForecast([]);
+      setSource("");
+      setGeneratedAt("");
+
+      setError(
+        requestError instanceof Error
+          ? requestError.message
+          : "Unable to load weather intelligence.",
+      );
     } finally {
       setLoading(false);
     }
   }
 
   useEffect(() => {
-    void loadCity("Nairobi");
+    void loadWeather("Nairobi");
   }, []);
 
-  function handleSearch(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    const cleaned = query.trim();
-
-    if (!cleaned || loading) {
-      return;
-    }
-
-    void loadCity(cleaned);
+    void loadWeather(query);
   }
 
-  function convertTemperature(value: number): number {
-    if (unit === "C") {
-      return Math.round(value);
-    }
+  const temperatureUnit = unit === "C" ? "°C" : "°F";
 
-    return Math.round((value * 9) / 5 + 32);
-  }
-
-  function formatTemperature(value: number): string {
-    return `${convertTemperature(value)}°`;
-  }
-
-  const currentTemperature = weather
-    ? convertTemperature(weather.temperature)
-    : "--";
-
-  const temperatureUnit = `°${unit}`;
-
-  const currentCondition = weather
-    ? getWeatherCondition(weather.weatherCode)
-    : "Loading Conditions";
-
-  const currentIcon = weather
-    ? getWeatherIcon(weather.weatherCode)
-    : "◒";
-
-  const windDirection = weather
-    ? getWindDirection(weather.windDirection)
-    : "--";
-
-  const temperatureTrend = useMemo(
+  const currentCondition = useMemo(
     () =>
-      weather
-        ? getTemperatureTrend(weather.forecast)
-        : "Reading atmospheric pattern.",
-    [weather],
+      current
+        ? getWeatherCondition(current.weatherCode)
+        : "Loading Conditions",
+    [current],
   );
 
-  const temperatureTrendDetail = useMemo(
+  const currentIcon = useMemo(
     () =>
-      weather
-        ? getTemperatureTrendDetail(weather.forecast)
-        : "Waiting for forecast intelligence.",
-    [weather],
+      current
+        ? getWeatherIcon(current.weatherCode)
+        : "◌",
+    [current],
   );
 
-  const peakRain = useMemo(() => {
-    if (!weather || weather.forecast.length === 0) {
-      return {
-        value: 0,
-        day: "FORECAST",
-      };
-    }
-
-    return weather.forecast.reduce(
-      (highest, item) =>
-        item.rain > highest.value
-          ? {
-              value: item.rain,
-              day: item.day,
-            }
-          : highest,
-      {
-        value: 0,
-        day: "FORECAST",
-      },
-    );
-  }, [weather]);
+  const locationLabel = location
+    ? [location.name, location.admin1, location.country]
+        .filter(Boolean)
+        .join(", ")
+    : "Weather Intelligence";
 
   return (
     <main className={styles.weatherPage}>
-      <div className={styles.backgroundGlow} />
-
       <header className={styles.header}>
         <div className={styles.headerInner}>
-          <Link href="/portfolio" className={styles.brand}>
+          <Link href="/" className={styles.brand}>
             <span className={styles.brandMark}>
-              <img src="/icon.png" alt="XYZ" />
+              <img
+                src="/XYZ_Official_Icon.png"
+                alt="XYZ"
+              />
             </span>
 
             <span>
@@ -488,45 +264,50 @@ export default function WeatherPage() {
           </Link>
 
           <nav className={styles.nav}>
-            <Link href="/portfolio">PORTFOLIO</Link>
-            <Link href="/">XYZ HOME</Link>
+            <Link href="/">XYZ</Link>
+            <Link href="/systems">SYSTEMS</Link>
           </nav>
         </div>
       </header>
 
-      <section className={styles.commandSection}>
-        <div className={styles.shell}>
+      <div className={styles.shell}>
+        <section className={styles.commandSection}>
           <div className={styles.eyebrow}>
             <span />
-            WEATHER INTELLIGENCE SYSTEM
+            LIVE WEATHER INTELLIGENCE
           </div>
 
           <div className={styles.commandHeading}>
             <div>
-              <h1>Atmospheric intelligence.</h1>
+              <h1>
+                Weather,
+                <br />
+                intelligently.
+              </h1>
 
               <p>
-                Observe conditions, forecast movement, and
-                understand the atmosphere around you.
+                Real-time atmospheric data transformed into
+                a focused intelligence layer for the world
+                around you.
               </p>
             </div>
 
             <div className={styles.systemStatus}>
               <span />
-
-              {loading
-                ? "LOADING DATA"
-                : error
-                  ? "DATA LINK ERROR"
-                  : "SYSTEM ONLINE"}
+              {loading ? "PROCESSING" : "SYSTEM ONLINE"}
             </div>
           </div>
 
           <form
             className={styles.searchForm}
-            onSubmit={handleSearch}
+            onSubmit={handleSubmit}
           >
-            <div className={styles.searchIcon}>⌕</div>
+            <div
+              className={styles.searchIcon}
+              aria-hidden="true"
+            >
+              ⌕
+            </div>
 
             <input
               value={query}
@@ -534,42 +315,44 @@ export default function WeatherPage() {
                 setQuery(event.target.value)
               }
               placeholder="Search city or location..."
-              aria-label="Search city or location"
-              disabled={loading}
+              aria-label="Search weather location"
             />
 
-            <button
-              type="submit"
-              disabled={loading}
-            >
-              {loading ? "LOADING..." : "SEARCH"}
+            <button type="submit" disabled={loading}>
+              {loading ? "LOADING" : "SEARCH"}
             </button>
           </form>
-        </div>
-      </section>
 
-      <section className={styles.currentSection}>
-        <div className={styles.shell}>
+          {error ? (
+            <p
+              role="alert"
+              style={{
+                marginTop: "14px",
+                color: "var(--weather-red, #ff6b7a)",
+                fontSize: "0.72rem",
+              }}
+            >
+              {error}
+            </p>
+          ) : null}
+        </section>
+
+        <section className={styles.currentSection}>
           <div className={styles.currentHeader}>
             <div>
               <span className={styles.sectionLabel}>
                 CURRENT CONDITIONS
               </span>
 
-              <h2>
-                {weather
-                  ? `${weather.location}${
-                      weather.country
-                        ? `, ${weather.country}`
-                        : ""
-                    }`
-                  : "Loading location"}
-              </h2>
+              <h2>{locationLabel}</h2>
 
               <p>
-                {weather
-                  ? weather.currentDate
-                  : error || "Connecting to weather intelligence..."}
+                {current
+                  ? `Updated ${formatFullDate(
+                      forecast[0]?.date ??
+                        new Date().toISOString().slice(0, 10),
+                    )}`
+                  : "Connecting to weather intelligence..."}
               </p>
             </div>
 
@@ -577,9 +360,12 @@ export default function WeatherPage() {
               <button
                 type="button"
                 className={
-                  unit === "C" ? styles.activeUnit : ""
+                  unit === "C"
+                    ? styles.activeUnit
+                    : undefined
                 }
                 onClick={() => setUnit("C")}
+                aria-pressed={unit === "C"}
               >
                 °C
               </button>
@@ -587,9 +373,12 @@ export default function WeatherPage() {
               <button
                 type="button"
                 className={
-                  unit === "F" ? styles.activeUnit : ""
+                  unit === "F"
+                    ? styles.activeUnit
+                    : undefined
                 }
                 onClick={() => setUnit("F")}
+                aria-pressed={unit === "F"}
               >
                 °F
               </button>
@@ -598,221 +387,232 @@ export default function WeatherPage() {
 
           <div className={styles.currentGrid}>
             <article
-              className={`${styles.temperatureCard} ${styles.card}`}
+              className={`${styles.card} ${styles.temperatureCard}`}
             >
-              <div className={styles.cardLabel}>
+              <span className={styles.cardLabel}>
                 TEMPERATURE
-              </div>
+              </span>
 
               <div className={styles.temperature}>
-                {currentTemperature}
-
+                {current
+                  ? convertTemperature(
+                      current.temperature,
+                      unit,
+                    )
+                  : "--"}
                 <span>{temperatureUnit}</span>
               </div>
 
               <div className={styles.condition}>
-                <span className={styles.weatherOrb}>
-                  {currentIcon}
-                </span>
+                <span
+                  className={styles.weatherOrb}
+                  aria-hidden="true"
+                />
 
                 {currentCondition}
               </div>
 
               <p className={styles.cardNote}>
-                {weather
-                  ? getConditionNote(weather.weatherCode)
-                  : "Establishing live atmospheric connection."}
+                {current
+                  ? `Feels like ${convertTemperature(
+                      current.apparentTemperature,
+                      unit,
+                    )}${temperatureUnit}. ${
+                      current.isDay
+                        ? "Daylight conditions."
+                        : "Night conditions."
+                    }`
+                  : "Waiting for current atmospheric data."}
               </p>
             </article>
 
             <article
-              className={`${styles.metricCard} ${styles.card}`}
+              className={`${styles.card} ${styles.metricCard}`}
             >
-              <span className={styles.metricIcon}>≈</span>
-
-              <span className={styles.cardLabel}>
-                FEELS LIKE
+              <span
+                className={styles.metricIcon}
+                aria-hidden="true"
+              >
+                ◌
               </span>
-
-              <strong>
-                {weather
-                  ? formatTemperature(weather.feelsLike)
-                  : "--"}
-              </strong>
-
-              <small>
-                {weather ? "Apparent temperature" : "Waiting"}
-              </small>
-            </article>
-
-            <article
-              className={`${styles.metricCard} ${styles.card}`}
-            >
-              <span className={styles.metricIcon}>◌</span>
 
               <span className={styles.cardLabel}>
                 HUMIDITY
               </span>
 
               <strong>
-                {weather ? `${weather.humidity}%` : "--"}
+                {current ? `${current.humidity}%` : "--"}
               </strong>
 
-              <small>
-                {weather
-                  ? weather.humidity >= 70
-                    ? "High"
-                    : weather.humidity >= 40
-                      ? "Moderate"
-                      : "Low"
-                  : "Waiting"}
-              </small>
+              <small>RELATIVE HUMIDITY</small>
             </article>
 
             <article
-              className={`${styles.metricCard} ${styles.card}`}
+              className={`${styles.card} ${styles.metricCard}`}
             >
-              <span className={styles.metricIcon}>↗</span>
+              <span
+                className={styles.metricIcon}
+                aria-hidden="true"
+              >
+                ≋
+              </span>
 
               <span className={styles.cardLabel}>
                 WIND
               </span>
 
               <strong>
-                {weather
-                  ? `${weather.windSpeed} km/h`
+                {current
+                  ? `${Math.round(current.windSpeed)} km/h`
                   : "--"}
               </strong>
 
-              <small>
-                {weather
-                  ? `${windDirection} · ${getWindDirection(
-                      weather.windDirection,
-                    )}`
-                  : "Waiting"}
-              </small>
+              <small>WIND SPEED</small>
             </article>
 
             <article
-              className={`${styles.metricCard} ${styles.card}`}
+              className={`${styles.card} ${styles.metricCard}`}
             >
-              <span className={styles.metricIcon}>◎</span>
+              <span
+                className={styles.metricIcon}
+                aria-hidden="true"
+              >
+                ◉
+              </span>
 
               <span className={styles.cardLabel}>
-                VISIBILITY
+                PRECIPITATION
               </span>
 
               <strong>
-                {weather
-                  ? `${weather.visibility} km`
+                {current
+                  ? `${current.precipitation.toFixed(1)} mm`
                   : "--"}
               </strong>
 
-              <small>
-                {weather
-                  ? weather.visibility >= 10
-                    ? "Good"
-                    : weather.visibility >= 5
-                      ? "Moderate"
-                      : "Reduced"
-                  : "Waiting"}
-              </small>
+              <small>CURRENT PRECIPITATION</small>
+            </article>
+
+            <article
+              className={`${styles.card} ${styles.metricCard}`}
+            >
+              <span
+                className={styles.metricIcon}
+                aria-hidden="true"
+              >
+                💧
+              </span>
+
+              <span className={styles.cardLabel}>
+                RAIN
+              </span>
+
+              <strong>
+                {current
+                  ? `${current.rain.toFixed(1)} mm`
+                  : "--"}
+              </strong>
+
+              <small>CURRENT RAINFALL</small>
             </article>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className={styles.forecastSection}>
-        <div className={styles.shell}>
+        <section className={styles.forecastSection}>
           <div className={styles.sectionHeading}>
             <div>
               <span className={styles.sectionLabel}>
-                FORECAST MATRIX
+                FORECAST
               </span>
 
-              <h2>Upcoming conditions</h2>
+              <h2>Seven-day outlook.</h2>
             </div>
 
-            <span className={styles.liveIndicator}>
+            <div className={styles.liveIndicator}>
               <span />
-              LIVE MODEL
-            </span>
+              LIVE DATA
+            </div>
           </div>
 
           <div className={styles.forecastGrid}>
-            {weather?.forecast.map((item) => (
+            {forecast.map((item, index) => (
               <article
-                key={`${item.day}-${item.date}`}
+                key={item.date}
                 className={`${styles.forecastCard} ${
-                  item.day === "TODAY"
+                  index === 0
                     ? styles.forecastActive
                     : ""
                 }`}
               >
                 <div className={styles.forecastTop}>
-                  <strong>{item.day}</strong>
+                  <strong>
+                    {index === 0
+                      ? "TODAY"
+                      : formatDate(item.date).toUpperCase()}
+                  </strong>
 
                   <span>{item.date}</span>
                 </div>
 
-                <div className={styles.forecastIcon}>
-                  {getWeatherIcon(item.code)}
+                <div
+                  className={styles.forecastIcon}
+                  aria-hidden="true"
+                >
+                  {getWeatherIcon(item.weatherCode)}
                 </div>
 
                 <div className={styles.forecastCondition}>
-                  {item.condition}
+                  {getWeatherCondition(item.weatherCode)}
                 </div>
 
                 <div className={styles.forecastTemps}>
                   <strong>
-                    {formatTemperature(item.high)}
+                    {convertTemperature(
+                      item.temperatureMax,
+                      unit,
+                    )}
+                    {temperatureUnit}
                   </strong>
 
                   <span>
-                    {formatTemperature(item.low)}
+                    {convertTemperature(
+                      item.temperatureMin,
+                      unit,
+                    )}
+                    {temperatureUnit}
                   </span>
                 </div>
 
                 <div className={styles.rainMeta}>
-                  <span>RAIN</span>
-
-                  <strong>{item.rain}%</strong>
+                  <span>RAIN PROBABILITY</span>
+                  <strong>
+                    {item.precipitationProbability}%
+                  </strong>
                 </div>
 
                 <div className={styles.rainBar}>
                   <span
                     style={{
-                      width: `${item.rain}%`,
+                      width: `${Math.min(
+                        Math.max(
+                          item.precipitationProbability,
+                          0,
+                        ),
+                        100,
+                      )}%`,
                     }}
                   />
                 </div>
               </article>
             ))}
-
-            {!weather && (
-              <article className={styles.forecastCard}>
-                <div className={styles.forecastTop}>
-                  <strong>LIVE</strong>
-                  <span>DATA</span>
-                </div>
-
-                <div className={styles.forecastIcon}>◒</div>
-
-                <div className={styles.forecastCondition}>
-                  Connecting...
-                </div>
-              </article>
-            )}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className={styles.intelligenceSection}>
-        <div className={styles.shell}>
+        <section className={styles.intelligenceSection}>
           <div className={styles.sectionHeading}>
             <div>
               <span className={styles.sectionLabel}>
-                ATMOSPHERIC INTELLIGENCE
+                INTELLIGENCE LAYER
               </span>
 
               <h2>Read the atmosphere.</h2>
@@ -821,104 +621,99 @@ export default function WeatherPage() {
 
           <div className={styles.intelligenceGrid}>
             <article
-              className={`${styles.insightCard} ${styles.card}`}
+              className={`${styles.card} ${styles.insightCard}`}
             >
               <span className={styles.insightNumber}>
-                01
+                01 / TEMPERATURE
               </span>
 
               <div>
-                <span className={styles.cardLabel}>
-                  TEMPERATURE TREND
-                </span>
+                <h3>
+                  {forecast.length
+                    ? `${convertTemperature(
+                        Math.max(
+                          ...forecast.map(
+                            (item) =>
+                              item.temperatureMax,
+                          ),
+                        ),
+                        unit,
+                      )}${temperatureUnit} peak`
+                    : "Temperature signal"}
+                </h3>
 
-                <h3>{temperatureTrend}</h3>
-
-                <p>{temperatureTrendDetail}</p>
+                <p>
+                  The seven-day forecast establishes the
+                  expected temperature range across the
+                  available outlook.
+                </p>
               </div>
 
               <div className={styles.miniChart}>
-                {(weather?.forecast ?? []).map(
-                  (item, index, array) => {
-                    const values = array.map(
-                      (forecastItem) => forecastItem.high,
-                    );
-
-                    const min = Math.min(...values);
-                    const max = Math.max(...values);
-                    const range = Math.max(max - min, 1);
-
-                    const height =
-                      42 +
-                      ((item.high - min) / range) * 46;
-
-                    return (
-                      <span
-                        key={`${item.date}-${index}`}
-                        style={{
-                          height: `${height}%`,
-                        }}
-                      />
-                    );
-                  },
-                )}
+                {forecast.slice(0, 7).map((item) => (
+                  <span
+                    key={item.date}
+                    style={{
+                      height: `${Math.max(
+                        12,
+                        Math.min(
+                          100,
+                          item.temperatureMax * 3,
+                        ),
+                      )}%`,
+                    }}
+                  />
+                ))}
               </div>
             </article>
 
             <article
-              className={`${styles.insightCard} ${styles.card}`}
+              className={`${styles.card} ${styles.insightCard}`}
             >
               <span className={styles.insightNumber}>
-                02
+                02 / PRECIPITATION
               </span>
 
               <div>
-                <span className={styles.cardLabel}>
-                  PRECIPITATION
-                </span>
-
-                <h3>
-                  {weather
-                    ? `Rain probability peaks ${peakRain.day}.`
-                    : "Reading precipitation signal."}
-                </h3>
+                <h3>Rain signal</h3>
 
                 <p>
-                  {weather
-                    ? "The current forecast identifies the strongest precipitation signal within the active observation window."
-                    : "Waiting for live forecast data."}
+                  Precipitation probability across the
+                  forecast window is surfaced directly from
+                  the weather engine.
                 </p>
               </div>
 
               <div className={styles.precipSignal}>
-                <strong>{peakRain.value}%</strong>
+                <strong>
+                  {forecast.length
+                    ? `${Math.max(
+                        ...forecast.map(
+                          (item) =>
+                            item.precipitationProbability,
+                        ),
+                      )}%`
+                    : "--"}
+                </strong>
 
-                <span>PEAK PROBABILITY</span>
+                <span>MAX PROBABILITY</span>
               </div>
             </article>
 
             <article
-              className={`${styles.insightCard} ${styles.card}`}
+              className={`${styles.card} ${styles.insightCard}`}
             >
               <span className={styles.insightNumber}>
-                03
+                03 / SYSTEM
               </span>
 
               <div>
-                <span className={styles.cardLabel}>
-                  WIND ANALYSIS
-                </span>
-
-                <h3>
-                  {weather
-                    ? `${windDirection} atmospheric flow.`
-                    : "Reading wind field."}
-                </h3>
+                <h3>Intelligence online.</h3>
 
                 <p>
-                  {weather
-                    ? `Current wind is moving at ${weather.windSpeed} km/h from the ${windDirection} sector.`
-                    : "Waiting for live wind observations."}
+                  Weather data is now routed through the
+                  KIMGENIUS Weather Intelligence API rather
+                  than being sourced directly by the page.
                 </p>
               </div>
 
@@ -927,60 +722,47 @@ export default function WeatherPage() {
                 <span>E</span>
                 <span>S</span>
                 <span>W</span>
-
-                <i
-                  style={{
-                    transform: weather
-                      ? `translate(-50%, -75%) rotate(${weather.windDirection}deg)`
-                      : "translate(-50%, -75%) rotate(0deg)",
-                  }}
-                />
+                <i />
               </div>
             </article>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className={styles.contextSection}>
-        <div className={styles.shell}>
+        <section className={styles.contextSection}>
           <div className={styles.contextCard}>
             <div>
               <span className={styles.sectionLabel}>
-                GEOGRAPHIC CONTEXT
+                KIMGENIUS SYSTEM
               </span>
 
-              <h2>Weather is spatial.</h2>
+              <h2>Weather is data.</h2>
 
               <p>
-                Atmospheric conditions change across
-                geography. Future iterations of this system
-                will connect weather intelligence with spatial
-                analysis and geographic data.
+                KIMGENIUS turns that data into a structured
+                intelligence system: location discovery,
+                atmospheric retrieval, normalization and
+                focused output — all through one reusable
+                architecture.
               </p>
             </div>
 
             <div className={styles.contextMark}>
               <span>XYZ</span>
-
-              <small>SPATIAL CORE</small>
+              <small>INTELLIGENCE</small>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <footer className={styles.footer}>
-        <div className={styles.shell}>
-          <div className={styles.footerInner}>
-            <span>© 2026 KIMGENIUS</span>
+        <div className={`${styles.shell} ${styles.footerInner}`}>
+          <span>
+            © 2026 KIMGENIUS • XYZ TECH
+          </span>
 
-            <span>
-              WEATHER INTELLIGENCE · XYZ TECH
-            </span>
-
-            <Link href="/portfolio">
-              RETURN TO PORTFOLIO →
-            </Link>
-          </div>
+          <Link href="/systems">
+            SYSTEM REGISTRY →
+          </Link>
         </div>
       </footer>
     </main>
