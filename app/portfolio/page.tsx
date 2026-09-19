@@ -478,6 +478,18 @@ export default function PortfolioPage() {
                 <span>ARCGIS</span>
                 <span>REMOTE SENSING</span>
               </div>
+
+              <div className={styles.projectActions}>
+                <Link
+                  href="/spatial-intelligence"
+                  className={styles.primaryAction}
+                  aria-label="Open Spatial Intelligence Systems"
+                >
+                  <span aria-hidden="true">[</span>
+                  OPEN SYSTEM
+                  <span aria-hidden="true">]</span>
+                </Link>
+              </div>
             </article>
 
             {/* =================================================
