@@ -235,3 +235,14 @@ export const kimgeniusSystems: KIMGENIUSSystem[] = [
 export function getSystemById(id: string) {
   return kimgeniusSystems.find((system) => system.id === id);
 }
+export function getSystemsByStatus(status: SystemStatus) {
+  return kimgeniusSystems.filter(
+    (system) => system.status === status,
+  );
+}
+
+export function getSystemByCategory(category: string) {
+  return kimgeniusSystems.filter(
+    (system) => system.category === category,
+  );
+}
