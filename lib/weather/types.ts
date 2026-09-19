@@ -30,10 +30,24 @@ export type WeatherEngineResult = {
   forecast: WeatherForecastDay[];
 };
 
+export type WeatherIntelligenceSignals = {
+  precipitation: "LOW" | "MODERATE" | "HIGH" | "VERY_HIGH";
+  humidity: "LOW" | "MODERATE" | "HIGH" | "VERY_HIGH";
+  temperature: "COOL" | "MILD" | "WARM" | "HOT";
+  forecastTrend:
+    | "STABLE"
+    | "WARMING"
+    | "COOLING"
+    | "INCREASING_RAIN"
+    | "DECREASING_RAIN";
+};
+
 export type WeatherIntelligence = {
   location: WeatherLocation;
   current: WeatherCurrent;
   forecast: WeatherForecastDay[];
+  signals: WeatherIntelligenceSignals;
+  summary: string;
   source: "Open-Meteo";
   generatedAt: string;
 };
