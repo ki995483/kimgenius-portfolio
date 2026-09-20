@@ -3,12 +3,17 @@
 /* =========================================================
    XYZ MAJOR
    KIMGENIUS GLOBAL FOUNDATION
-   GLOBAL RESET / TYPOGRAPHY / XYZ HERO ENGINE
+   GLOBAL RESET / TYPOGRAPHY / AMBIENT FIELD / XYZ HERO ENGINE
    ========================================================= */
 
 :root {
   --background: #08090b;
   --foreground: #f5f7fb;
+
+  --xyz-blue: #00aeff;
+  --xyz-blue-soft: rgba(0, 174, 255, 0.12);
+  --xyz-blue-faint: rgba(0, 174, 255, 0.055);
+  --xyz-line: rgba(148, 207, 255, 0.075);
 }
 
 *,
@@ -24,14 +29,139 @@ html {
 }
 
 body {
+  position: relative;
+
   min-height: 100vh;
   margin: 0;
-  background: var(--background);
+
+  background:
+    radial-gradient(
+      circle at 50% 18%,
+      rgba(0, 174, 255, 0.045),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 12% 78%,
+      rgba(0, 120, 255, 0.025),
+      transparent 28%
+    ),
+    #08090b;
+
   color: var(--foreground);
+
   font-family: Arial, Helvetica, sans-serif;
+
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+
+  overflow-x: hidden;
 }
+
+
+/* =========================================================
+   KIMGENIUS AMBIENT FIELD
+   GLOBAL IDLE-BACKGROUND ENGINE
+
+   The page should never feel visually dead while idle.
+   This layer provides restrained XYZ-native depth.
+   ========================================================= */
+
+body::before {
+  content: "";
+
+  position: fixed;
+
+  inset: -18%;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  opacity: 0.9;
+
+  background:
+    /* soft atmospheric glow */
+    radial-gradient(
+      ellipse 46% 32% at 76% 24%,
+      rgba(0, 174, 255, 0.075),
+      transparent 72%
+    ),
+
+    radial-gradient(
+      ellipse 38% 28% at 18% 76%,
+      rgba(0, 120, 255, 0.045),
+      transparent 72%
+    ),
+
+    /* XYZ contour field */
+    repeating-radial-gradient(
+      ellipse 58% 34% at 72% 42%,
+      transparent 0,
+      transparent 30px,
+      var(--xyz-line) 31px,
+      rgba(148, 207, 255, 0.025) 32px,
+      transparent 34px,
+      transparent 62px
+    );
+
+  filter: blur(0.15px);
+
+  transform:
+    rotate(-7deg)
+    scale(1.08);
+
+  animation: xyz-field-drift 28s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   SECONDARY DEPTH FIELD
+   ========================================================= */
+
+body::after {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(0, 174, 255, 0.018) 28%,
+      transparent 48%,
+      rgba(255, 255, 255, 0.012) 68%,
+      transparent 100%
+    ),
+
+    radial-gradient(
+      ellipse at center,
+      transparent 42%,
+      rgba(0, 0, 0, 0.18) 100%
+    );
+
+  animation: xyz-depth-breathe 18s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   KEEP APPLICATION CONTENT ABOVE THE ATMOSPHERE
+   ========================================================= */
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* =========================================================
+   GLOBAL FORM ELEMENTS
+   ========================================================= */
 
 button,
 input,
@@ -67,7 +197,9 @@ img {
 
 .xyz-page {
   position: relative;
+
   min-height: 100vh;
+
   overflow-x: hidden;
 
   background:
@@ -76,9 +208,42 @@ img {
       rgba(0, 174, 255, 0.08),
       transparent 32%
     ),
-    #08090b;
+    transparent;
 
   color: #f5f7fb;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   XYZ HERO LOCAL ATMOSPHERE
+   ========================================================= */
+
+.xyz-page::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  pointer-events: none;
+
+  background:
+    repeating-radial-gradient(
+      ellipse 72% 38% at 78% 48%,
+      transparent 0,
+      transparent 38px,
+      rgba(0, 174, 255, 0.035) 39px,
+      transparent 41px,
+      transparent 78px
+    );
+
+  opacity: 0.8;
+
+  transform: rotate(-8deg) scale(1.12);
 }
 
 
@@ -531,6 +696,39 @@ img {
 
 
 /* =========================================================
+   AMBIENT FIELD MOTION
+   ========================================================= */
+
+@keyframes xyz-field-drift {
+  0% {
+    transform:
+      rotate(-7deg)
+      scale(1.08)
+      translate3d(-1.5%, -1%, 0);
+  }
+
+  100% {
+    transform:
+      rotate(-4deg)
+      scale(1.13)
+      translate3d(1.5%, 1.5%, 0);
+  }
+}
+
+@keyframes xyz-depth-breathe {
+  0% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.025);
+  }
+}
+
+
+/* =========================================================
    ACCESSIBILITY
    ========================================================= */
 
@@ -551,6 +749,11 @@ img {
 
   html {
     scroll-behavior: auto;
+  }
+
+  body::before,
+  body::after {
+    animation: none;
   }
 
   *,
