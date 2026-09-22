@@ -1,6 +1,7 @@
 /* =========================================================
-   KIMGENIUS / XYZ PORTFOLIO
-   GLOBAL PORTFOLIO VISUAL ENGINE
+   KIMGENIUS / XYZ
+   PORTFOLIO SYSTEM
+   CLEAN VISUAL ENGINE
    ========================================================= */
 
 .page {
@@ -27,7 +28,8 @@
   --blue-medium: rgba(21, 157, 255, 0.16);
   --blue-glow: rgba(21, 157, 255, 0.24);
 
-  --shadow-card: 0 24px 70px rgba(0, 0, 0, 0.42);
+  --shadow-card:
+    0 24px 70px rgba(0, 0, 0, 0.42);
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -37,7 +39,7 @@
 
   min-height: 100vh;
 
-  overflow-x: clip;
+  overflow-x: hidden;
 
   background:
     radial-gradient(
@@ -61,18 +63,19 @@
 }
 
 /* =========================================================
-   IDLE ATMOSPHERE
+   BACKGROUND ATMOSPHERE
    ========================================================= */
 
 .page::before {
   content: "";
 
   position: fixed;
+
   inset: 0;
 
-  pointer-events: none;
-
   z-index: 0;
+
+  pointer-events: none;
 
   opacity: 0.42;
 
@@ -90,15 +93,6 @@
       rgba(21, 157, 255, 0.018) 111px,
       transparent 112px
     );
-
-  mask-image:
-    linear-gradient(
-      to bottom,
-      transparent,
-      black 12%,
-      black 82%,
-      transparent
-    );
 }
 
 .page::after {
@@ -106,15 +100,15 @@
 
   position: fixed;
 
-  width: 60vw;
-  height: 60vw;
+  width: 620px;
+  height: 620px;
 
-  right: -30vw;
+  right: -300px;
   top: 30vh;
 
-  pointer-events: none;
-
   z-index: 0;
+
+  pointer-events: none;
 
   border-radius: 50%;
 
@@ -164,6 +158,10 @@
   --line-strong: rgba(8, 14, 20, 0.17);
 }
 
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
 .shell {
   position: relative;
 
@@ -188,21 +186,22 @@
 
   border-bottom: 1px solid var(--line-soft);
 
-  background:
-    linear-gradient(
-      to bottom,
-      color-mix(in srgb, var(--bg) 94%, transparent),
-      color-mix(in srgb, var(--bg) 78%, transparent)
-    );
+  background: rgba(8, 9, 11, 0.88);
 
   backdrop-filter: blur(18px);
+}
+
+.light .header {
+  background: rgba(244, 247, 250, 0.9);
 }
 
 .headerInner {
   min-height: 76px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 24px;
@@ -210,15 +209,16 @@
 
 .brand {
   display: inline-flex;
+
   align-items: center;
 
   gap: 10px;
 
+  flex-shrink: 0;
+
   color: var(--text);
 
   text-decoration: none;
-
-  flex-shrink: 0;
 }
 
 .brandIcon {
@@ -234,6 +234,7 @@
   color: var(--text);
 
   font-size: 0.65rem;
+
   font-weight: 950;
 
   letter-spacing: 0.18em;
@@ -241,6 +242,7 @@
 
 .nav {
   display: flex;
+
   align-items: center;
 
   gap: clamp(16px, 2.4vw, 32px);
@@ -254,6 +256,7 @@
   color: var(--muted);
 
   font-size: 0.62rem;
+
   font-weight: 850;
 
   letter-spacing: 0.1em;
@@ -272,15 +275,16 @@
 
   left: 0;
   right: 0;
+
   bottom: -8px;
 
   height: 1px;
 
+  background: var(--blue);
+
   transform: scaleX(0);
 
   transform-origin: center;
-
-  background: var(--blue);
 
   transition: transform 180ms ease;
 }
@@ -298,11 +302,13 @@
   height: 36px;
 
   display: grid;
+
   place-items: center;
 
   flex-shrink: 0;
 
   border: 1px solid var(--line);
+
   border-radius: 50%;
 
   background: rgba(255, 255, 255, 0.025);
@@ -340,6 +346,7 @@
   min-height: 690px;
 
   display: flex;
+
   align-items: center;
 
   overflow: hidden;
@@ -353,6 +360,7 @@
   content: "";
 
   position: absolute;
+
   inset: 0;
 
   z-index: -3;
@@ -377,6 +385,7 @@
 
   left: 0;
   right: 0;
+
   bottom: 0;
 
   height: 180px;
@@ -407,6 +416,7 @@
   color: var(--blue-bright);
 
   font-size: 0.58rem;
+
   font-weight: 950;
 
   letter-spacing: 0.18em;
@@ -572,7 +582,8 @@
     0 0 28px rgba(21, 157, 255, 0.6),
     0 0 65px rgba(21, 157, 255, 0.35);
 
-  animation: beamFlash 8s linear infinite;
+  animation:
+    beamFlash 8s linear infinite;
 }
 
 .heroOrb {
@@ -582,6 +593,7 @@
   height: 430px;
 
   right: -140px;
+
   top: 80px;
 
   z-index: -2;
@@ -598,7 +610,8 @@
 
   filter: blur(2px);
 
-  animation: orbDrift 12s ease-in-out infinite alternate;
+  animation:
+    orbDrift 12s ease-in-out infinite alternate;
 }
 
 /* =========================================================
@@ -627,6 +640,7 @@
   color: var(--blue-bright);
 
   font-size: 0.56rem;
+
   font-weight: 950;
 
   letter-spacing: 0.16em;
@@ -677,6 +691,7 @@
   min-height: 290px;
 
   display: flex;
+
   flex-direction: column;
 
   padding: 30px;
@@ -756,6 +771,7 @@
   color: var(--blue-bright);
 
   font-size: 0.6rem;
+
   font-weight: 950;
 
   letter-spacing: 0.16em;
@@ -767,6 +783,7 @@
   color: var(--text);
 
   font-size: 1.05rem;
+
   font-weight: 900;
 
   letter-spacing: -0.025em;
@@ -801,6 +818,7 @@
   min-height: 440px;
 
   display: flex;
+
   flex-direction: column;
 
   overflow: hidden;
@@ -870,7 +888,9 @@
   z-index: 1;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 20px;
@@ -880,6 +900,7 @@
   color: var(--blue-bright);
 
   font-size: 0.6rem;
+
   font-weight: 950;
 
   letter-spacing: 0.15em;
@@ -897,6 +918,7 @@
   color: var(--blue-bright);
 
   font-size: 0.48rem;
+
   font-weight: 950;
 
   letter-spacing: 0.12em;
@@ -918,6 +940,7 @@
   color: var(--faint);
 
   font-size: 0.52rem;
+
   font-weight: 900;
 
   letter-spacing: 0.13em;
@@ -953,7 +976,9 @@
   z-index: 1;
 
   display: flex;
+
   align-items: flex-end;
+
   justify-content: space-between;
 
   gap: 20px;
@@ -967,6 +992,7 @@
 
 .tagRow {
   display: flex;
+
   flex-wrap: wrap;
 
   gap: 7px;
@@ -982,6 +1008,7 @@
   color: var(--faint);
 
   font-size: 0.48rem;
+
   font-weight: 850;
 
   letter-spacing: 0.06em;
@@ -989,17 +1016,24 @@
 
 .projectActions {
   display: flex;
+
   flex-wrap: wrap;
 
   gap: 10px;
 }
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
 
 .primaryAction,
 .secondaryAction {
   min-height: 42px;
 
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
 
   gap: 9px;
@@ -1009,6 +1043,7 @@
   border-radius: 7px;
 
   font-size: 0.55rem;
+
   font-weight: 950;
 
   letter-spacing: 0.1em;
@@ -1033,9 +1068,9 @@
 .primaryAction:hover {
   transform: translateY(-2px);
 
-  background: var(--blue-bright);
-
   border-color: var(--blue-bright);
+
+  background: var(--blue-bright);
 }
 
 .secondaryAction {
@@ -1058,6 +1093,7 @@
 
 /* =========================================================
    INTEL CORNER
+   PRIVATE CASHFLOW GATEWAY
    ========================================================= */
 
 .intelPanel {
@@ -1140,7 +1176,9 @@
 
 .intelHeader {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 20px;
@@ -1152,6 +1190,7 @@
 
 .intelHeader > div {
   display: flex;
+
   align-items: center;
 
   gap: 12px;
@@ -1161,6 +1200,7 @@
   color: var(--blue-bright);
 
   font-size: 0.66rem;
+
   font-weight: 950;
 
   letter-spacing: 0.16em;
@@ -1170,6 +1210,7 @@
   color: var(--faint);
 
   font-size: 0.57rem;
+
   font-weight: 900;
 
   letter-spacing: 0.13em;
@@ -1187,6 +1228,7 @@
   color: var(--blue-bright);
 
   font-size: 0.52rem;
+
   font-weight: 900;
 
   letter-spacing: 0.12em;
@@ -1207,11 +1249,12 @@
 }
 
 .intelEyebrow {
-  margin-bottom: 13px !important;
+  margin: 0 0 13px !important;
 
   color: var(--blue-bright);
 
   font-size: 0.57rem;
+
   font-weight: 900;
 
   letter-spacing: 0.15em;
@@ -1219,6 +1262,8 @@
 
 .intelTitle {
   margin: 0;
+
+  color: var(--text);
 
   font-size: clamp(2.3rem, 6vw, 5rem);
 
@@ -1230,7 +1275,7 @@
 .intelDescription {
   max-width: 650px;
 
-  margin-top: 24px !important;
+  margin: 24px 0 0 !important;
 
   color: var(--muted);
 
@@ -1281,6 +1326,7 @@
   color: var(--faint);
 
   font-size: 0.5rem;
+
   font-weight: 900;
 
   letter-spacing: 0.14em;
@@ -1288,7 +1334,9 @@
 
 .intelFooter {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 20px;
@@ -1300,6 +1348,7 @@
 
 .intelSignal {
   display: inline-flex;
+
   align-items: center;
 
   gap: 9px;
@@ -1307,6 +1356,7 @@
   color: var(--faint);
 
   font-size: 0.55rem;
+
   font-weight: 900;
 
   letter-spacing: 0.1em;
@@ -1328,7 +1378,9 @@
   min-height: 42px;
 
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
 
   gap: 8px;
@@ -1344,6 +1396,7 @@
   color: var(--blue-bright);
 
   font-size: 0.58rem;
+
   font-weight: 900;
 
   letter-spacing: 0.12em;
@@ -1413,6 +1466,8 @@
 
   max-width: 850px;
 
+  color: var(--text);
+
   font-size: clamp(3rem, 8vw, 7.5rem);
 
   line-height: 0.86;
@@ -1440,6 +1495,7 @@
   position: relative;
 
   display: flex;
+
   flex-wrap: wrap;
 
   gap: 10px;
@@ -1461,7 +1517,9 @@
   min-height: 100px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 20px;
@@ -1469,6 +1527,7 @@
   color: var(--faint);
 
   font-size: 0.55rem;
+
   font-weight: 800;
 
   letter-spacing: 0.09em;
@@ -1487,7 +1546,7 @@
 }
 
 /* =========================================================
-   FOCUS
+   ACCESSIBILITY
    ========================================================= */
 
 .button:focus-visible,
@@ -1511,6 +1570,7 @@
 @keyframes beamFlash {
   0% {
     transform: translateX(-20vw);
+
     opacity: 0;
   }
 
@@ -1528,17 +1588,22 @@
 
   100% {
     transform: translateX(120vw);
+
     opacity: 0;
   }
 }
 
 @keyframes orbDrift {
   from {
-    transform: translate3d(0, 0, 0) scale(1);
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
   }
 
   to {
-    transform: translate3d(-30px, 24px, 0) scale(1.08);
+    transform:
+      translate3d(-30px, 24px, 0)
+      scale(1.08);
   }
 }
 
@@ -1738,6 +1803,10 @@
     width: 100%;
   }
 
+  /* -------------------------------------------------------
+     INTEL CORNER MOBILE
+     ------------------------------------------------------- */
+
   .intelBody {
     grid-template-columns: 1fr;
 
@@ -1778,6 +1847,7 @@
     min-height: 90px;
 
     align-items: flex-start;
+
     justify-content: center;
 
     flex-direction: column;
@@ -1787,7 +1857,7 @@
 }
 
 /* =========================================================
-   SMALL PHONE
+   SMALL PHONES
    ========================================================= */
 
 @media (max-width: 430px) {
@@ -1907,14 +1977,12 @@
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  .page *,
+  .page *::before,
+  .page *::after {
     scroll-behavior: auto !important;
-
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-
     transition-duration: 0.01ms !important;
   }
 
@@ -1925,13 +1993,11 @@
 }
 
 /* =========================================================
-   ACCESSIBILITY
+   HIGH CONTRAST
    ========================================================= */
 
 @media (prefers-contrast: more) {
-  .nav a,
-  .muted,
-  .faint {
+  .nav a {
     color: var(--text);
   }
 
