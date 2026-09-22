@@ -20,11 +20,11 @@ export default function PortfolioPage() {
             <Link
               href="/"
               className={styles.brand}
-              aria-label="XYZ Tech home"
+              aria-label="XYZ home"
             >
               <span className={styles.brandMark}>
                 <img
-                  src="/icon.png"
+                  src="/XYZ_Official_Icon.png"
                   alt="XYZ"
                   className={styles.brandIcon}
                   width={36}
@@ -39,7 +39,7 @@ export default function PortfolioPage() {
               <a href="#about">About</a>
               <a href="#skills">Skills</a>
               <a href="#projects">Projects</a>
-              <a href="#education">Education</a>
+              <a href="#intel">Intel Corner</a>
               <a href="#contact">Contact</a>
             </nav>
 
@@ -209,9 +209,7 @@ export default function PortfolioPage() {
           </div>
 
           <div className={styles.projectGrid}>
-            {/* =================================================
-                PROJECT 01 — WEATHER
-                ================================================= */}
+            {/* PROJECT 01 — WEATHER */}
 
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
@@ -220,10 +218,7 @@ export default function PortfolioPage() {
                 </span>
 
                 <span className={styles.projectSignal}>
-                  <span
-                    className={styles.signalDot}
-                    aria-hidden="true"
-                  />
+                  <span className={styles.signalDot} aria-hidden="true" />
                   SYSTEM IN BUILD
                 </span>
               </div>
@@ -240,10 +235,7 @@ export default function PortfolioPage() {
                   </p>
                 </div>
 
-                <div
-                  className={styles.projectMark}
-                  aria-hidden="true"
-                >
+                <div className={styles.projectMark} aria-hidden="true">
                   ∞
                 </div>
               </div>
@@ -260,11 +252,7 @@ export default function PortfolioPage() {
                 >
                   <span
                     className={styles.progressFill}
-                    style={
-                      {
-                        "--progress": "72%",
-                      } as CSSProperties
-                    }
+                    style={{ "--progress": "72%" } as CSSProperties}
                   />
 
                   <span
@@ -313,9 +301,7 @@ export default function PortfolioPage() {
               </div>
             </article>
 
-            {/* =================================================
-                PROJECT 02 — AI
-                ================================================= */}
+            {/* PROJECT 02 — AI */}
 
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
@@ -324,10 +310,7 @@ export default function PortfolioPage() {
                 </span>
 
                 <span className={styles.projectSignal}>
-                  <span
-                    className={styles.signalDot}
-                    aria-hidden="true"
-                  />
+                  <span className={styles.signalDot} aria-hidden="true" />
                   IN DEVELOPMENT
                 </span>
               </div>
@@ -343,10 +326,7 @@ export default function PortfolioPage() {
                   </p>
                 </div>
 
-                <div
-                  className={styles.projectMark}
-                  aria-hidden="true"
-                >
+                <div className={styles.projectMark} aria-hidden="true">
                   AI
                 </div>
               </div>
@@ -360,11 +340,7 @@ export default function PortfolioPage() {
                 <div className={styles.progressTrack}>
                   <span
                     className={styles.progressFill}
-                    style={
-                      {
-                        "--progress": "48%",
-                      } as CSSProperties
-                    }
+                    style={{ "--progress": "48%" } as CSSProperties}
                   />
 
                   <span
@@ -402,9 +378,7 @@ export default function PortfolioPage() {
               </div>
             </article>
 
-            {/* =================================================
-                PROJECT 03 — GIS
-                ================================================= */}
+            {/* PROJECT 03 — SPATIAL */}
 
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
@@ -413,10 +387,7 @@ export default function PortfolioPage() {
                 </span>
 
                 <span className={styles.projectSignal}>
-                  <span
-                    className={styles.signalDot}
-                    aria-hidden="true"
-                  />
+                  <span className={styles.signalDot} aria-hidden="true" />
                   BUILDING
                 </span>
               </div>
@@ -433,10 +404,7 @@ export default function PortfolioPage() {
                   </p>
                 </div>
 
-                <div
-                  className={styles.projectMark}
-                  aria-hidden="true"
-                >
+                <div className={styles.projectMark} aria-hidden="true">
                   GIS
                 </div>
               </div>
@@ -450,11 +418,7 @@ export default function PortfolioPage() {
                 <div className={styles.progressTrack}>
                   <span
                     className={styles.progressFill}
-                    style={
-                      {
-                        "--progress": "36%",
-                      } as CSSProperties
-                    }
+                    style={{ "--progress": "36%" } as CSSProperties}
                   />
 
                   <span
@@ -492,9 +456,7 @@ export default function PortfolioPage() {
               </div>
             </article>
 
-            {/* =================================================
-                PROJECT 04 — DATA INTELLIGENCE
-                ================================================= */}
+            {/* PROJECT 04 — DATA */}
 
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
@@ -503,10 +465,7 @@ export default function PortfolioPage() {
                 </span>
 
                 <span className={styles.projectSignal}>
-                  <span
-                    className={styles.signalDot}
-                    aria-hidden="true"
-                  />
+                  <span className={styles.signalDot} aria-hidden="true" />
                   SYSTEM ONLINE
                 </span>
               </div>
@@ -523,10 +482,7 @@ export default function PortfolioPage() {
                   </p>
                 </div>
 
-                <div
-                  className={styles.projectMark}
-                  aria-hidden="true"
-                >
+                <div className={styles.projectMark} aria-hidden="true">
                   DI
                 </div>
               </div>
@@ -540,11 +496,7 @@ export default function PortfolioPage() {
                 <div className={styles.progressTrack}>
                   <span
                     className={styles.progressFill}
-                    style={
-                      {
-                        "--progress": "18%",
-                      } as CSSProperties
-                    }
+                    style={{ "--progress": "18%" } as CSSProperties}
                   />
 
                   <span
@@ -597,37 +549,94 @@ export default function PortfolioPage() {
       </section>
 
       {/* =====================================================
-          EDUCATION
+          INTEL CORNER
           ===================================================== */}
 
       <section
         className={styles.section}
-        id="education"
-        aria-labelledby="education-title"
+        id="intel"
+        aria-labelledby="intel-title"
       >
         <div className={styles.shell}>
           <p className={styles.sectionLabel}>
-            03 — EDUCATION
+            03 — INTEL CORNER
           </p>
 
-          <h2
-            className={styles.educationTitle}
-            id="education-title"
-          >
-            Kibabii University
-          </h2>
+          <div className={styles.intelPanel}>
+            <div className={styles.intelHeader}>
+              <div>
+                <span className={styles.intelNumber}>
+                  06
+                </span>
 
-          <p className={styles.educationDegree}>
-            Bachelor of Education (Arts)
-          </p>
+                <span className={styles.intelCategory}>
+                  FINANCIAL INTELLIGENCE
+                </span>
+              </div>
 
-          <p className={styles.educationDetail}>
-            Geography &amp; Kiswahili
-          </p>
+              <span className={styles.intelStatus}>
+                RESTRICTED
+              </span>
+            </div>
 
-          <p className={styles.educationDetail}>
-            Graduation: 2027
-          </p>
+            <div className={styles.intelBody}>
+              <div>
+                <p className={styles.intelEyebrow}>
+                  PRIVATE PLATFORM SERVICE
+                </p>
+
+                <h2
+                  className={styles.intelTitle}
+                  id="intel-title"
+                >
+                  KIMGENIUS CashFlow
+                </h2>
+
+                <p className={styles.intelDescription}>
+                  A private financial intelligence platform
+                  designed for cash movement, revenue,
+                  expenses, transactions, business analysis
+                  and future financial workflows.
+                </p>
+              </div>
+
+              <div className={styles.intelLock}>
+                <span
+                  className={styles.intelLockIcon}
+                  aria-hidden="true"
+                >
+                  ◈
+                </span>
+
+                <span className={styles.intelLockLabel}>
+                  PRIVATE
+                </span>
+              </div>
+            </div>
+
+            <div className={styles.intelFooter}>
+              <div className={styles.intelSignal}>
+                <span
+                  className={styles.intelSignalDot}
+                  aria-hidden="true"
+                />
+
+                <span>
+                  ACCESS CONTROL REQUIRED
+                </span>
+              </div>
+
+              <button
+                type="button"
+                className={styles.encryptedButton}
+                disabled
+                aria-label="KIMGENIUS CashFlow encrypted private system"
+              >
+                <span aria-hidden="true">◆</span>
+                ENCRYPTED
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -699,7 +708,9 @@ export default function PortfolioPage() {
 
       <footer className={styles.footer}>
         <div className={`${styles.shell} ${styles.footerInner}`}>
-          <span>© 2026 KIMGENIUS • XYZ TECH</span>
+          <span>
+            © 2026 KIMGENIUS • XYZ TECH
+          </span>
 
           <a href="#about">
             Back to the Top ↑

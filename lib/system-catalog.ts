@@ -195,46 +195,14 @@ export const kimgeniusSystems: KIMGENIUSSystem[] = [
       "Digital media",
     ],
   },
-
-  {
-    id: "cashflow",
-    number: "06",
-    name: "KIMGENIUS CashFlow",
-    category: "FINANCIAL INTELLIGENCE",
-    status: "PLANNED",
-    description:
-      "A future financial intelligence system for tracking cash movement, revenue, expenses, transactions, and financial analysis.",
-    input: [
-      "Revenue",
-      "Expenses",
-      "Transactions",
-      "Invoices",
-      "Payments",
-    ],
-    engine: [
-      "Transaction processing",
-      "Classification",
-      "Cashflow analysis",
-      "Forecasting",
-    ],
-    output: [
-      "Cash position",
-      "Revenue analysis",
-      "Expense analysis",
-      "Cashflow forecasts",
-    ],
-    capabilities: [
-      "Cashflow tracking",
-      "Financial analytics",
-      "Forecasting",
-      "Business intelligence",
-    ],
-  },
 ];
 
 export function getSystemById(id: string) {
-  return kimgeniusSystems.find((system) => system.id === id);
+  return kimgeniusSystems.find(
+    (system) => system.id === id,
+  );
 }
+
 export function getSystemsByStatus(status: SystemStatus) {
   return kimgeniusSystems.filter(
     (system) => system.status === status,
