@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import type { CSSProperties } from "react";
 import Link from "next/link";
@@ -207,6 +207,84 @@ export default function PortfolioPage() {
           </div>
 
           <div className={styles.projectGrid}>
+            {/* =================================================
+                PROJECT 04 — CASHFLOW
+                PRIVATE FINANCIAL SYSTEM
+                ================================================= */}
+            <article className={styles.projectCard}>
+              <div className={styles.projectTop}>
+                <span className={styles.projectNumber}>
+                  PROJECT 04
+                </span>
+
+                <span className={styles.projectSignal}>
+                  <span
+                    className={styles.signalDot}
+                    aria-hidden="true"
+                  />
+                  PRIVATE
+                </span>
+              </div>
+
+              <div className={styles.projectIdentity}>
+                <div className={styles.projectCopy}>
+                  <h3>KIMGENIUS CashFlow</h3>
+
+                  <p className={styles.projectDescription}>
+                    A private financial and business intelligence
+                    platform reserved for authenticated use, with
+                    PIN-based access and encrypted data architecture.
+                  </p>
+                </div>
+
+                <div
+                  className={styles.projectMark}
+                  aria-hidden="true"
+                >
+                  CF
+                </div>
+              </div>
+
+              <div className={styles.progressBlock}>
+                <div className={styles.progressMeta}>
+                  <span>PRIVATE PLATFORM</span>
+                  <span>ARCHITECTURE RESERVED</span>
+                </div>
+
+                <div
+                  className={styles.progressTrack}
+                  aria-label="CashFlow private platform architecture reserved"
+                >
+                  <span
+                    className={styles.progressFill}
+                    style={{ "--progress": "18%" } as CSSProperties}
+                  />
+                </div>
+
+                <div className={styles.progressCaption}>
+                  <span>
+                    PIN ACCESS • ENCRYPTION • AUTHORIZATION • PROTECTED API
+                  </span>
+                </div>
+              </div>
+
+              <div className={styles.techCore}>
+                <span>PIN ACCESS</span>
+                <span>ENCRYPTION</span>
+                <span>PRIVATE DATA</span>
+                <span>AUTHORIZATION</span>
+                <span>PROTECTED API</span>
+              </div>
+
+              <div className={styles.projectActions}>
+                <span className={styles.primaryAction}>
+                  <span aria-hidden="true">[</span>
+                  PRIVATE SYSTEM
+                  <span aria-hidden="true">]</span>
+                </span>
+              </div>
+            </article>
+
             {/* =================================================
                 PROJECT 01 ΓÇö WEATHER
                 ================================================= */}
