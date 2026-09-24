@@ -78,11 +78,11 @@ export default function PortfolioPage() {
 
             <div className={styles.heroActions}>
               <a href="#projects" className={styles.primaryButton}>
-                Explore Work
+                Explore Work →
               </a>
 
               <a href="#contact" className={styles.secondaryButton}>
-                Connect
+                Connect →
               </a>
             </div>
           </div>
@@ -154,8 +154,8 @@ export default function PortfolioPage() {
 
             <p className={styles.sectionDescription}>
               A portfolio of intelligent systems spanning weather intelligence,
-              artificial intelligence, spatial intelligence and experimental
-              digital infrastructure.
+              artificial intelligence, spatial intelligence, data intelligence,
+              system discovery and private financial infrastructure.
             </p>
           </div>
 
@@ -212,7 +212,7 @@ export default function PortfolioPage() {
 
                 <div className={styles.projectActions}>
                   <Link href="/weather" className={styles.projectButton}>
-                    OPEN SYSTEM
+                    OPEN SYSTEM →
                   </Link>
 
                   <a
@@ -221,7 +221,7 @@ export default function PortfolioPage() {
                     rel="noreferrer"
                     className={styles.projectButtonSecondary}
                   >
-                    SOURCE
+                    SOURCE →
                   </a>
                 </div>
               </div>
@@ -278,7 +278,7 @@ export default function PortfolioPage() {
 
                 <div className={styles.projectActions}>
                   <Link href="/ai" className={styles.projectButton}>
-                    OPEN SYSTEM
+                    OPEN SYSTEM →
                   </Link>
                 </div>
               </div>
@@ -336,8 +336,181 @@ export default function PortfolioPage() {
                     href="/spatial-intelligence"
                     className={styles.projectButton}
                   >
-                    OPEN SYSTEM
+                    OPEN SYSTEM →
                   </Link>
+                </div>
+              </div>
+            </article>
+
+            {/* PROJECT 04 — DATA INTELLIGENCE */}
+            <article className={styles.projectCard}>
+              <div className={styles.projectTop}>
+                <div>
+                  <span className={styles.projectNumber}>PROJECT 04</span>
+                  <span className={styles.projectStatus}>
+                    SYSTEM IN BUILD
+                  </span>
+                </div>
+
+                <div className={styles.projectMark} aria-hidden="true">
+                  DATA
+                </div>
+              </div>
+
+              <div className={styles.projectBody}>
+                <h3>Data Intelligence</h3>
+
+                <p>
+                  A data intelligence system focused on transforming structured
+                  information into analytical views, patterns, insights and
+                  decision-support outputs.
+                </p>
+
+                <div className={styles.projectProgress}>
+                  <div className={styles.progressHeader}>
+                    <span>Progress</span>
+                    <strong>30%</strong>
+                  </div>
+
+                  <div className={styles.progressTrack}>
+                    <div
+                      className={styles.progressFill}
+                      style={{ width: "30%" }}
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.projectMeta}>
+                  DATA • ANALYTICS • VISUALIZATION • INSIGHTS
+                </div>
+
+                <div className={styles.projectTech}>
+                  <span>DATA ANALYSIS</span>
+                  <span>VISUALIZATION</span>
+                  <span>INSIGHTS</span>
+                  <span>DECISION SUPPORT</span>
+                </div>
+
+                <div className={styles.projectActions}>
+                  <Link
+                    href="/data-intelligence"
+                    className={styles.projectButton}
+                  >
+                    OPEN SYSTEM →
+                  </Link>
+                </div>
+              </div>
+            </article>
+
+            {/* PROJECT 05 — SYSTEM REGISTRY */}
+            <article className={styles.projectCard}>
+              <div className={styles.projectTop}>
+                <div>
+                  <span className={styles.projectNumber}>PROJECT 05</span>
+                  <span className={styles.projectStatus}>
+                    SYSTEM ARCHITECTURE
+                  </span>
+                </div>
+
+                <div className={styles.projectMark} aria-hidden="true">
+                  XYZ
+                </div>
+              </div>
+
+              <div className={styles.projectBody}>
+                <h3>System Registry</h3>
+
+                <p>
+                  The public discovery layer for KIMGENIUS systems, connecting
+                  intelligent applications through a structured system
+                  registry and discovery architecture.
+                </p>
+
+                <div className={styles.projectProgress}>
+                  <div className={styles.progressHeader}>
+                    <span>Progress</span>
+                    <strong>64%</strong>
+                  </div>
+
+                  <div className={styles.progressTrack}>
+                    <div
+                      className={styles.progressFill}
+                      style={{ width: "64%" }}
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.projectMeta}>
+                  SYSTEMS • DISCOVERY • REGISTRY • ARCHITECTURE
+                </div>
+
+                <div className={styles.projectTech}>
+                  <span>SYSTEM REGISTRY</span>
+                  <span>SYSTEM DISCOVERY</span>
+                  <span>API</span>
+                  <span>ARCHITECTURE</span>
+                </div>
+
+                <div className={styles.projectActions}>
+                  <Link href="/systems" className={styles.projectButton}>
+                    EXPLORE SYSTEMS →
+                  </Link>
+                </div>
+              </div>
+            </article>
+
+            {/* PROJECT 06 — CASHFLOW */}
+            <article className={styles.projectCard}>
+              <div className={styles.projectTop}>
+                <div>
+                  <span className={styles.projectNumber}>PROJECT 06</span>
+                  <span className={styles.projectStatus}>PRIVATE</span>
+                </div>
+
+                <div className={styles.projectMark} aria-hidden="true">
+                  CF
+                </div>
+              </div>
+
+              <div className={styles.projectBody}>
+                <h3>KIMGENIUS CashFlow</h3>
+
+                <p>
+                  A private financial and business intelligence platform
+                  reserved for authenticated use, with PIN-based access and
+                  encrypted data architecture.
+                </p>
+
+                <div className={styles.projectProgress}>
+                  <div className={styles.progressHeader}>
+                    <span>Architecture Progress</span>
+                    <strong>18%</strong>
+                  </div>
+
+                  <div className={styles.progressTrack}>
+                    <div
+                      className={styles.progressFill}
+                      style={{ width: "18%" }}
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.projectMeta}>
+                  PRIVATE PLATFORM • ARCHITECTURE RESERVED
+                </div>
+
+                <div className={styles.projectTech}>
+                  <span>PIN ACCESS</span>
+                  <span>ENCRYPTION</span>
+                  <span>PRIVATE DATA</span>
+                  <span>AUTHORIZATION</span>
+                  <span>PROTECTED API</span>
+                </div>
+
+                <div className={styles.projectActions}>
+                  <span className={styles.projectButtonSecondary}>
+                    PRIVATE SYSTEM
+                  </span>
                 </div>
               </div>
             </article>
@@ -375,88 +548,12 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* PRIVATE CASHFLOW PLATFORM */}
-      <section className={styles.section} id="cashflow">
-        <div className={styles.shell}>
-          <div className={styles.sectionHeading}>
-            <p className={styles.sectionLabel}>
-              04 — PRIVATE PLATFORM
-            </p>
-
-            <h2 className={styles.sectionTitle}>
-              KIMGENIUS CashFlow.
-            </h2>
-
-            <p className={styles.sectionDescription}>
-              A private financial and business intelligence platform reserved
-              for authenticated use, with PIN-based access and encrypted data
-              architecture.
-            </p>
-          </div>
-
-          <article className={styles.projectCard}>
-            <div className={styles.projectTop}>
-              <div>
-                <span className={styles.projectNumber}>PROJECT 04</span>
-                <span className={styles.projectStatus}>PRIVATE</span>
-              </div>
-
-              <div className={styles.projectMark} aria-hidden="true">
-                CF
-              </div>
-            </div>
-
-            <div className={styles.projectBody}>
-              <h3>KIMGENIUS CashFlow</h3>
-
-              <p>
-                A private financial and business intelligence platform
-                reserved for authenticated use, with PIN-based access and
-                encrypted data architecture.
-              </p>
-
-              <div className={styles.projectProgress}>
-                <div className={styles.progressHeader}>
-                  <span>Architecture Progress</span>
-                  <strong>18%</strong>
-                </div>
-
-                <div className={styles.progressTrack}>
-                  <div
-                    className={styles.progressFill}
-                    style={{ width: "18%" }}
-                  />
-                </div>
-              </div>
-
-              <div className={styles.projectMeta}>
-                PRIVATE PLATFORM • ARCHITECTURE RESERVED
-              </div>
-
-              <div className={styles.projectTech}>
-                <span>PIN ACCESS</span>
-                <span>ENCRYPTION</span>
-                <span>PRIVATE DATA</span>
-                <span>AUTHORIZATION</span>
-                <span>PROTECTED API</span>
-              </div>
-
-              <div className={styles.projectActions}>
-                <span className={styles.projectButtonSecondary}>
-                  PRIVATE SYSTEM
-                </span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
       <section className={styles.section} id="contact">
         <div className={styles.shell}>
           <div className={styles.contactCard}>
             <div>
               <p className={styles.sectionLabel}>
-                05 — CONNECT
+                04 — CONNECT
               </p>
 
               <h2 className={styles.contactTitle}>
@@ -479,11 +576,19 @@ export default function PortfolioPage() {
               </a>
 
               <a
+                href="https://wa.me/254791896869"
+                target="_blank"
+                rel="noreferrer"
+              >
+                WhatsApp →
+              </a>
+
+              <a
                 href="https://github.com/ki995483"
                 target="_blank"
                 rel="noreferrer"
               >
-                GitHub
+                GitHub →
               </a>
 
               <a
@@ -491,7 +596,7 @@ export default function PortfolioPage() {
                 target="_blank"
                 rel="noreferrer"
               >
-                kimgenius.xyz
+                kimgenius.xyz →
               </a>
             </div>
           </div>
@@ -501,9 +606,7 @@ export default function PortfolioPage() {
       <footer className={styles.footer}>
         <div className={styles.shell}>
           <div className={styles.footerInner}>
-            <span>
-              © 2026 KIMGENIUS • XYZ TECH
-            </span>
+            <span>© 2026 KIMGENIUS • XYZ TECH</span>
 
             <a href="#about">
               Back to the Top ↑
