@@ -3,39 +3,34 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import { useState } from "react";
+
 import styles from "./portfolio.module.css";
 
 export default function PortfolioPage() {
   const [darkMode, setDarkMode] = useState(true);
 
-  return (
-    <main className={`${styles.page} ${darkMode ? styles.dark : styles.light}`}>
-      {/* =====================================================
-          HEADER
-          ===================================================== */}
+  const pageStyle = {
+    "--portfolio-accent": "#159dff",
+    "--portfolio-accent-soft": "#46b5ff",
+  } as CSSProperties;
 
+  return (
+    <main
+      className={`${styles.page} ${darkMode ? styles.dark : styles.light}`}
+      style={pageStyle}
+    >
       <header className={styles.header}>
         <div className={styles.shell}>
           <div className={styles.headerInner}>
-            <Link
-              href="/"
-              className={styles.brand}
-              aria-label="XYZ Tech home"
-            >
-              <span className={styles.brandMark}>
-                <img
-                  src="/icon.png"
-                  alt="XYZ"
-                  className={styles.brandIcon}
-                  width={36}
-                  height={36}
-                />
+            <Link href="/" className={styles.brand} aria-label="XYZ Home">
+              <span className={styles.brandIcon}>
+                <img src="/icon.png" alt="XYZ" />
               </span>
 
-              <strong>TECH</strong>
+              <span className={styles.brandText}>TECH</span>
             </Link>
 
-            <nav className={styles.nav} aria-label="Portfolio navigation">
+            <nav className={styles.nav} aria-label="Primary navigation">
               <a href="#about">About</a>
               <a href="#skills">Skills</a>
               <a href="#projects">Projects</a>
@@ -48,73 +43,45 @@ export default function PortfolioPage() {
               className={styles.themeToggle}
               onClick={() => setDarkMode((current) => !current)}
               aria-label={
-                darkMode
-                  ? "Switch to light mode"
-                  : "Switch to dark mode"
+                darkMode ? "Switch to light mode" : "Switch to dark mode"
               }
-              aria-pressed={darkMode}
             >
-              <span aria-hidden="true">
-                {darkMode ? "Γÿ╛" : "ΓÿÇ"}
-              </span>
+              {darkMode ? "☀️" : "🌙"}
             </button>
           </div>
         </div>
       </header>
 
-      {/* =====================================================
-          HERO
-          ===================================================== */}
-
-      <section
-        className={styles.hero}
-        id="about"
-        aria-labelledby="hero-title"
-      >
+      <section className={styles.hero} id="about">
         <div className={styles.heroBeam} aria-hidden="true">
-          <span className={styles.beamCore} />
-          <span className={styles.beamGlow} />
-          <span className={styles.beamFlash} />
+          <div className={styles.beamCore} />
+          <div className={styles.beamGlow} />
+          <div className={styles.beamFlash} />
         </div>
-
-        <div className={styles.heroOrb} aria-hidden="true" />
 
         <div className={styles.shell}>
           <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle} id="hero-title">
-              <span className={styles.heroGreeting}>Hi, I&apos;m</span>
+            <h1 className={styles.heroName}>KIMGENIUS</h1>
 
-              <strong className={styles.heroName}>
-                KIMGENIUS
-              </strong>
+            <p className={styles.heroStatement}>
+              I BUILD. I SOLVE. I INNOVATE.
+            </p>
 
-              <em className={styles.heroStatement}>
-                I BUILD. I SOLVE. I INNOVATE.
-              </em>
-            </h1>
-
-            <div className={styles.heroText}>
-              <strong className={styles.heroLead}>
-                A forward-thinking technologist:
-              </strong>
-
-              <p className={styles.heroDescription}>
-                A Technologist polymath; a Spatial Intelligence
-                connoisseur; an AI Automation savant; and a Web
-                Systems builder focused on intelligent digital
-                experiences.
-              </p>
+            <div className={styles.heroIntro}>
+              <strong>A forward-thinking technologist:</strong>{" "}
+              <span>
+                A Technologist polymath; a Spatial Intelligence connoisseur; an
+                AI Automation savant; and a Web Systems builder focused on
+                intelligent digital experiences.
+              </span>
             </div>
 
-            <div className={styles.actions}>
-              <a href="#projects" className={styles.button}>
+            <div className={styles.heroActions}>
+              <a href="#projects" className={styles.primaryButton}>
                 Explore Work
               </a>
 
-              <a
-                href="#contact"
-                className={`${styles.button} ${styles.buttonSecondary}`}
-              >
+              <a href="#contact" className={styles.secondaryButton}>
                 Connect
               </a>
             </div>
@@ -122,153 +89,351 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* =====================================================
-          TECHNOLOGY DOMAINS
-          ===================================================== */}
-
-      <section
-        className={styles.section}
-        id="skills"
-        aria-labelledby="skills-title"
-      >
+      <section className={styles.section} id="skills">
         <div className={styles.shell}>
-          <p className={styles.sectionLabel}>
-            01 ΓÇö TECHNOLOGY DOMAINS
-          </p>
+          <div className={styles.sectionHeading}>
+            <p className={styles.sectionLabel}>
+              01 — TECHNOLOGY DOMAINS
+            </p>
+
+            <h2 className={styles.sectionTitle}>
+              Intelligence across disciplines.
+            </h2>
+          </div>
 
           <div className={styles.domainGrid}>
             <article className={styles.domainCard}>
               <span className={styles.domainNumber}>01</span>
 
-              <h2 id="skills-title">
-                Artificial Intelligence
-              </h2>
-
-              <p>
-                AI-assisted workflows, prompt engineering,
-                intelligent automation concepts, research
-                systems and emerging AI interfaces.
-              </p>
+              <div>
+                <h3>Artificial Intelligence</h3>
+                <p>
+                  AI systems, prompt engineering, automation concepts and
+                  intelligent workflow design.
+                </p>
+              </div>
             </article>
 
             <article className={styles.domainCard}>
               <span className={styles.domainNumber}>02</span>
 
-              <h2>Spatial Intelligence</h2>
-
-              <p>
-                GIS, ArcGIS, QGIS, digital mapping,
-                spatial analysis, cartography, environmental
-                interpretation and remote sensing fundamentals.
-              </p>
+              <div>
+                <h3>Spatial Intelligence</h3>
+                <p>
+                  GIS, remote sensing, spatial analysis, mapping and
+                  environmental intelligence.
+                </p>
+              </div>
             </article>
 
             <article className={styles.domainCard}>
               <span className={styles.domainNumber}>03</span>
 
-              <h2>Web Systems</h2>
-
-              <p>
-                HTML, CSS, JavaScript, React, Next.js,
-                Git, GitHub, responsive interfaces,
-                Vercel deployment and Cloudflare infrastructure.
-              </p>
+              <div>
+                <h3>Web Systems</h3>
+                <p>
+                  Modern web architecture, responsive interfaces, APIs and
+                  intelligent digital experiences.
+                </p>
+              </div>
             </article>
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          PROJECT SYSTEM
-          ===================================================== */}
-
-      <section
-        className={styles.projectsSection}
-        id="projects"
-        aria-labelledby="projects-title"
-      >
+      <section className={styles.section} id="projects">
         <div className={styles.shell}>
-          <div className={styles.sectionHeader}>
-            <div>
-              <p className={styles.eyebrow}>
-                KIMGENIUS PROJECT SYSTEM
-              </p>
-            </div>
+          <div className={styles.sectionHeading}>
+            <p className={styles.sectionLabel}>
+              02 — PROJECT SYSTEM
+            </p>
 
-            <div>
-              <h2 id="projects-title">Projects</h2>
+            <h2 className={styles.sectionTitle}>
+              Systems currently in motion.
+            </h2>
 
-              <p className={styles.sectionIntro}>
-                Intelligent digital systems built through
-                experimentation, engineering and continuous
-                refinement.
-              </p>
-            </div>
+            <p className={styles.sectionDescription}>
+              A portfolio of intelligent systems spanning weather intelligence,
+              artificial intelligence, spatial intelligence and experimental
+              digital infrastructure.
+            </p>
           </div>
 
           <div className={styles.projectGrid}>
-            {/* =================================================
-                PROJECT 04 — CASHFLOW
-                PRIVATE FINANCIAL SYSTEM
-                ================================================= */}
+            {/* PROJECT 01 — WEATHER */}
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
-                <span className={styles.projectNumber}>
-                  PROJECT 04
-                </span>
-
-                <span className={styles.projectSignal}>
-                  <span
-                    className={styles.signalDot}
-                    aria-hidden="true"
-                  />
-                  PRIVATE
-                </span>
-              </div>
-
-              <div className={styles.projectIdentity}>
-                <div className={styles.projectCopy}>
-                  <h3>KIMGENIUS CashFlow</h3>
-
-                  <p className={styles.projectDescription}>
-                    A private financial and business intelligence
-                    platform reserved for authenticated use, with
-                    PIN-based access and encrypted data architecture.
-                  </p>
-                </div>
-
-                <div
-                  className={styles.projectMark}
-                  aria-hidden="true"
-                >
-                  CF
-                </div>
-              </div>
-
-              <div className={styles.progressBlock}>
-                <div className={styles.progressMeta}>
-                  <span>PRIVATE PLATFORM</span>
-                  <span>ARCHITECTURE RESERVED</span>
-                </div>
-
-                <div
-                  className={styles.progressTrack}
-                  aria-label="CashFlow private platform architecture reserved"
-                >
-                  <span
-                    className={styles.progressFill}
-                    style={{ "--progress": "18%" } as CSSProperties}
-                  />
-                </div>
-
-                <div className={styles.progressCaption}>
-                  <span>
-                    PIN ACCESS • ENCRYPTION • AUTHORIZATION • PROTECTED API
+                <div>
+                  <span className={styles.projectNumber}>PROJECT 01</span>
+                  <span className={styles.projectStatus}>
+                    SYSTEM IN BUILD
                   </span>
                 </div>
+
+                <div className={styles.projectMark} aria-hidden="true">
+                  ☀️
+                </div>
               </div>
 
-              <div className={styles.techCore}>
+              <div className={styles.projectBody}>
+                <h3>Weather Intelligence</h3>
+
+                <p>
+                  A live environmental intelligence system combining location
+                  search, forecasting, analytical views and conversational
+                  exploration of weather data.
+                </p>
+
+                <div className={styles.projectProgress}>
+                  <div className={styles.progressHeader}>
+                    <span>Progress</span>
+                    <strong>72%</strong>
+                  </div>
+
+                  <div className={styles.progressTrack}>
+                    <div
+                      className={styles.progressFill}
+                      style={{ width: "72%" }}
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.projectMeta}>
+                  WEATHER API • SEARCH • ANALYTICS • UI
+                </div>
+
+                <div className={styles.projectTech}>
+                  <span>WEATHER API</span>
+                  <span>SEARCH</span>
+                  <span>ANALYTICS</span>
+                  <span>RESPONSIVE UI</span>
+                  <span>REAL-TIME DATA</span>
+                </div>
+
+                <div className={styles.projectActions}>
+                  <Link href="/weather" className={styles.projectButton}>
+                    OPEN SYSTEM
+                  </Link>
+
+                  <a
+                    href="https://github.com/ki995483"
+                    target="_blank"
+                    rel="noreferrer"
+                    className={styles.projectButtonSecondary}
+                  >
+                    SOURCE
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            {/* PROJECT 02 — AI */}
+            <article className={styles.projectCard}>
+              <div className={styles.projectTop}>
+                <div>
+                  <span className={styles.projectNumber}>PROJECT 02</span>
+                  <span className={styles.projectStatus}>
+                    IN DEVELOPMENT
+                  </span>
+                </div>
+
+                <div className={styles.projectMark} aria-hidden="true">
+                  AI
+                </div>
+              </div>
+
+              <div className={styles.projectBody}>
+                <h3>AI Learning Laboratory</h3>
+
+                <p>
+                  An experimental AI environment exploring artificial
+                  intelligence, prompt engineering, automation concepts and
+                  intelligent workflows.
+                </p>
+
+                <div className={styles.projectProgress}>
+                  <div className={styles.progressHeader}>
+                    <span>Progress</span>
+                    <strong>48%</strong>
+                  </div>
+
+                  <div className={styles.progressTrack}>
+                    <div
+                      className={styles.progressFill}
+                      style={{ width: "48%" }}
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.projectMeta}>
+                  AI • PROMPT ENGINEERING • AUTOMATION
+                </div>
+
+                <div className={styles.projectTech}>
+                  <span>ARTIFICIAL INTELLIGENCE</span>
+                  <span>PROMPT ENGINEERING</span>
+                  <span>AUTOMATION</span>
+                  <span>RESEARCH</span>
+                </div>
+
+                <div className={styles.projectActions}>
+                  <Link href="/ai" className={styles.projectButton}>
+                    OPEN SYSTEM
+                  </Link>
+                </div>
+              </div>
+            </article>
+
+            {/* PROJECT 03 — SPATIAL */}
+            <article className={styles.projectCard}>
+              <div className={styles.projectTop}>
+                <div>
+                  <span className={styles.projectNumber}>PROJECT 03</span>
+                  <span className={styles.projectStatus}>BUILDING</span>
+                </div>
+
+                <div className={styles.projectMark} aria-hidden="true">
+                  GIS
+                </div>
+              </div>
+
+              <div className={styles.projectBody}>
+                <h3>Spatial Intelligence Systems</h3>
+
+                <p>
+                  GIS and spatial intelligence work covering digital mapping,
+                  spatial analysis, environmental interpretation and remote
+                  sensing.
+                </p>
+
+                <div className={styles.projectProgress}>
+                  <div className={styles.progressHeader}>
+                    <span>Progress</span>
+                    <strong>36%</strong>
+                  </div>
+
+                  <div className={styles.progressTrack}>
+                    <div
+                      className={styles.progressFill}
+                      style={{ width: "36%" }}
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.projectMeta}>
+                  GIS • QGIS • ARCGIS • REMOTE SENSING
+                </div>
+
+                <div className={styles.projectTech}>
+                  <span>GIS</span>
+                  <span>QGIS</span>
+                  <span>ARCGIS</span>
+                  <span>REMOTE SENSING</span>
+                </div>
+
+                <div className={styles.projectActions}>
+                  <Link
+                    href="/spatial-intelligence"
+                    className={styles.projectButton}
+                  >
+                    OPEN SYSTEM
+                  </Link>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section} id="education">
+        <div className={styles.shell}>
+          <div className={styles.sectionHeading}>
+            <p className={styles.sectionLabel}>
+              03 — EDUCATION
+            </p>
+
+            <h2 className={styles.sectionTitle}>
+              Academic foundation.
+            </h2>
+          </div>
+
+          <article className={styles.educationCard}>
+            <div className={styles.educationYear}>2027</div>
+
+            <div className={styles.educationContent}>
+              <p className={styles.educationInstitution}>
+                Kibabii University
+              </p>
+
+              <h3>Bachelor of Education (Arts)</h3>
+
+              <p>Geography &amp; Kiswahili</p>
+
+              <span>Graduation: 2027</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      {/* PRIVATE CASHFLOW PLATFORM */}
+      <section className={styles.section} id="cashflow">
+        <div className={styles.shell}>
+          <div className={styles.sectionHeading}>
+            <p className={styles.sectionLabel}>
+              04 — PRIVATE PLATFORM
+            </p>
+
+            <h2 className={styles.sectionTitle}>
+              KIMGENIUS CashFlow.
+            </h2>
+
+            <p className={styles.sectionDescription}>
+              A private financial and business intelligence platform reserved
+              for authenticated use, with PIN-based access and encrypted data
+              architecture.
+            </p>
+          </div>
+
+          <article className={styles.projectCard}>
+            <div className={styles.projectTop}>
+              <div>
+                <span className={styles.projectNumber}>PROJECT 04</span>
+                <span className={styles.projectStatus}>PRIVATE</span>
+              </div>
+
+              <div className={styles.projectMark} aria-hidden="true">
+                CF
+              </div>
+            </div>
+
+            <div className={styles.projectBody}>
+              <h3>KIMGENIUS CashFlow</h3>
+
+              <p>
+                A private financial and business intelligence platform
+                reserved for authenticated use, with PIN-based access and
+                encrypted data architecture.
+              </p>
+
+              <div className={styles.projectProgress}>
+                <div className={styles.progressHeader}>
+                  <span>Architecture Progress</span>
+                  <strong>18%</strong>
+                </div>
+
+                <div className={styles.progressTrack}>
+                  <div
+                    className={styles.progressFill}
+                    style={{ width: "18%" }}
+                  />
+                </div>
+              </div>
+
+              <div className={styles.projectMeta}>
+                PRIVATE PLATFORM • ARCHITECTURE RESERVED
+              </div>
+
+              <div className={styles.projectTech}>
                 <span>PIN ACCESS</span>
                 <span>ENCRYPTION</span>
                 <span>PRIVATE DATA</span>
@@ -277,376 +442,73 @@ export default function PortfolioPage() {
               </div>
 
               <div className={styles.projectActions}>
-                <span className={styles.primaryAction}>
-                  <span aria-hidden="true">[</span>
+                <span className={styles.projectButtonSecondary}>
                   PRIVATE SYSTEM
-                  <span aria-hidden="true">]</span>
                 </span>
               </div>
-            </article>
+            </div>
+          </article>
+        </div>
+      </section>
 
-            {/* =================================================
-                PROJECT 01 ΓÇö WEATHER
-                ================================================= */}
+      <section className={styles.section} id="contact">
+        <div className={styles.shell}>
+          <div className={styles.contactCard}>
+            <div>
+              <p className={styles.sectionLabel}>
+                05 — CONNECT
+              </p>
 
-            <article className={styles.projectCard}>
-              <div className={styles.projectTop}>
-                <span className={styles.projectNumber}>
-                  PROJECT 01
-                </span>
+              <h2 className={styles.contactTitle}>
+                Build something intelligent.
+              </h2>
 
-                <span className={styles.projectSignal}>
-                  <span
-                    className={styles.signalDot}
-                    aria-hidden="true"
-                  />
-                  SYSTEM IN BUILD
-                </span>
-              </div>
+              <p className={styles.contactText}>
+                For collaborations, systems, technology projects or intelligent
+                digital experiences, get in touch.
+              </p>
+            </div>
 
-              <div className={styles.projectIdentity}>
-                <div className={styles.projectCopy}>
-                  <h3>Weather Intelligence</h3>
+            <div className={styles.contactDetails}>
+              <a href="mailto:hello@kimgenius.xyz">
+                hello@kimgenius.xyz
+              </a>
 
-                  <p className={styles.projectDescription}>
-                    A weather intelligence interface designed
-                    around live environmental data, location
-                    search, forecasting, analytical views and
-                    conversational exploration.
-                  </p>
-                </div>
+              <a href="tel:+254791896869">
+                +254 791 896869
+              </a>
 
-                <div
-                  className={styles.projectMark}
-                  aria-hidden="true"
-                >
-                  Γê₧
-                </div>
-              </div>
+              <a
+                href="https://github.com/ki995483"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
 
-              <div className={styles.progressBlock}>
-                <div className={styles.progressMeta}>
-                  <span>BUILD PROGRESS</span>
-                  <span>72%</span>
-                </div>
-
-                <div
-                  className={styles.progressTrack}
-                  aria-label="Weather Intelligence build progress: 72 percent"
-                >
-                  <span
-                    className={styles.progressFill}
-                    style={
-                      {
-                        "--progress": "72%",
-                      } as CSSProperties
-                    }
-                  />
-
-                  <span
-                    className={styles.progressGrid}
-                    aria-hidden="true"
-                  />
-                </div>
-
-                <div className={styles.progressStatus}>
-                  <span>BUILDING</span>
-
-                  <span>
-                    WEATHER API ΓÇó SEARCH ΓÇó ANALYTICS ΓÇó UI
-                  </span>
-                </div>
-              </div>
-
-              <div className={styles.techCore}>
-                <span>WEATHER API</span>
-                <span>SEARCH</span>
-                <span>ANALYTICS</span>
-                <span>RESPONSIVE UI</span>
-                <span>REAL-TIME DATA</span>
-              </div>
-
-              <div className={styles.projectActions}>
-                <Link
-                  href="/weather"
-                  className={styles.primaryAction}
-                >
-                  <span aria-hidden="true">[</span>
-                  OPEN SYSTEM
-                  <span aria-hidden="true">]</span>
-                </Link>
-
-                <a
-                  href="https://github.com/ki995483"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.secondaryAction}
-                >
-                  <span aria-hidden="true">[</span>
-                  SOURCE
-                  <span aria-hidden="true">]</span>
-                </a>
-              </div>
-            </article>
-
-            {/* =================================================
-                PROJECT 02 ΓÇö AI
-                ================================================= */}
-
-            <article className={styles.projectCard}>
-              <div className={styles.projectTop}>
-                <span className={styles.projectNumber}>
-                  PROJECT 02
-                </span>
-
-                <span className={styles.projectSignal}>
-                  <span
-                    className={styles.signalDot}
-                    aria-hidden="true"
-                  />
-                  IN DEVELOPMENT
-                </span>
-              </div>
-
-              <div className={styles.projectIdentity}>
-                <div className={styles.projectCopy}>
-                  <h3>AI Learning Laboratory</h3>
-
-                  <p className={styles.projectDescription}>
-                    An experimental environment for Artificial
-                    Intelligence, prompt engineering, automation
-                    concepts and intelligent workflows.
-                  </p>
-                </div>
-
-                <div
-                  className={styles.projectMark}
-                  aria-hidden="true"
-                >
-                  AI
-                </div>
-              </div>
-
-              <div className={styles.progressBlock}>
-                <div className={styles.progressMeta}>
-                  <span>BUILD PROGRESS</span>
-                  <span>48%</span>
-                </div>
-
-                <div className={styles.progressTrack}>
-                  <span
-                    className={styles.progressFill}
-                    style={
-                      {
-                        "--progress": "48%",
-                      } as CSSProperties
-                    }
-                  />
-
-                  <span
-                    className={styles.progressGrid}
-                    aria-hidden="true"
-                  />
-                </div>
-
-                <div className={styles.progressStatus}>
-                  <span>EXPERIMENTING</span>
-
-                  <span>
-                    AI ΓÇó PROMPT ENGINEERING ΓÇó AUTOMATION
-                  </span>
-                </div>
-              </div>
-
-              <div className={styles.techCore}>
-                <span>ARTIFICIAL INTELLIGENCE</span>
-                <span>PROMPT ENGINEERING</span>
-                <span>AUTOMATION</span>
-                <span>RESEARCH</span>
-              </div>
-            </article>
-
-            {/* =================================================
-                PROJECT 03 ΓÇö GIS
-                ================================================= */}
-
-            <article className={styles.projectCard}>
-              <div className={styles.projectTop}>
-                <span className={styles.projectNumber}>
-                  PROJECT 03
-                </span>
-
-                <span className={styles.projectSignal}>
-                  <span
-                    className={styles.signalDot}
-                    aria-hidden="true"
-                  />
-                  BUILDING
-                </span>
-              </div>
-
-              <div className={styles.projectIdentity}>
-                <div className={styles.projectCopy}>
-                  <h3>Spatial Intelligence Systems</h3>
-
-                  <p className={styles.projectDescription}>
-                    Practical geospatial systems exploring
-                    GIS, digital mapping, spatial analysis,
-                    environmental interpretation and
-                    remote sensing.
-                  </p>
-                </div>
-
-                <div
-                  className={styles.projectMark}
-                  aria-hidden="true"
-                >
-                  GIS
-                </div>
-              </div>
-
-              <div className={styles.progressBlock}>
-                <div className={styles.progressMeta}>
-                  <span>BUILD PROGRESS</span>
-                  <span>36%</span>
-                </div>
-
-                <div className={styles.progressTrack}>
-                  <span
-                    className={styles.progressFill}
-                    style={
-                      {
-                        "--progress": "36%",
-                      } as CSSProperties
-                    }
-                  />
-
-                  <span
-                    className={styles.progressGrid}
-                    aria-hidden="true"
-                  />
-                </div>
-
-                <div className={styles.progressStatus}>
-                  <span>BUILDING</span>
-
-                  <span>
-                    GIS ΓÇó QGIS ΓÇó ARCGIS ΓÇó REMOTE SENSING
-                  </span>
-                </div>
-              </div>
-
-              <div className={styles.techCore}>
-                <span>GIS</span>
-                <span>QGIS</span>
-                <span>ARCGIS</span>
-                <span>REMOTE SENSING</span>
-              </div>
-            </article>
+              <a
+                href="https://www.kimgenius.xyz"
+                target="_blank"
+                rel="noreferrer"
+              >
+                kimgenius.xyz
+              </a>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* =====================================================
-          EDUCATION
-          ===================================================== */}
-
-      <section
-        className={styles.section}
-        id="education"
-        aria-labelledby="education-title"
-      >
-        <div className={styles.shell}>
-          <p className={styles.sectionLabel}>
-            03 ΓÇö EDUCATION
-          </p>
-
-          <h2
-            className={styles.educationTitle}
-            id="education-title"
-          >
-            Kibabii University
-          </h2>
-
-          <p className={styles.educationDegree}>
-            Bachelor of Education (Arts)
-          </p>
-
-          <p className={styles.educationDetail}>
-            Geography &amp; Kiswahili
-          </p>
-
-          <p className={styles.educationDetail}>
-            Graduation: 2027
-          </p>
-        </div>
-      </section>
-
-      {/* =====================================================
-          CONTACT
-          ===================================================== */}
-
-      <section
-        className={styles.section}
-        id="contact"
-        aria-labelledby="contact-title"
-      >
-        <div className={styles.shell}>
-          <p className={styles.sectionLabel}>
-            04 ΓÇö CONNECT
-          </p>
-
-          <h2
-            className={styles.contactTitle}
-            id="contact-title"
-          >
-            Build something intelligent.
-          </h2>
-
-          <p className={styles.contactText}>
-            For professional, research, technology and
-            collaboration enquiries.
-          </p>
-
-          <div className={styles.contactLinks}>
-            <a href="mailto:hello@kimgenius.xyz">
-              hello@kimgenius.xyz
-            </a>
-
-            <a href="tel:+254791896869">
-              +254 791 896869
-            </a>
-
-            <a
-              href="https://github.com/ki995483"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-
-            <a
-              href="https://www.kimgenius.xyz"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              kimgenius.xyz
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          FOOTER
-          ===================================================== */}
 
       <footer className={styles.footer}>
-        <div className={`${styles.shell} ${styles.footerInner}`}>
-          <span>┬⌐ 2026 KIMGENIUS ΓÇó XYZ TECH</span>
+        <div className={styles.shell}>
+          <div className={styles.footerInner}>
+            <span>
+              © 2026 KIMGENIUS • XYZ TECH
+            </span>
 
-          <a href="#about">
-            Back to the Top Γåæ
-          </a>
+            <a href="#about">
+              Back to the Top ↑
+            </a>
+          </div>
         </div>
       </footer>
     </main>
