@@ -1711,3 +1711,538 @@
     transition: none;
   }
 }
+
+/* =========================================================
+   SURGICAL JSX / CSS COMPATIBILITY LAYER
+   Preserves OG visual engine while matching current page.tsx
+   ========================================================= */
+
+/* ---------- BRAND ---------- */
+
+.brandIcon img {
+  width: 31px;
+  height: 31px;
+  object-fit: contain;
+  display: block;
+}
+
+.brandText {
+  display: inline-block;
+}
+
+/* ---------- HERO ---------- */
+
+.heroIntro {
+  max-width: 780px;
+
+  margin-top: 38px;
+
+  color: var(--muted);
+
+  font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+  line-height: 1.85;
+  letter-spacing: 0.008em;
+}
+
+.heroIntro strong {
+  color: var(--text);
+  font-weight: 950;
+
+  text-shadow:
+    0 0 22px rgba(21, 157, 255, 0.08);
+}
+
+.heroIntro span {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 35px;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 46px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 20px;
+
+  border: 1px solid rgba(21, 157, 255, 0.45);
+  border-radius: var(--radius-sm);
+
+  color: var(--text);
+
+  font-size: 0.67rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.primaryButton {
+  background: var(--blue-soft);
+
+  box-shadow:
+    0 0 25px rgba(21, 157, 255, 0.07);
+}
+
+.secondaryButton {
+  border-color: var(--line);
+  background: transparent;
+  color: var(--soft);
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-3px);
+}
+
+.primaryButton:hover {
+  background: var(--blue-medium);
+  border-color: rgba(21, 157, 255, 0.8);
+
+  box-shadow:
+    0 10px 32px rgba(21, 157, 255, 0.13);
+}
+
+.secondaryButton:hover {
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+
+/* ---------- SECTION HEADINGS ---------- */
+
+.sectionHeading {
+  display: grid;
+
+  grid-template-columns:
+    minmax(180px, 0.65fr)
+    minmax(0, 1.35fr);
+
+  gap: 40px;
+
+  margin-bottom: 42px;
+}
+
+.sectionTitle {
+  margin-bottom: 13px;
+
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.95;
+
+  letter-spacing: -0.05em;
+}
+
+.sectionDescription {
+  grid-column: 2;
+
+  max-width: 650px;
+
+  color: var(--muted);
+
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+.domainCard h3 {
+  position: relative;
+
+  margin-bottom: 16px;
+
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+/* ---------- PROJECT SYSTEM ---------- */
+
+.projectStatus {
+  display: block;
+
+  margin-top: 7px;
+
+  color: var(--blue-bright);
+
+  font-size: 0.54rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  line-height: 1.35;
+}
+
+.projectBody {
+  min-width: 0;
+}
+
+.projectBody > h3 {
+  margin-bottom: 17px;
+
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1.05;
+
+  letter-spacing: -0.035em;
+}
+
+.projectBody > p {
+  max-width: 590px;
+
+  color: var(--muted);
+
+  font-size: 0.88rem;
+  line-height: 1.78;
+}
+
+.projectProgress {
+  margin-top: 40px;
+}
+
+.progressHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+
+  color: var(--faint);
+
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.11em;
+}
+
+.progressHeader strong {
+  color: var(--blue-bright);
+}
+
+.projectMeta {
+  margin-top: 17px;
+
+  color: var(--faint);
+
+  font-size: 0.54rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
+.projectTech {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-top: 16px;
+}
+
+.projectTech span {
+  padding: 7px 9px;
+
+  border: 1px solid var(--line);
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.018);
+
+  color: var(--faint);
+
+  font-size: 0.52rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+
+.projectButton,
+.projectButtonSecondary {
+  min-height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 0 15px;
+
+  border: 1px solid var(--line);
+  border-radius: 7px;
+
+  font-size: 0.61rem;
+  font-weight: 900;
+  letter-spacing: 0.11em;
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.projectButton {
+  border-color: rgba(21, 157, 255, 0.48);
+
+  background: var(--blue-soft);
+
+  color: var(--text);
+
+  box-shadow:
+    0 0 22px rgba(21, 157, 255, 0.05);
+}
+
+.projectButtonSecondary {
+  background: transparent;
+  color: var(--muted);
+}
+
+.projectButton:hover,
+.projectButtonSecondary:hover {
+  transform: translateY(-2px);
+}
+
+.projectButton:hover {
+  border-color: var(--blue-bright);
+
+  background: var(--blue-medium);
+
+  box-shadow:
+    0 8px 28px rgba(21, 157, 255, 0.13);
+}
+
+.projectButtonSecondary:hover {
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+
+/* ---------- EDUCATION ---------- */
+
+.educationCard {
+  display: grid;
+
+  grid-template-columns: 140px minmax(0, 1fr);
+
+  gap: 38px;
+
+  padding: clamp(28px, 5vw, 48px);
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(21, 157, 255, 0.025) 48%,
+      var(--surface)
+    );
+
+  box-shadow: var(--shadow-card);
+}
+
+.educationYear {
+  color: var(--blue-bright);
+
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 950;
+  line-height: 1;
+
+  letter-spacing: -0.05em;
+}
+
+.educationContent {
+  min-width: 0;
+}
+
+.educationInstitution {
+  margin-bottom: 13px !important;
+
+  color: var(--blue-bright);
+
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.educationContent h3 {
+  margin-bottom: 10px;
+
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  line-height: 1.05;
+
+  letter-spacing: -0.035em;
+}
+
+.educationContent p:not(.educationInstitution) {
+  color: var(--soft);
+
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.educationContent span {
+  display: inline-block;
+
+  margin-top: 10px;
+
+  color: var(--faint);
+
+  font-size: 0.6rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ---------- CONTACT ---------- */
+
+.contactCard {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(240px, 0.65fr);
+
+  gap: 50px;
+  align-items: end;
+
+  padding: clamp(30px, 5vw, 55px);
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(21, 157, 255, 0.025) 48%,
+      var(--surface)
+    );
+
+  box-shadow: var(--shadow-card);
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+.contactDetails a {
+  min-height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0 14px;
+
+  border: 1px solid var(--line);
+  border-radius: 7px;
+
+  background: var(--surface);
+
+  color: var(--soft);
+
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    background 180ms ease;
+}
+
+.contactDetails a:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(21, 157, 255, 0.4);
+
+  color: var(--blue-bright);
+
+  background: var(--surface-2);
+}
+
+/* ---------- MOBILE COMPATIBILITY ---------- */
+
+@media (max-width: 680px) {
+  .heroIntro {
+    margin-top: 34px;
+
+    font-size: 0.9rem;
+    line-height: 1.78;
+  }
+
+  .heroActions {
+    width: 100%;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    flex: 1;
+  }
+
+  .sectionHeading {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+
+    margin-bottom: 32px;
+  }
+
+  .sectionDescription {
+    grid-column: auto;
+  }
+
+  .educationCard {
+    grid-template-columns: 1fr;
+
+    gap: 24px;
+  }
+
+  .educationYear {
+    font-size: 2.7rem;
+  }
+
+  .contactCard {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
+
+  .contactDetails {
+    width: 100%;
+  }
+
+  .contactDetails a {
+    width: 100%;
+  }
+
+  .projectButton,
+  .projectButtonSecondary {
+    width: 100%;
+  }
+}
+
+/* ---------- REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .secondaryButton,
+  .projectButton,
+  .projectButtonSecondary,
+  .contactDetails a {
+    transition: none;
+  }
+}
