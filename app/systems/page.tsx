@@ -1,6 +1,14 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { kimgeniusSystems } from "@/lib/system-catalog";
+import KGLuxuryEngine from "./KGLuxuryEngine";
 import styles from "./systems.module.css";
+
+const statusClasses = {
+  ONLINE: styles.online,
+  BUILDING: styles.building,
+  RESEARCH: styles.research,
+  PLANNED: styles.planned,
+} as const;
 
 export default function SystemsPage() {
   return (
@@ -10,22 +18,19 @@ export default function SystemsPage() {
       <div className={styles.container}>
         <header className={styles.header}>
           <Link href="/" className={styles.back}>
-            ← XYZ CORE
+            ← KIMGENIUS
           </Link>
 
           <p className={styles.eyebrow}>
-            KIMGENIUS / SYSTEM REGISTRY
+            KIMGENIUS SYSTEM REGISTRY
           </p>
 
-          <h1 className={styles.title}>
-            INTELLIGENCE
-            <br />
-            IN MOTION.
-          </h1>
+          <h1 className={styles.title}>SYSTEMS</h1>
 
           <p className={styles.intro}>
-            A connected registry of KIMGENIUS systems, products,
-            engines, productions, and future intelligence infrastructure.
+            A living registry of systems, engines, experiments,
+            and intelligence layers built inside the KIMGENIUS
+            architecture.
           </p>
         </header>
 
@@ -33,7 +38,11 @@ export default function SystemsPage() {
           {kimgeniusSystems.map((system) => (
             <article
               key={system.id}
-              className={styles.card}
+              className={`${styles.card} ${
+                system.id === "kg-luxury"
+                  ? styles.luxuryCard
+                  : ""
+              }`}
             >
               <div className={styles.cardTop}>
                 <span className={styles.number}>
@@ -42,14 +51,10 @@ export default function SystemsPage() {
 
                 <span
                   className={`${styles.status} ${
-                    styles[system.status.toLowerCase()]
+                    statusClasses[system.status]
                   }`}
                 >
-                  <span
-                    className={styles.statusDot}
-                    aria-hidden="true"
-                  />
-
+                  <span className={styles.statusDot} />
                   {system.status}
                 </span>
               </div>
@@ -65,6 +70,10 @@ export default function SystemsPage() {
                   {system.description}
                 </p>
               </div>
+
+              {system.id === "kg-luxury" && (
+                <KGLuxuryEngine />
+              )}
 
               <div className={styles.flow}>
                 <div className={styles.flowBlock}>
@@ -115,20 +124,28 @@ export default function SystemsPage() {
                   href={system.href}
                   className={styles.action}
                 >
-                  OPEN SYSTEM <span>↗</span>
+                  <span>
+                    {system.id === "kg-luxury"
+                      ? "OPEN KG LUXURY SYSTEM"
+                      : "OPEN SYSTEM"}
+                  </span>
+
+                  <span>→</span>
                 </Link>
               ) : (
-                <span className={styles.actionDisabled}>
-                  SYSTEM IN DEVELOPMENT
-                </span>
+                <div className={styles.actionDisabled}>
+                  <span>SYSTEM PLANNED</span>
+                </div>
               )}
             </article>
           ))}
         </section>
 
         <footer className={styles.footer}>
-          <span>KIMGENIUS / XYZ</span>
-          <span>INPUT → INTELLIGENCE → OUTPUT</span>
+          <span>KIMGENIUS / SYSTEM ARCHITECTURE</span>
+          <span>
+            SYSTEM → INPUT → ENGINE → OUTPUT → CAPABILITY
+          </span>
         </footer>
       </div>
     </main>

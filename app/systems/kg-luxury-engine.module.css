@@ -1,0 +1,425 @@
+﻿.engine {
+  position: relative;
+  min-height: 390px;
+  margin-top: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(70, 181, 255, 0.18);
+  border-radius: 22px;
+  background:
+    radial-gradient(
+      circle at 50% 48%,
+      rgba(21, 157, 255, 0.13),
+      transparent 48%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.012)
+    ),
+    #03070b;
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.engine::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(70, 181, 255, 0.035),
+      transparent
+    );
+}
+
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.smoke,
+.nimbus {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.smoke {
+  background:
+    radial-gradient(
+      circle,
+      rgba(130, 170, 205, 0.16),
+      transparent 70%
+    );
+  filter: blur(25px);
+  animation: smokeFloat 10s ease-in-out infinite alternate;
+}
+
+.smokeOne {
+  width: 220px;
+  height: 120px;
+  left: -50px;
+  bottom: 15px;
+}
+
+.smokeTwo {
+  width: 260px;
+  height: 135px;
+  right: -70px;
+  top: 80px;
+  animation-delay: -3s;
+}
+
+.smokeThree {
+  width: 180px;
+  height: 105px;
+  left: 38%;
+  top: -35px;
+  animation-delay: -6s;
+}
+
+.nimbus {
+  width: 145px;
+  height: 90px;
+  background:
+    radial-gradient(
+      circle,
+      rgba(70, 181, 255, 0.11),
+      transparent 70%
+    );
+  filter: blur(27px);
+  animation: nimbusFloat 8s ease-in-out infinite alternate;
+}
+
+.nimbusOne {
+  left: 8%;
+  top: 32%;
+}
+
+.nimbusTwo {
+  right: 8%;
+  bottom: 20%;
+  animation-delay: -2s;
+}
+
+.nimbusThree {
+  left: 42%;
+  bottom: -20px;
+  animation-delay: -4s;
+}
+
+.cornerTurbine {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 6;
+  width: 78px;
+  height: 78px;
+  border: 1px solid rgba(70, 181, 255, 0.18);
+  border-radius: 17px;
+  background: rgba(1, 5, 9, 0.72);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.38),
+    inset 0 0 24px rgba(21, 157, 255, 0.055);
+  backdrop-filter: blur(10px);
+}
+
+.cornerTurbine::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 13px;
+}
+
+.cornerText {
+  position: absolute;
+  top: 7px;
+  left: 9px;
+  z-index: 3;
+  color: rgba(70, 181, 255, 0.65);
+  font-size: 0.4rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.miniSvg {
+  position: absolute;
+  inset: 13px;
+  width: calc(100% - 26px);
+  height: calc(100% - 26px);
+  overflow: visible;
+}
+
+.miniSvg .propellerRotor {
+  animation: miniRotation 7s linear infinite;
+}
+
+.engineTop {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 20px 0;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 7px;
+  color: #46b5ff;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.engineTop h3 {
+  margin: 0;
+  color: #f5f7fb;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.state {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 999px;
+  color: rgba(245, 247, 251, 0.4);
+  font-size: 0.48rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.state > span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.stateLive {
+  color: #7dffbd;
+}
+
+.stage {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  min-height: 270px;
+}
+
+.ring {
+  position: absolute;
+  width: 250px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(70, 181, 255, 0.12);
+  border-radius: 50%;
+  box-shadow:
+    0 0 55px rgba(21, 157, 255, 0.07),
+    inset 0 0 45px rgba(21, 157, 255, 0.035);
+}
+
+.ring::before {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border: 1px dashed rgba(70, 181, 255, 0.1);
+  border-radius: 50%;
+}
+
+.rotorFrame {
+  position: relative;
+  z-index: 4;
+  width: 255px;
+  height: 255px;
+  display: grid;
+  place-items: center;
+  will-change: transform;
+}
+
+.rotorFrame.settling {
+  transition:
+    transform 900ms cubic-bezier(0.16, 0.8, 0.24, 1);
+}
+
+.engineSvg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.propellerRotor {
+  transform-box: fill-box;
+}
+
+.techButton {
+  position: absolute;
+  z-index: 8;
+  width: 82px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 3px;
+  border: 1px solid rgba(70, 181, 255, 0.75);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 35% 28%,
+      #1a2b3e,
+      #050b12 62%,
+      #010307
+    );
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow:
+    0 0 0 6px rgba(21, 157, 255, 0.05),
+    0 0 28px rgba(21, 157, 255, 0.15),
+    inset 0 0 20px rgba(70, 181, 255, 0.08);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.techButton:hover {
+  transform: scale(1.045);
+  border-color: #ffffff;
+  box-shadow:
+    0 0 0 8px rgba(21, 157, 255, 0.06),
+    0 0 38px rgba(21, 157, 255, 0.22);
+}
+
+.techButton:active {
+  transform: scale(0.97);
+}
+
+.techButtonActive {
+  border-color: #46b5ff;
+  box-shadow:
+    0 0 0 8px rgba(21, 157, 255, 0.07),
+    0 0 42px rgba(21, 157, 255, 0.28),
+    inset 0 0 25px rgba(70, 181, 255, 0.12);
+}
+
+.techButton strong {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  margin-left: 0.2em;
+}
+
+.techButton small {
+  color: rgba(245, 247, 251, 0.42);
+  font-size: 0.36rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.engineBottom {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 15px;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: rgba(245, 247, 251, 0.32);
+  font-size: 0.42rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.engineBottom span:last-child {
+  color: rgba(70, 181, 255, 0.65);
+}
+
+@keyframes miniRotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes smokeFloat {
+  0% {
+    transform: translate3d(-8px, 5px, 0) scale(0.94);
+    opacity: 0.34;
+  }
+
+  100% {
+    transform: translate3d(18px, -12px, 0) scale(1.1);
+    opacity: 0.72;
+  }
+}
+
+@keyframes nimbusFloat {
+  0% {
+    transform: translate3d(-10px, 7px, 0) scale(0.9);
+    opacity: 0.25;
+  }
+
+  100% {
+    transform: translate3d(15px, -10px, 0) scale(1.1);
+    opacity: 0.55;
+  }
+}
+
+@media (max-width: 560px) {
+  .engine {
+    min-height: 360px;
+  }
+
+  .cornerTurbine {
+    width: 68px;
+    height: 68px;
+  }
+
+  .stage {
+    min-height: 245px;
+  }
+
+  .rotorFrame {
+    width: 225px;
+    height: 225px;
+  }
+
+  .ring {
+    width: 220px;
+  }
+
+  .techButton {
+    width: 74px;
+    height: 74px;
+  }
+
+  .engineBottom {
+    font-size: 0.38rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .miniSvg .propellerRotor,
+  .smoke,
+  .nimbus {
+    animation: none;
+  }
+}

@@ -1,4 +1,4 @@
-export type SystemStatus =
+﻿export type SystemStatus =
   | "ONLINE"
   | "BUILDING"
   | "RESEARCH"
@@ -194,6 +194,41 @@ export const kimgeniusSystems: KIMGENIUSSystem[] = [
       "Content production",
       "Digital media",
     ],
+  },
+
+  {
+    id: "kg-luxury",
+    number: "06",
+    name: "KG Luxury",
+    category: "LUXURY TECHNOLOGY",
+    status: "ONLINE",
+    description:
+      "A live KIMGENIUS propulsion system built around the XYZ tri-blade architecture, interactive TECH control, atmospheric motion, and precision engine behavior.",
+    input: [
+      "TECH activation",
+      "User interaction",
+      "XYZ engine state",
+    ],
+    engine: [
+      "XYZ propeller architecture",
+      "Rhythmic propulsion",
+      "Precision acceleration",
+      "Controlled deceleration",
+    ],
+    output: [
+      "Live propulsion",
+      "Engine motion",
+      "Natural rest state",
+      "Luxury interface experience",
+    ],
+    capabilities: [
+      "Interactive TECH control",
+      "Live XYZ propulsion",
+      "Continuous corner turbine",
+      "Atmospheric motion",
+      "Responsive experience",
+    ],
+    href: "/systems/kg-luxury",
   },
 ];
 

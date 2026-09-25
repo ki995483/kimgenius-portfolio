@@ -1,9 +1,13 @@
-.page {
+﻿.page {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 0%, rgba(21, 157, 255, 0.14), transparent 32rem),
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(21, 157, 255, 0.14),
+      transparent 32rem
+    ),
     #05070a;
   color: #f5f7fb;
 }
@@ -112,12 +116,28 @@
   left: 12%;
   width: 76%;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(70, 181, 255, 0.8),
-    transparent
-  );
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(70, 181, 255, 0.8),
+      transparent
+    );
+}
+
+.luxuryCard {
+  border-color: rgba(70, 181, 255, 0.17);
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(21, 157, 255, 0.035),
+      transparent 18rem
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.018)
+    );
 }
 
 .cardTop {
@@ -272,7 +292,7 @@
   transform: translateY(-2px);
 }
 
-.action span {
+.action span:last-child {
   color: #46b5ff;
   font-size: 1rem;
 }
