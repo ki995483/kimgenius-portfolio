@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import styles from "./kg-luxury-engine.module.css";
@@ -334,16 +334,16 @@ export default function KGLuxuryEngine() {
       <div className={styles.stage}>
         <div className={styles.compass} aria-hidden="true">
           <span className={`${styles.compassArrow} ${styles.compassNorth}`}>
-            ÃƒÂ¢Ã¢â‚¬â€œÃ‚Â²
+            ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“Ãƒâ€šÃ‚Â²
           </span>
           <span className={`${styles.compassArrow} ${styles.compassEast}`}>
-            ÃƒÂ¢Ã¢â‚¬â€œÃ‚Âº
+            ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“Ãƒâ€šÃ‚Âº
           </span>
           <span className={`${styles.compassArrow} ${styles.compassSouth}`}>
-            ÃƒÂ¢Ã¢â‚¬â€œÃ‚Â¼
+            ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“Ãƒâ€šÃ‚Â¼
           </span>
           <span className={`${styles.compassArrow} ${styles.compassWest}`}>
-            ÃƒÂ¢Ã¢â‚¬â€Ã¢â‚¬Å¾
+            ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬ÂÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾
           </span>
         </div>
 
@@ -395,3 +395,4 @@ export default function KGLuxuryEngine() {
     </div>
   );
 }
+
