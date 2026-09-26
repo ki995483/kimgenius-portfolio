@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import styles from "./kg-luxury-engine.module.css";
@@ -249,6 +249,9 @@ export default function KGLuxuryEngine() {
           settleTargetRef.current =
             Math.round(rotationRef.current / 360) * 360;
 
+          rotationRef.current = settleTargetRef.current;
+          setRotation(settleTargetRef.current);
+
           modeRef.current = "settling";
           setMode("settling");
         }
@@ -264,6 +267,22 @@ export default function KGLuxuryEngine() {
     };
   }, []);
 
+  function finishSettling() {
+    if (modeRef.current !== "settling") {
+      return;
+    }
+
+    window.setTimeout(() => {
+      if (modeRef.current !== "settling") {
+        return;
+      }
+
+      speedRef.current = 0;
+      modeRef.current = "running";
+      setMode("running");
+    }, 2500);
+  }
+
   function handleTech() {
     if (mode === "running") {
       modeRef.current = "braking";
@@ -275,20 +294,6 @@ export default function KGLuxuryEngine() {
       modeRef.current = "running";
       setMode("running");
     }
-  }
-
-  function finishSettling() {
-    if (modeRef.current !== "settling") {
-      return;
-    }
-
-    rotationRef.current = 0;
-    speedRef.current = 0;
-
-    setRotation(0);
-
-    modeRef.current = "idle";
-    setMode("idle");
   }
 
   const running = mode === "running";
@@ -327,6 +332,21 @@ export default function KGLuxuryEngine() {
       </div>
 
       <div className={styles.stage}>
+        <div className={styles.compass} aria-hidden="true">
+          <span className={`${styles.compassArrow} ${styles.compassNorth}`}>
+            ÃƒÂ¢Ã¢â‚¬â€œÃ‚Â²
+          </span>
+          <span className={`${styles.compassArrow} ${styles.compassEast}`}>
+            ÃƒÂ¢Ã¢â‚¬â€œÃ‚Âº
+          </span>
+          <span className={`${styles.compassArrow} ${styles.compassSouth}`}>
+            ÃƒÂ¢Ã¢â‚¬â€œÃ‚Â¼
+          </span>
+          <span className={`${styles.compassArrow} ${styles.compassWest}`}>
+            ÃƒÂ¢Ã¢â‚¬â€Ã¢â‚¬Å¾
+          </span>
+        </div>
+
         <div className={styles.ring} aria-hidden="true" />
 
         <div
@@ -366,8 +386,10 @@ export default function KGLuxuryEngine() {
           {running
             ? "PROPULSING"
             : mode === "settling"
-              ? "RETURNING"
-              : "READY"}
+              ? "ALIGNING"
+              : mode === "braking"
+                ? "BRAKING"
+                : "READY"}
         </span>
       </div>
     </div>

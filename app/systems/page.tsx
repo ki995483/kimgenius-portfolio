@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { kimgeniusSystems } from "@/lib/system-catalog";
 import KGLuxuryEngine from "./KGLuxuryEngine";
 import styles from "./systems.module.css";
@@ -25,7 +25,7 @@ export default function SystemsPage() {
             KIMGENIUS SYSTEM REGISTRY
           </p>
 
-          <h1 className={styles.title}>SYSTEMS</h1>
+          <h1 className={styles.title}>INTELLIGENCE IN MOTION</h1>
 
           <p className={styles.intro}>
             A living registry of systems, engines, experiments,
@@ -147,6 +147,12 @@ export default function SystemsPage() {
             SYSTEM → INPUT → ENGINE → OUTPUT → CAPABILITY
           </span>
         </footer>
+
+        <div className={styles.portfolioBack}>
+          <Link href="/portfolio" className={styles.portfolioBackLink}>
+            <span>← BACK TO PORTFOLIO</span>
+          </Link>
+        </div>
       </div>
     </main>
   );

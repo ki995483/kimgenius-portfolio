@@ -423,3 +423,46 @@
     animation: none;
   }
 }
+
+.compass {
+  position: absolute;
+  z-index: 1;
+  width: 285px;
+  height: 285px;
+  pointer-events: none;
+  opacity: 0.24;
+  filter: drop-shadow(0 0 14px rgba(21, 157, 255, 0.16));
+}
+
+.compassArrow {
+  position: absolute;
+  display: block;
+  color: rgba(70, 181, 255, 0.72);
+  font-size: 1.15rem;
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(21, 157, 255, 0.35);
+}
+
+.compassNorth {
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.compassEast {
+  top: 50%;
+  right: -2px;
+  transform: translateY(-50%);
+}
+
+.compassSouth {
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.compassWest {
+  top: 50%;
+  left: -2px;
+  transform: translateY(-50%);
+}
