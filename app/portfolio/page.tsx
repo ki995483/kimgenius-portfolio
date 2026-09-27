@@ -86,11 +86,47 @@ export default function PortfolioPage() {
                 darkMode ? "Switch to light mode" : "Switch to dark mode"
               }
             >
-              {darkMode ? "â˜€ï¸" : "ðŸŒ™"}
+              {darkMode ? "💧" : "🌙"}
             </button>
           </div>
         </div>
       </header>
+
+      {searchOpen && (
+        <div className={styles.searchPanel}>
+          <div className={styles.searchPanelInner}>
+            <input
+              className={styles.searchInput}
+              type="search"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder="Search KIMGENIUS..."
+              aria-label="Search KIMGENIUS"
+              autoFocus
+            />
+
+            <div className={styles.searchResults}>
+              {filteredSearchItems.length > 0 ? (
+                filteredSearchItems.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => {
+                      setSearchOpen(false);
+                      setSearchQuery("");
+                    }}
+                  >
+                    <span>{item.label}</span>
+                    <span aria-hidden="true">→</span>
+                  </a>
+                ))
+              ) : (
+                <p>No matching destination.</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       <section className={styles.hero} id="about">
         <div className={styles.heroBeam} aria-hidden="true">
@@ -118,11 +154,11 @@ export default function PortfolioPage() {
 
             <div className={styles.heroActions}>
               <a href="#projects" className={styles.primaryButton}>
-                Explore Work â†’
+                Explore Work →
               </a>
 
               <a href="#contact" className={styles.secondaryButton}>
-                Connect â†’
+                Connect →
               </a>
             </div>
           </div>
@@ -133,7 +169,7 @@ export default function PortfolioPage() {
         <div className={styles.shell}>
           <div className={styles.sectionHeading}>
             <p className={styles.sectionLabel}>
-              01 â€” TECHNOLOGY DOMAINS
+              01 — TECHNOLOGY DOMAINS
             </p>
 
             <h2 className={styles.sectionTitle}>
@@ -185,7 +221,7 @@ export default function PortfolioPage() {
         <div className={styles.shell}>
           <div className={styles.sectionHeading}>
             <p className={styles.sectionLabel}>
-              02 â€” PROJECT SYSTEM
+              02 — PROJECT SYSTEM
             </p>
 
             <h2 className={styles.sectionTitle}>
@@ -200,7 +236,7 @@ export default function PortfolioPage() {
           </div>
 
           <div className={styles.projectGrid}>
-            {/* PROJECT 01 â€” WEATHER */}
+            {/* PROJECT 01 — WEATHER */}
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
                 <div>
@@ -211,7 +247,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectMark} aria-hidden="true">
-                  â˜€ï¸
+                  💧
                 </div>
               </div>
 
@@ -239,7 +275,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectMeta}>
-                  WEATHER API â€¢ SEARCH â€¢ ANALYTICS â€¢ UI
+                  WEATHER API • SEARCH • ANALYTICS • UI
                 </div>
 
                 <div className={styles.projectTech}>
@@ -252,7 +288,7 @@ export default function PortfolioPage() {
 
                 <div className={styles.projectActions}>
                   <Link href="/weather" className={styles.projectButton}>
-                    OPEN SYSTEM â†’
+                    OPEN SYSTEM →
                   </Link>
 
                   <a
@@ -261,13 +297,13 @@ export default function PortfolioPage() {
                     rel="noreferrer"
                     className={styles.projectButtonSecondary}
                   >
-                    SOURCE â†’
+                    SOURCE →
                   </a>
                 </div>
               </div>
             </article>
 
-            {/* PROJECT 02 â€” AI */}
+            {/* PROJECT 02 — AI */}
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
                 <div>
@@ -306,7 +342,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectMeta}>
-                  AI â€¢ PROMPT ENGINEERING â€¢ AUTOMATION
+                  AI • PROMPT ENGINEERING • AUTOMATION
                 </div>
 
                 <div className={styles.projectTech}>
@@ -318,13 +354,13 @@ export default function PortfolioPage() {
 
                 <div className={styles.projectActions}>
                   <Link href="/ai" className={styles.projectButton}>
-                    OPEN SYSTEM â†’
+                    OPEN SYSTEM →
                   </Link>
                 </div>
               </div>
             </article>
 
-            {/* PROJECT 03 â€” SPATIAL */}
+            {/* PROJECT 03 — SPATIAL */}
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
                 <div>
@@ -361,7 +397,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectMeta}>
-                  GIS â€¢ QGIS â€¢ ARCGIS â€¢ REMOTE SENSING
+                  GIS • QGIS • ARCGIS • REMOTE SENSING
                 </div>
 
                 <div className={styles.projectTech}>
@@ -376,13 +412,13 @@ export default function PortfolioPage() {
                     href="/spatial-intelligence"
                     className={styles.projectButton}
                   >
-                    OPEN SYSTEM â†’
+                    OPEN SYSTEM →
                   </Link>
                 </div>
               </div>
             </article>
 
-            {/* PROJECT 04 â€” DATA INTELLIGENCE */}
+            {/* PROJECT 04 — DATA INTELLIGENCE */}
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
                 <div>
@@ -421,7 +457,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectMeta}>
-                  DATA â€¢ ANALYTICS â€¢ VISUALIZATION â€¢ INSIGHTS
+                  DATA • ANALYTICS • VISUALIZATION • INSIGHTS
                 </div>
 
                 <div className={styles.projectTech}>
@@ -436,13 +472,13 @@ export default function PortfolioPage() {
                     href="/data-intelligence"
                     className={styles.projectButton}
                   >
-                    OPEN SYSTEM â†’
+                    OPEN SYSTEM →
                   </Link>
                 </div>
               </div>
             </article>
 
-            {/* PROJECT 05 â€” SYSTEM REGISTRY */}
+            {/* PROJECT 05 — SYSTEM REGISTRY */}
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
                 <div>
@@ -481,7 +517,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectMeta}>
-                  SYSTEMS â€¢ DISCOVERY â€¢ REGISTRY â€¢ ARCHITECTURE
+                  SYSTEMS • DISCOVERY • REGISTRY • ARCHITECTURE
                 </div>
 
                 <div className={styles.projectTech}>
@@ -493,13 +529,13 @@ export default function PortfolioPage() {
 
                 <div className={styles.projectActions}>
                   <Link href="/systems" className={styles.projectButton}>
-                    EXPLORE SYSTEMS â†’
+                    EXPLORE SYSTEMS →
                   </Link>
                 </div>
               </div>
             </article>
 
-            {/* PROJECT 06 â€” CASHFLOW */}
+            {/* PROJECT 06 — CASHFLOW */}
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
                 <div>
@@ -536,7 +572,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectMeta}>
-                  PRIVATE PLATFORM â€¢ ARCHITECTURE RESERVED
+                  PRIVATE PLATFORM • ARCHITECTURE RESERVED
                 </div>
 
                 <div className={styles.projectTech}>
@@ -562,7 +598,7 @@ export default function PortfolioPage() {
         <div className={styles.shell}>
           <div className={styles.sectionHeading}>
             <p className={styles.sectionLabel}>
-              03 â€” EDUCATION
+              03 — EDUCATION
             </p>
 
             <h2 className={styles.sectionTitle}>
@@ -593,7 +629,7 @@ export default function PortfolioPage() {
           <div className={styles.contactCard}>
             <div>
               <p className={styles.sectionLabel}>
-                04 â€” CONNECT
+                04 — CONNECT
               </p>
 
               <h2 className={styles.contactTitle}>
@@ -620,7 +656,7 @@ export default function PortfolioPage() {
                 target="_blank"
                 rel="noreferrer"
               >
-                WhatsApp â†’
+                WhatsApp →
               </a>
 
               <a
@@ -628,7 +664,7 @@ export default function PortfolioPage() {
                 target="_blank"
                 rel="noreferrer"
               >
-                GitHub â†’
+                GitHub →
               </a>
 
               <a
@@ -636,7 +672,7 @@ export default function PortfolioPage() {
                 target="_blank"
                 rel="noreferrer"
               >
-                kimgenius.xyz â†’
+                kimgenius.xyz →
               </a>
             </div>
           </div>
@@ -646,10 +682,9 @@ export default function PortfolioPage() {
       <footer className={styles.footer}>
         <div className={styles.shell}>
           <div className={styles.footerInner}>
-            <span>Â© 2026 KIMGENIUS â€¢ XYZ TECH</span>
-
+            <span>© 2026 KIMGENIUS • XYZ TECH</span>
             <a href="#about">
-              Back to the Top â†‘
+              Back to the Top ↑
             </a>
           </div>
         </div>
