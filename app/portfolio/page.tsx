@@ -86,7 +86,7 @@ export default function PortfolioPage() {
                 darkMode ? "Switch to light mode" : "Switch to dark mode"
               }
             >
-              {darkMode ? "💧" : "🌙"}
+              {darkMode ? "☀️" : "🌙"}
             </button>
           </div>
         </div>
