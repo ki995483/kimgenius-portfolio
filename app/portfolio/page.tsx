@@ -2,12 +2,43 @@
 
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "./portfolio.module.css";
 
 export default function PortfolioPage() {
   const [darkMode, setDarkMode] = useState(true);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    if (!searchOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSearchOpen(false);
+        setSearchQuery("");
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [searchOpen]);
+
+  const searchItems = [
+    { label: "SYSTEMS", href: "/systems" },
+    { label: "PROJECTS", href: "#projects" },
+    { label: "TECHNOLOGY DOMAINS", href: "#skills" },
+    { label: "EDUCATION", href: "#education" },
+    { label: "PAGES", href: "#about" },
+  ];
+
+  const filteredSearchItems = searchItems.filter((item) =>
+    item.label.toLowerCase().includes(searchQuery.trim().toLowerCase()),
+  );
 
   const pageStyle = {
     "--portfolio-accent": "#159dff",
@@ -40,13 +71,22 @@ export default function PortfolioPage() {
 
             <button
               type="button"
+              className={styles.searchToggle}
+              onClick={() => setSearchOpen((current) => !current)}
+              aria-label="Open search"
+              aria-expanded={searchOpen}
+            >
+              <span className={styles.searchIcon} aria-hidden="true" />
+            </button>
+            <button
+              type="button"
               className={styles.themeToggle}
               onClick={() => setDarkMode((current) => !current)}
               aria-label={
                 darkMode ? "Switch to light mode" : "Switch to dark mode"
               }
             >
-              {darkMode ? "☀️" : "🌙"}
+              {darkMode ? "â˜€ï¸" : "ðŸŒ™"}
             </button>
           </div>
         </div>
@@ -78,11 +118,11 @@ export default function PortfolioPage() {
 
             <div className={styles.heroActions}>
               <a href="#projects" className={styles.primaryButton}>
-                Explore Work →
+                Explore Work â†’
               </a>
 
               <a href="#contact" className={styles.secondaryButton}>
-                Connect →
+                Connect â†’
               </a>
             </div>
           </div>
@@ -93,7 +133,7 @@ export default function PortfolioPage() {
         <div className={styles.shell}>
           <div className={styles.sectionHeading}>
             <p className={styles.sectionLabel}>
-              01 — TECHNOLOGY DOMAINS
+              01 â€” TECHNOLOGY DOMAINS
             </p>
 
             <h2 className={styles.sectionTitle}>
@@ -145,7 +185,7 @@ export default function PortfolioPage() {
         <div className={styles.shell}>
           <div className={styles.sectionHeading}>
             <p className={styles.sectionLabel}>
-              02 — PROJECT SYSTEM
+              02 â€” PROJECT SYSTEM
             </p>
 
             <h2 className={styles.sectionTitle}>
@@ -160,7 +200,7 @@ export default function PortfolioPage() {
           </div>
 
           <div className={styles.projectGrid}>
-            {/* PROJECT 01 — WEATHER */}
+            {/* PROJECT 01 â€” WEATHER */}
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
                 <div>
@@ -171,7 +211,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectMark} aria-hidden="true">
-                  ☀️
+                  â˜€ï¸
                 </div>
               </div>
 
@@ -199,7 +239,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectMeta}>
-                  WEATHER API • SEARCH • ANALYTICS • UI
+                  WEATHER API â€¢ SEARCH â€¢ ANALYTICS â€¢ UI
                 </div>
 
                 <div className={styles.projectTech}>
@@ -212,7 +252,7 @@ export default function PortfolioPage() {
 
                 <div className={styles.projectActions}>
                   <Link href="/weather" className={styles.projectButton}>
-                    OPEN SYSTEM →
+                    OPEN SYSTEM â†’
                   </Link>
 
                   <a
@@ -221,13 +261,13 @@ export default function PortfolioPage() {
                     rel="noreferrer"
                     className={styles.projectButtonSecondary}
                   >
-                    SOURCE →
+                    SOURCE â†’
                   </a>
                 </div>
               </div>
             </article>
 
-            {/* PROJECT 02 — AI */}
+            {/* PROJECT 02 â€” AI */}
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
                 <div>
@@ -266,7 +306,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectMeta}>
-                  AI • PROMPT ENGINEERING • AUTOMATION
+                  AI â€¢ PROMPT ENGINEERING â€¢ AUTOMATION
                 </div>
 
                 <div className={styles.projectTech}>
@@ -278,13 +318,13 @@ export default function PortfolioPage() {
 
                 <div className={styles.projectActions}>
                   <Link href="/ai" className={styles.projectButton}>
-                    OPEN SYSTEM →
+                    OPEN SYSTEM â†’
                   </Link>
                 </div>
               </div>
             </article>
 
-            {/* PROJECT 03 — SPATIAL */}
+            {/* PROJECT 03 â€” SPATIAL */}
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
                 <div>
@@ -321,7 +361,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectMeta}>
-                  GIS • QGIS • ARCGIS • REMOTE SENSING
+                  GIS â€¢ QGIS â€¢ ARCGIS â€¢ REMOTE SENSING
                 </div>
 
                 <div className={styles.projectTech}>
@@ -336,13 +376,13 @@ export default function PortfolioPage() {
                     href="/spatial-intelligence"
                     className={styles.projectButton}
                   >
-                    OPEN SYSTEM →
+                    OPEN SYSTEM â†’
                   </Link>
                 </div>
               </div>
             </article>
 
-            {/* PROJECT 04 — DATA INTELLIGENCE */}
+            {/* PROJECT 04 â€” DATA INTELLIGENCE */}
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
                 <div>
@@ -381,7 +421,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectMeta}>
-                  DATA • ANALYTICS • VISUALIZATION • INSIGHTS
+                  DATA â€¢ ANALYTICS â€¢ VISUALIZATION â€¢ INSIGHTS
                 </div>
 
                 <div className={styles.projectTech}>
@@ -396,13 +436,13 @@ export default function PortfolioPage() {
                     href="/data-intelligence"
                     className={styles.projectButton}
                   >
-                    OPEN SYSTEM →
+                    OPEN SYSTEM â†’
                   </Link>
                 </div>
               </div>
             </article>
 
-            {/* PROJECT 05 — SYSTEM REGISTRY */}
+            {/* PROJECT 05 â€” SYSTEM REGISTRY */}
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
                 <div>
@@ -441,7 +481,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectMeta}>
-                  SYSTEMS • DISCOVERY • REGISTRY • ARCHITECTURE
+                  SYSTEMS â€¢ DISCOVERY â€¢ REGISTRY â€¢ ARCHITECTURE
                 </div>
 
                 <div className={styles.projectTech}>
@@ -453,13 +493,13 @@ export default function PortfolioPage() {
 
                 <div className={styles.projectActions}>
                   <Link href="/systems" className={styles.projectButton}>
-                    EXPLORE SYSTEMS →
+                    EXPLORE SYSTEMS â†’
                   </Link>
                 </div>
               </div>
             </article>
 
-            {/* PROJECT 06 — CASHFLOW */}
+            {/* PROJECT 06 â€” CASHFLOW */}
             <article className={styles.projectCard}>
               <div className={styles.projectTop}>
                 <div>
@@ -496,7 +536,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectMeta}>
-                  PRIVATE PLATFORM • ARCHITECTURE RESERVED
+                  PRIVATE PLATFORM â€¢ ARCHITECTURE RESERVED
                 </div>
 
                 <div className={styles.projectTech}>
@@ -522,7 +562,7 @@ export default function PortfolioPage() {
         <div className={styles.shell}>
           <div className={styles.sectionHeading}>
             <p className={styles.sectionLabel}>
-              03 — EDUCATION
+              03 â€” EDUCATION
             </p>
 
             <h2 className={styles.sectionTitle}>
@@ -553,7 +593,7 @@ export default function PortfolioPage() {
           <div className={styles.contactCard}>
             <div>
               <p className={styles.sectionLabel}>
-                04 — CONNECT
+                04 â€” CONNECT
               </p>
 
               <h2 className={styles.contactTitle}>
@@ -580,7 +620,7 @@ export default function PortfolioPage() {
                 target="_blank"
                 rel="noreferrer"
               >
-                WhatsApp →
+                WhatsApp â†’
               </a>
 
               <a
@@ -588,7 +628,7 @@ export default function PortfolioPage() {
                 target="_blank"
                 rel="noreferrer"
               >
-                GitHub →
+                GitHub â†’
               </a>
 
               <a
@@ -596,7 +636,7 @@ export default function PortfolioPage() {
                 target="_blank"
                 rel="noreferrer"
               >
-                kimgenius.xyz →
+                kimgenius.xyz â†’
               </a>
             </div>
           </div>
@@ -606,10 +646,10 @@ export default function PortfolioPage() {
       <footer className={styles.footer}>
         <div className={styles.shell}>
           <div className={styles.footerInner}>
-            <span>© 2026 KIMGENIUS • XYZ TECH</span>
+            <span>Â© 2026 KIMGENIUS â€¢ XYZ TECH</span>
 
             <a href="#about">
-              Back to the Top ↑
+              Back to the Top â†‘
             </a>
           </div>
         </div>

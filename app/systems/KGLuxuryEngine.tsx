@@ -334,16 +334,12 @@ export default function KGLuxuryEngine() {
       <div className={styles.stage}>
         <div className={styles.compass} aria-hidden="true">
           <span className={`${styles.compassArrow} ${styles.compassNorth}`}>
-            ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“Ãƒâ€šÃ‚Â²
           </span>
           <span className={`${styles.compassArrow} ${styles.compassEast}`}>
-            ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“Ãƒâ€šÃ‚Âº
           </span>
           <span className={`${styles.compassArrow} ${styles.compassSouth}`}>
-            ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“Ãƒâ€šÃ‚Â¼
           </span>
           <span className={`${styles.compassArrow} ${styles.compassWest}`}>
-            ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬ÂÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾
           </span>
         </div>
 

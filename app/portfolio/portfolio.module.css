@@ -1,4 +1,4 @@
-﻿/* =========================================================
+/* =========================================================
    KIMGENIUS PORTFOLIO
    OG VISUAL ENGINE
    HERO / BEAM / SYSTEM / RESPONSIVE POLISH
@@ -260,6 +260,68 @@
   transform: scaleX(1);
 }
 
+.searchToggle {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--line);
+  border-radius: 50%;
+
+  background: transparent;
+  color: var(--text);
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.searchToggle:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(21, 157, 255, 0.45);
+
+  box-shadow:
+    0 0 22px rgba(21, 157, 255, 0.12);
+}
+
+.searchIcon {
+  position: relative;
+
+  width: 14px;
+  height: 14px;
+
+  display: block;
+
+  border: 1.8px solid currentColor;
+  border-radius: 50%;
+}
+
+.searchIcon::after {
+  content: "";
+
+  position: absolute;
+
+  width: 6px;
+  height: 1.8px;
+
+  right: -5px;
+  bottom: -2px;
+
+  background: currentColor;
+
+  border-radius: 999px;
+
+  transform: rotate(45deg);
+  transform-origin: left center;
+}
 .themeToggle {
   width: 40px;
   height: 40px;
@@ -1509,128 +1571,6 @@
     font-size: 0.56rem;
   }
 
-  .themeToggle {
-    width: 36px;
-    height: 36px;
-  }
-
-  .hero {
-    min-height: auto;
-
-    padding-block: 115px 105px;
-  }
-
-  .heroOrb {
-    width: 390px;
-    height: 390px;
-
-    top: 5%;
-    right: -35%;
-  }
-
-  .heroBeam {
-    top: 47%;
-    left: -60%;
-    right: -60%;
-  }
-
-  .heroName {
-    font-size: clamp(3.15rem, 16.8vw, 5rem);
-  }
-
-  .heroStatement {
-    max-width: 350px;
-
-    font-size: 0.72rem;
-    line-height: 1.55;
-  }
-
-  .heroText {
-    margin-top: 34px;
-
-    gap: 9px;
-  }
-
-  .heroLead {
-    font-size: 0.98rem;
-  }
-
-  .heroDescription {
-    font-size: 0.9rem;
-    line-height: 1.78;
-  }
-
-  .actions {
-    width: 100%;
-  }
-
-  .button {
-    flex: 1;
-  }
-
-  .sectionHeader {
-    grid-template-columns: 1fr;
-
-    gap: 18px;
-
-    margin-bottom: 32px;
-  }
-
-  .projectCard {
-    padding: 24px;
-  }
-
-  .projectTop {
-    align-items: flex-start;
-    flex-direction: column;
-
-    gap: 12px;
-
-    margin-bottom: 30px;
-  }
-
-  .projectIdentity {
-    grid-template-columns: 1fr;
-  }
-
-  .projectMark {
-    width: 58px;
-    min-width: 58px;
-    height: 58px;
-  }
-
-  .progressStatus {
-    align-items: flex-start;
-    flex-direction: column;
-
-    gap: 5px;
-  }
-
-  .projectActions {
-    flex-direction: column;
-  }
-
-  .primaryAction,
-  .secondaryAction {
-    width: 100%;
-  }
-
-  .contactTitle {
-    font-size: clamp(2.6rem, 15vw, 4.5rem);
-  }
-
-  .contactLinks {
-    flex-direction: column;
-  }
-
-  .contactLinks a {
-    width: 100%;
-  }
-
-  .footerInner {
-    align-items: flex-start;
-    flex-direction: column;
-  }
 }
 
 /* =========================================================
