@@ -137,6 +137,7 @@ export default function PortfolioPage() {
 
         <div className={styles.shell}>
           <div className={styles.heroContent}>
+            <p className={styles.heroGreeting}>Hi, I&rsquo;m</p>
             <h1 className={styles.heroName}>KIMGENIUS</h1>
 
             <p className={styles.heroStatement}>
@@ -144,7 +145,7 @@ export default function PortfolioPage() {
             </p>
 
             <div className={styles.heroIntro}>
-              <strong>A forward-thinking technologist:</strong>{" "}
+              <strong className={styles.heroLead}>A GENIUS TECHNOLOGIST:</strong>
               <span>
                 A Technologist polymath; a Spatial Intelligence connoisseur; an
                 AI Automation savant; and a Web Systems builder focused on

@@ -1,4 +1,4 @@
-﻿.page {
+.page {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
@@ -325,6 +325,8 @@
 @media (max-width: 560px) {
   .container {
     width: min(100% - 24px, 1400px);
+    padding-left: 8px;
+    padding-right: 8px;
     padding-top: 20px;
   }
 
