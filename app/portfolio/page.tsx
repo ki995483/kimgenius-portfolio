@@ -148,7 +148,7 @@ export default function PortfolioPage() {
               <strong className={styles.heroLead}>A GENIUS TECHNOLOGIST:</strong>
               <span>
                 A Technologist polymath; a Spatial Intelligence connoisseur; an
-                AI Automation savant; and a Web Systems builder focused on
+                AI Automation Mandela; and a Web Systems builder focused on
                 intelligent digital experiences.
               </span>
             </div>
@@ -160,6 +160,16 @@ export default function PortfolioPage() {
 
               <a href="#contact" className={styles.secondaryButton}>
                 Connect →
+              </a>
+            </div>
+            <div className={styles.cvAction}>
+              <a
+                href="/kimgenius-cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.cvButton}
+              >
+                OPEN CV <span aria-hidden="true">↗</span>
               </a>
             </div>
           </div>
