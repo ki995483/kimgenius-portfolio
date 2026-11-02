@@ -2310,3 +2310,53 @@
   border-color: rgba(21, 157, 255, 0.85);
   box-shadow: 0 8px 28px rgba(21, 157, 255, 0.13);
 }
+/* ---------- KG_HERO_LEAD_FLASH_V1 ---------- */
+
+.heroIntro .heroLead {
+  display: inline-block;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  background-image:
+    linear-gradient(
+      105deg,
+      var(--text) 0%,
+      var(--text) 42%,
+      #8bd4ff 47%,
+      #ffffff 50%,
+      #8bd4ff 53%,
+      var(--text) 58%,
+      var(--text) 100%
+    );
+
+  background-size: 250% 100%;
+  background-position: 100% center;
+  background-repeat: no-repeat;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  text-shadow: none;
+
+  animation: heroLeadSweep 6s ease-in-out infinite;
+}
+
+@keyframes heroLeadSweep {
+  0%, 65%, 100% {
+    background-position: 100% center;
+  }
+
+  84% {
+    background-position: 0% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroIntro .heroLead {
+    animation: none;
+    background-position: 50% center;
+  }
+}
+
+/* ---------- END KG_HERO_LEAD_FLASH_V1 ---------- */
