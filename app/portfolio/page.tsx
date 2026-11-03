@@ -554,18 +554,28 @@ export default function PortfolioPage() {
                   <span className={styles.projectStatus}>PRIVATE</span>
                 </div>
 
-                <div className={styles.projectMark} aria-hidden="true">
-                  CF
+                <div className={styles.project06Marks}>
+                  <div className={styles.projectMark} aria-hidden="true">
+                    CF
+                  </div>
+
+                  <div className={styles.project06MarkMql5} aria-label="MQL5">
+                    MQL5
+                  </div>
                 </div>
               </div>
 
               <div className={styles.projectBody}>
-                <h3>KIMGENIUS CashFlow</h3>
+                <h3>
+                  KIMGENIUS CashFlow &amp;
+                  <br />
+                  KG HQ fx Trade
+                </h3>
 
                 <p>
-                  A private financial and business intelligence platform
-                  reserved for authenticated use, with PIN-based access and
-                  encrypted data architecture.
+                  A private CEO-controlled financial intelligence platform
+                  integrating CashFlow management, KG HQ fx Trade, multi-asset
+                  MQL5 automation, risk governance and business operations.
                 </p>
 
                 <div className={styles.projectProgress}>
@@ -587,11 +597,12 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectTech}>
-                  <span>PIN ACCESS</span>
-                  <span>ENCRYPTION</span>
-                  <span>PRIVATE DATA</span>
-                  <span>AUTHORIZATION</span>
-                  <span>PROTECTED API</span>
+                  <span>CEO-ONLY ACCESS</span>
+                  <span>CASHFLOW INTELLIGENCE</span>
+                  <span>MQL5 AUTOMATION</span>
+                  <span>MULTI-ASSET</span>
+                  <span>RISK GOVERNANCE</span>
+                  <span>KG | AI 6.6 READY</span>
                 </div>
 
                 <div className={styles.projectActions}>

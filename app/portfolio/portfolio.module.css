@@ -2357,3 +2357,42 @@
 }
 
 /* ---------- END KG_HERO_LEAD_FLASH_V1 ---------- */
+/* ---------- PROJECT 06: CF WEST / MQL5 EAST ---------- */
+
+.project06Marks {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.project06MarkMql5 {
+  min-width: 68px;
+  height: 68px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0 7px;
+
+  border: 1px solid rgba(21, 157, 255, 0.25);
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(21, 157, 255, 0.13),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  color: var(--blue-bright);
+
+  font-size: 0.76rem;
+  font-weight: 950;
+  letter-spacing: -0.035em;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 25px rgba(21, 157, 255, 0.05);
+}
