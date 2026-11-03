@@ -606,9 +606,12 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.projectActions}>
-                  <span className={styles.projectButtonSecondary}>
+                  <Link
+                    href="/systems/cashflow"
+                    className={styles.projectButtonSecondary}
+                  >
                     PRIVATE SYSTEM
-                  </span>
+                  </Link>
                 </div>
               </div>
             </article>
