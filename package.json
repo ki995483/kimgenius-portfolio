@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^7.9.23",
+    "@neon/config": "^1.13.0",
+    "@neon/env": "^2.1.0",
+    "@neondatabase/serverless": "^1.2.0",
     "next": "16.3.2",
     "react": "19.2.8",
     "react-dom": "19.2.8"
